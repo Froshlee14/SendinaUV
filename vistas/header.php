@@ -12,8 +12,10 @@
 <body>
 	<div id="header"> 
 		<ul>
-			<li> <a href="<?php echo constant('URL') ?>sendero"> Inicio </a> </li>
-			<li> <a href="<?php echo constant('URL') ?>editor"> Agregar </a> </li>
+			<li> <a href="<?php echo constant('URL') ?>inicio"> Inicio </a> </li>
+			<li> <a href="<?php echo constant('URL') ?>sendero/enlistar"> Senderos </a> </li>
+			<li> <a href="<?php echo constant('URL') ?>ayuda"> Ayuda </a> </li>
+			<li> <a href="<?php echo constant('URL') ?>login"> Iniciar sesion </a> </li>
 		
 		</ul>
 	</div>
