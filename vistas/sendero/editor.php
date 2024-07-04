@@ -15,7 +15,7 @@
 		<h1> Detalles de sendero </h1>
 		
 		<?php 
-			//var_dump($this->sendero_lista); 
+			//var_dump($this->sendero); 
 			//require_once 'entidades/SenderoBean.php';
 			//var_dump($this->zona_lista);
 			
@@ -37,7 +37,7 @@
 		?>
 
 
-        <form action="#" method="post" id="senderoForm">
+        <form action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
 
             <p>
                 <label for="id_sendero">ID sendero</label>
@@ -76,36 +76,19 @@
 
             <p>
                 <input type="submit" value="Guardar" onclick="prepareSubmit('guardar')">
-				<?php if($this->sendero !== null){ ?>
-				<input type="submit" value="Eliminar" onclick="prepareSubmit('borrar')">
-				<?php } ?>
             </p>
         </form>
+		
+		<?php if($this->sendero !== null){ ?>
+			<a href="<?php echo constant('URL') ?>sendero/eliminar"> Eliminar </a>
+		<?php } ?>
 		
 		<p> <?php echo $this->mensaje; ?></p>
 
 	</div>
 	
 	<?php  require 'vistas/footer.php' ?>
-	
-	
-	<script>
-		//Tengo 2 botones dentro del mismo formulario, pero cada uno llama a un Servlet diferente.
-	    function prepareSubmit(action) {
-			
-	    	var form = document.getElementById('senderoForm');
-	        
-	        if (action === 'guardar') {
-	            form.method = 'post';
-	            form.action = '<?php echo constant('URL') ?>sendero/guardar';
-	        } else if (action === 'borrar') {
-	            form.method = 'get';
-	            form.action= '<?php echo constant('URL') ?>sendero/borrar';
-	        }	        
-	        //form.submit();
-	    }
-	</script>
-	
+		
 </body>
 
 </html>

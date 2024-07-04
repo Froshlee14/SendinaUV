@@ -12,7 +12,7 @@ class App{
 		$url = rtrim($url,'/');
 		$url = explode('/',$url);
 		
-		echo 'url[0]:'.$url[0];
+		//echo 'url[0]:'.$url[0];
 		//Cuando no se define un controlador en la url
 		//cargamos por defecto la vista del inicio
 		if(empty($url[0])){

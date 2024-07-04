@@ -14,6 +14,8 @@
 	<div id="main">
 		<h1>  Senderos </h1>
 		
+		<p> <a href="<?php echo constant('URL').'sendero/editar/0'?>"> Agregar sendero </a> </p>
+		
 		<?php 
 			//var_dump($this->sendero_lista); 
 			require_once 'entidades/SenderoBean.php';
@@ -33,40 +35,6 @@
 		<?php	
 			}
 		?>
-
-        <!-- <form action="<?php echo constant('URL') ?>sendero/guardarSendero" method="post"> -->
-
-            <!-- <p> -->
-                <!-- <label for="id_sendero">ID sendero</label> -->
-                <!-- <input type="text" name="id_sendero" required> -->
-            <!-- </p> -->
-            
-            <!-- <p> -->
-            <!-- <label for="id_sendero">Nombre sendero</label> -->
-            <!-- <input type="text" name="nombre" required> -->
-            <!-- </p> -->
-            <!-- <p> -->
-            <!-- <label for="id_sendero">Sede</label> -->
-            <!-- <input type="text" name="sede" required> -->
-            <!-- </p> -->
-            <!-- <p> -->
-            <!-- <label for="year">Año</label> -->
-            <!-- <input type="text" name="year" required> -->
-            <!-- </p> -->
-            <!-- <p> -->
-            <!-- <label for="id_zona">Zona</label> -->
-            <!-- <input type="text" name="id_zona" required> -->
-            <!-- </p> -->
-            <!-- <p> -->
-            <!-- <label for="url_recursos">URL vista previa</label> -->
-            <!-- <input type="text" name="url_recursos" required> -->
-            <!-- </p> -->
-
-            <!-- <p> -->
-                <!-- <input type="submit" value="agregar sendero"> -->
-            <!-- </p> -->
-        <!-- </form> -->
-		
 		<p> <?php echo $this->mensaje; ?></p>
 
 	</div>

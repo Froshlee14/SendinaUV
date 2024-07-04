@@ -8,15 +8,15 @@ class SenderoModelo extends Modelo{
 	
 	public function select($id_sendero){
 		
-		$sendero = new SenderoBean();
-		
 		$sql = 'SELECT sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre as nombre_zona, sendero.url_recursos FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero where sendero.id_sendero = :id_sendero;';
 		$query = $this->conexion->connect()->prepare($sql);
 		
 		try{
 			$query->execute(['id_sendero'=>$id_sendero]);
-			
-			while($row = $query->fetch()){
+			$row = $query->fetch();
+        
+			if ($row) {
+				$sendero = new SenderoBean();
 				$sendero->set_id_sendero($id_sendero);
 				$sendero->set_nombre($row['nombre']);
 				$sendero->set_sede($row['sede']);
@@ -24,8 +24,10 @@ class SenderoModelo extends Modelo{
 				$sendero->set_id_zona($row['id_zona']);
 				$sendero->set_nombre_zona($row['nombre_zona']);
 				$sendero->set_url_recursos($row['url_recursos']);
+				return $sendero;
+			} else {
+				return null;
 			}
-			return $sendero;
 		}
 		catch(PDOException $e){
 			return null;
@@ -51,9 +53,7 @@ class SenderoModelo extends Modelo{
 					$row['nombre_zona'],
 					$row['url_recursos']
 				);
-				//$item->matricula = $row['matricula'];
-				//$item->nombre = $row['nombre'];
-				//$item->apellido = $row['apellido'];
+
 				array_push($lista, $sendero);
 			}
 			return $lista;
@@ -97,11 +97,28 @@ class SenderoModelo extends Modelo{
             'id_zona' => $sendero->get_id_zona(),
             'url_recursos' => $sendero->get_url_recursos(),
         ];
+		
+		$sql2 = 'INSERT INTO zona_sendero (id_zona, id_sendero) VALUES (:id_zona,:id_sendero);';
         
         try {
-            $query = $this->conexion->connect()->prepare($sql);
+			$conexion = $this->conexion->connect();
+			
+            $query = $conexion->prepare($sql);
             $query->execute($parametros);
+			
+			//Obtengo la id del registro creado para usarlo en la proxima query
+			$id_sendero = $this->conexion->connect()->lastInsertId();
+			
+			//Agregamos los datos a la relacion zona-sendero
+			$query2 = $conexion->prepare($sql2);
+			$parametros = [
+				'id_zona' => $sendero->get_id_zona(),
+				'id_sendero' => $id_sendero
+			];
+			
+			$query2->execute($parametros);
 			return true;
+			
         } catch (PDOException $e) {
             echo $e->getMessage();
 			return false;

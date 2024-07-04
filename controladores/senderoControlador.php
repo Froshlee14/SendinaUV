@@ -19,7 +19,7 @@ class SenderoControlador extends Controlador{
 	}
 	
 	//Funcion para elistar todos los senderos
-	function enlistar(){
+	function lista(){
 		$senderos = $this->modelo->selectAll();
 		$this->vista->sendero_lista = $senderos;
 		$this->renderizar();
@@ -65,7 +65,7 @@ class SenderoControlador extends Controlador{
 		}
 		
 		$this->vista->mensaje = $mensaje;
-		$this->enlistar();
+		$this->lista();
     }
 	
 	function editar($parametros=null){
