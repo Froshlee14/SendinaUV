@@ -62,6 +62,29 @@ class SenderoModelo extends Modelo{
 			return [];
 		}
 	}
+	
+	public function selectZonas(){
+		
+		$lista = [];
+		$sql = 'SELECT * from zona;';
+		
+		try{
+			$query = $this->conexion->connect()->query($sql);
+
+			while($row = $query->fetch()) {
+
+				$zona = new ZonaBean(
+					$row['id_zona'],
+					$row['nombre']
+				);
+				array_push($lista, $zona);
+			}
+			return $lista;
+		}
+		catch(PDOException $e) {
+			return [];
+		}
+	}
 
 	public function insert($sendero){
         //Insertar datos de sendero a loa BD

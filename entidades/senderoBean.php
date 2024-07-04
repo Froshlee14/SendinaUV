@@ -1,6 +1,6 @@
 <?php
 
-class senderoBean {
+class SenderoBean {
     private $id_sendero;
     private $nombre;
     private $sede;

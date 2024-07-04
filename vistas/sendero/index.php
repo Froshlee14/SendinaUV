@@ -16,7 +16,7 @@
 		
 		<?php 
 			//var_dump($this->sendero_lista); 
-			require_once 'entidades/senderoBean.php';
+			require_once 'entidades/SenderoBean.php';
 			foreach($this->sendero_lista as $item){
 				$sendero = new senderoBean();
 				$sendero = $item;

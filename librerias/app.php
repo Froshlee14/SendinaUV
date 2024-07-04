@@ -40,6 +40,7 @@ class App{
 				$n_param = sizeof($url);
 				if($n_param>1){
 					if($n_param>2){
+						//Si hay mas de 2 significa que estamos pasando parametros.
 						$parametros = [];
 						for($i=2; $i<$n_param; $i++){
 							array_push($parametros,$url[$i]);
@@ -54,14 +55,6 @@ class App{
 					$controlador->renderizar();
 				}
 			
-				//Si hay un metodo en la url comprobamos si existe
-                //if(isset($url[1])){
-				//	$controlador->{$url[1]}();
-				//echo "vista";
-                //}
-				//else{
-				//	$controlador->renderizar();
-				//}
             }
             else{
                 //No se encuentra clase de controlador

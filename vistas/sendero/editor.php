@@ -16,7 +16,8 @@
 		
 		<?php 
 			//var_dump($this->sendero_lista); 
-			require_once 'entidades/senderoBean.php';
+			//require_once 'entidades/SenderoBean.php';
+			//var_dump($this->zona_lista);
 			
 			$id_sendero = 0;
 			$nombre = '';
@@ -36,7 +37,7 @@
 		?>
 
 
-        <form action="<?php echo constant('URL') ?>sendero/guardar" method="post">
+        <form action="#" method="post" id="senderoForm">
 
             <p>
                 <label for="id_sendero">ID sendero</label>
@@ -55,17 +56,29 @@
             <label for="year">Año</label>
             <input type="text" name="year" value="<?php echo $year ?>" required>
             </p>
+			
+			
             <p>
             <label for="id_zona">Zona</label>
-            <input type="text" name="id_zona" value="<?php echo $id_zona ?>" required>
+            <select id="id_zona" name="id_zona">
+            <?php foreach ($this->zona_lista as $z): ?>
+                <option value="<?= $z->get_id_zona() ?>" <?= $z->get_id_zona() == $id_zona ? 'selected' : '' ?>>
+                    <?php echo $z->get_nombre(); ?>
+                </option>
+            <?php endforeach; ?>
+			</select>
             </p>
-            <p>
+            
+			<p>
             <label for="url_recursos">URL vista previa</label>
             <input type="text" name="url_recursos" value="<?php echo $url_recursos ?>" required>
             </p>
 
             <p>
-                <input type="submit" value="Guardar">
+                <input type="submit" value="Guardar" onclick="prepareSubmit('guardar')">
+				<?php if($this->sendero !== null){ ?>
+				<input type="submit" value="Eliminar" onclick="prepareSubmit('borrar')">
+				<?php } ?>
             </p>
         </form>
 		
@@ -74,6 +87,25 @@
 	</div>
 	
 	<?php  require 'vistas/footer.php' ?>
+	
+	
+	<script>
+		//Tengo 2 botones dentro del mismo formulario, pero cada uno llama a un Servlet diferente.
+	    function prepareSubmit(action) {
+			
+	    	var form = document.getElementById('senderoForm');
+	        
+	        if (action === 'guardar') {
+	            form.method = 'post';
+	            form.action = '<?php echo constant('URL') ?>sendero/guardar';
+	        } else if (action === 'borrar') {
+	            form.method = 'get';
+	            form.action= '<?php echo constant('URL') ?>sendero/borrar';
+	        }	        
+	        //form.submit();
+	    }
+	</script>
+	
 </body>
 
 </html>

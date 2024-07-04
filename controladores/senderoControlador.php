@@ -1,6 +1,7 @@
 <?php
 
-require_once 'entidades/senderoBean.php';
+require_once 'entidades/SenderoBean.php';
+require_once 'entidades/ZonaBean.php';
 
 class SenderoControlador extends Controlador{
 	
@@ -9,6 +10,7 @@ class SenderoControlador extends Controlador{
 		$this->vista->mensaje = "";
 		$this->vista->sendero_lista = [];
 		$this->vista->sendero = null;
+		$this->vista->zona_lista = [];
 		//echo "<p> Nuevo sendero controlador </p>";
 	}
 	
@@ -70,8 +72,11 @@ class SenderoControlador extends Controlador{
 		//var_dump($parametros);
 		$id_sendero = $parametros[0];
 		$sendero = $this->modelo->select($id_sendero);
+		//Tambien obtengo la lista de zonas para desplegarlas en un select field
+		$zonas = $this->modelo->selectZonas();
 		
 		$this->vista->sendero = $sendero;
+		$this->vista->zona_lista = $zonas;
 		$this->renderizar('sendero/editor');
 	}
 
