@@ -12,7 +12,7 @@ class App{
 		$url = rtrim($url,'/');
 		$url = explode('/',$url);
 		
-		echo $url[0];
+		echo 'url[0]:'.$url[0];
 		//Cuando no se define un controlador en la url
 		//cargamos por defecto la vista del inicio
 		if(empty($url[0])){
@@ -23,7 +23,6 @@ class App{
 			//$controlador->cargarModelo('senderoModelo');
 			return false;
 		}
-		
 		
 		//Caso contrario verificamos que existe el controlador
 		$archivoControlador = 'controladores/' . $url[0] . 'Controlador.php';
