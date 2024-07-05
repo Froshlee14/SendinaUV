@@ -80,7 +80,7 @@
         </form>
 		
 		<?php if($this->sendero !== null){ ?>
-			<a href="<?php echo constant('URL') ?>sendero/eliminar"> Eliminar </a>
+			<a href="<?php echo constant('URL') ?>sendero/borrar"> Eliminar </a>
 		<?php } ?>
 		
 		<p> <?php echo $this->mensaje; ?></p>

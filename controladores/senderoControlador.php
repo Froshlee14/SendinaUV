@@ -79,6 +79,19 @@ class SenderoControlador extends Controlador{
 		$this->vista->zona_lista = $zonas;
 		$this->renderizar('sendero/editor');
 	}
+	
+	function borrar($parametros=null){
+		$id_sendero = $parametros[0];
+		
+		if($this->modelo->deletes($id_sendero)){
+			$mensaje = "Sendero eliminado";
+		}
+		else{
+			$mensaje =  "No se pudo eliminar";
+		}
+		$this->vista->mensaje = $mensaje;
+		$this->renderizar();
+	}
 
 }
 

@@ -149,6 +149,20 @@ class SenderoModelo extends Modelo{
 			return false;
         }
 	}
+	
+	public function deletes($id_sendero){
+		$sql = 'DELETE FROM sendero WHERE id_sendero=:id_sendero;';
+		
+		try{
+			$query = $this->conexion->connect()->prepare($sql);
+			$query->execute(['id_sendero'=>$id_sendero]);
+			return true;
+		}
+		catch(PDOException $e) {
+			return false;
+		}
+		
+	}
 }
 
 ?>
