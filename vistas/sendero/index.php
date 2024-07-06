@@ -11,6 +11,7 @@
 <body>
 	<?php  require 'vistas/header.php' ?>
 	
+	
 	<div id="main">
 		<h1>  Senderos </h1>
 		
@@ -25,8 +26,7 @@
 		?>
 			
 			<div>
-				<p> <?php echo $sendero->get_id_sendero(); ?> </p>
-				<p> <?php echo $sendero->get_nombre(); ?> </p>
+				<p> <?php echo $sendero->get_id_sendero() . ': ' . $sendero->get_nombre();  ?> </p>
 				<p> <?php echo $sendero->get_sede(); ?> </p>
 				<p> <a href="<?php echo constant('URL').'sendero/editar/'.$sendero->get_id_sendero(); ?>"> Editar </a> </p>
 				<!-- <p> <a href="<?php echo constant('URL').'sendero/eliminar/'.$sendero->get_id_sendero(); ?>"> Borrar </a> </p> -->

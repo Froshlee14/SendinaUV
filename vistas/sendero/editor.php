@@ -19,6 +19,7 @@
 			//require_once 'entidades/SenderoBean.php';
 			//var_dump($this->zona_lista);
 			
+			
 			$id_sendero = 0;
 			$nombre = '';
 			$sede = '';
@@ -33,6 +34,14 @@
 				$year = $this->sendero->get_year();
 				$id_zona = $this->sendero->get_id_zona();
 				$url_recursos = $this->sendero->get_url_recursos();
+			}
+			
+			if(sizeof($this->estacion_lista) > 0){
+				var_dump($this->estacion_lista); 
+				echo "Tenemos estaciones";
+			}
+			else{
+				echo "No hay estaciones";
 			}
 		?>
 
