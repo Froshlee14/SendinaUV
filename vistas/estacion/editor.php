@@ -12,7 +12,7 @@
 	<?php  require 'vistas/header.php' ?>
 	
 	<div id="main">
-		<h1> Detalles de sendero </h1>
+		<h1> Detalles de estacion </h1>
 		
 		<?php 
 			//var_dump($this->sendero); 
