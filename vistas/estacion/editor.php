@@ -15,67 +15,62 @@
 		<h1> Detalles de estacion </h1>
 		
 		<?php 
-			//var_dump($this->sendero); 
+			//var_dump($this->estacion); 
 			//require_once 'entidades/SenderoBean.php';
 			//var_dump($this->zona_lista);
 			
 			
-			$id_sendero = 0;
+			$id_estacion = 0;
+			$numero = 0;
 			$nombre = '';
-			$sede = '';
-			$year = '';
-			$id_zona = 0;
-			$url_recursos = '';
+			$descripcion = '';
+			$latitud ='';
+			$longitud = '';
 			
-			if($this->sendero !== null){
-				$id_sendero = $this->sendero->get_id_sendero();
-				$nombre = $this->sendero->get_nombre();
-				$sede = $this->sendero->get_sede();
-				$year = $this->sendero->get_year();
-				$id_zona = $this->sendero->get_id_zona();
-				$url_recursos = $this->sendero->get_url_recursos();
+			if($this->estacion !== null){
+				$id_estacion = $this->estacion->get_id_estacion();
+				$numero = $this->estacion->get_numero();
+				$nombre = $this->estacion->get_nombre();
+				$descripcion = $this->estacion->get_descripcion();
+				$latitud = $this->estacion->get_latitud();
+				$longitud = $this->estacion->get_longitud();
 			}
 			
 		?>
+		
+		<?php if($this->estacion !== null){ ?>
+				<a href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $this->id_sendero ?>/<?php echo $id_estacion ?>"> Eliminar estacion.</a>
+			<?php } ?>
 
-        <form action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
+        <form action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
 
             <p>
-                <!-- <label for="id_sendero">ID sendero</label> -->
-                <input type="hidden" name="id_sendero" value="<?php echo $id_sendero; ?>" required>
+                <!-- <label for="id_estacion">ID estacion</label> -->
+                <input type="hidden" name="id_sendero" value="<?php echo $this->id_sendero; ?>" required>
+				<input type="hidden" name="id_estacion" value="<?php echo $id_estacion; ?>" required>
             </p>
 			
-			<?php if($this->sendero !== null){ ?>
-				<a href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero.</a>
-			<?php } ?>
-            
             <p>
-            <label for="id_sendero">Nombre sendero</label>
+            <label for="numero">Numero de estacion</label>
+            <input type="text" name="numero" value="<?php echo $numero ?>" required>
+            </p>
+            <p>
+            <label for="nombre">Nombre de estacion</label>
             <input type="text" name="nombre" value="<?php echo $nombre ?>" required>
             </p>
             <p>
-            <label for="sede">Sede</label>
-            <input type="text" name="sede" value="<?php echo $sede ?>" required>
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name="descripcion" value="<?php echo $descripcion ?>" required>
             </p>
-            <p>
-            <label for="year">Año</label>
-            <input type="text" name="year" value="<?php echo $year ?>" required>
-            </p>
-			
-            <p>
-            <label for="id_zona">Zona</label>
-            <select id="id_zona" name="id_zona">
-            <?php foreach ($this->zona_lista as $z): ?>
-                <option value="<?= $z->get_id_zona() ?>" <?= $z->get_id_zona() == $id_zona ? 'selected' : '' ?>>
-                    <?php echo $z->get_nombre(); ?>
-                </option>
-            <?php endforeach; ?>
-			</select>
-            </p>
+
+			<p>
+            <label for="latitud"> Latitud</label>
+            <input type="text" name="latitud" value="<?php echo $latitud ?>" required>
+            </p>			
             
 			<p>
-            <label for="url_recursos">URL vista previa</label>
-            <input type="text" name="url_recursos" value="<?php echo $url_recursos ?>" required>
+            <label for="longitud"> Longitud</label>
+            <input type="text" name="longitud" value="<?php echo $longitud ?>" required>
             </p>
 
             <p>
@@ -85,21 +80,21 @@
 		
 		<p> <?php echo $this->mensaje; ?></p>
 		
-		<h2> Estaciones de sendero </h2>
+		<h2> Recursos de sendero </h2>
 		
-		<button> <a href="<?php echo constant('URL').'estacion/editar/0'?>"> Nueva estacion </a> </button>
+		<button> <a href="<?php echo constant('URL').'recurso/editar/0'?>"> Nuevo recurso </a> </button>
 		
 		<?php
-		if(sizeof($this->estacion_lista) > 0){
+		if(sizeof($this->recurso_lista) > 0){
 			//var_dump($this->estacion_lista); 
-			foreach ($this->estacion_lista as $estacion):
+			foreach ($this->recurso_lista as $recurso):
 		?>
 		
 		<div>
 		
 			<p>  
-				<?php echo $estacion->get_numero(); ?>: <?php echo $estacion->get_nombre(); ?> 
-				<a href="<?php echo constant('URL').'estacion/editar/'.$estacion->get_id_estacion(); ?>"> Editar </a>
+				<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
+				<a href="<?php echo constant('URL').'recurso/editar/'.$estacion->get_id_estacion(); ?>"> Editar </a>
 				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
 			</p>
 		

@@ -17,7 +17,7 @@ class EstacionModelo extends Modelo{
 			$row = $query->fetch();
         
 			if ($row) {
-				$estacion = new EstacionoBean();
+				$estacion = new EstacionBean();
 				$estacion->set_id_estacion($id_estacion);
 				$estacion->set_numero($row['numero']);
 				$estacion->set_nombre($row['nombre']);
@@ -66,6 +66,84 @@ class EstacionModelo extends Modelo{
 		catch(PDOException $e) {
 			return [];
 		}
+	}
+	
+	public function insert($estacion,$id_sendero){
+        //Insertar datos de sendero a loa BD
+		
+        $sql = 'INSERT INTO estacion (numero, nombre, descripcion,latitud,longitud) VALUES (:numero,:nombre,:descripcion,:latitud,:longitud);';
+        $parametros = [
+            'numero' => $estacion->get_numero(),
+            'nombre' => $estacion->get_nombre(),
+            'descripcion' => $estacion->get_descripcion(),
+            'latitud' => $estacion->get_latitud(),
+            'longitud' => $estacion->get_longitud(),
+        ];
+		
+		$sql2 = 'INSERT INTO sendero_estacion (id_sendero, id_estacion) VALUES (:id_sendero,:id_estacion);';
+        
+        try {
+			$conexion = $this->conexion->connect();
+			
+            $query = $conexion->prepare($sql);
+            $query->execute($parametros);
+			
+			//Obtengo la id del registro creado para usarlo en la proxima query
+			$id_estacion = $this->conexion->connect()->lastInsertId();
+
+			
+			//Agregamos los datos a la relacion zona-sendero
+			$query2 = $conexion->prepare($sql2);
+			$parametros = [
+				'id_sendero' => $id_sendero,
+				'id_estacion' => $id_estacion
+			];
+			
+			$query2->execute($parametros);
+			return true;
+			
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+			return false;
+        }
+        //var_dump($parametros);
+	}
+	
+	public function update($estacion){
+		//Actualizar datos de la estacion en la BD
+		//var_dump($estacion);
+		
+		$sql = 'UPDATE estacion SET numero=:numero, nombre=:nombre, descripcion=:descripcion, latitud=:latitud, longitud=:longitud where id_estacion=:id_estacion;';
+		$parametros = [
+            'numero' => $estacion->get_numero(),
+            'nombre' => $estacion->get_nombre(),
+            'descripcion' => $estacion->get_descripcion(),
+            'latitud' => $estacion->get_latitud(),
+            'longitud' => $estacion->get_longitud(),
+			'id_estacion' => $estacion->get_id_estacion(),
+        ];
+		try {
+            $query = $this->conexion->connect()->prepare($sql);
+            $query->execute($parametros);
+			return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+			return false;
+        }
+	}
+	
+	public function deleteBD($id_estacion){
+		$sql = 'DELETE FROM estacion WHERE id_estacion=:id_estacion;';
+		
+		try{
+			$query = $this->conexion->connect()->prepare($sql);
+			$query->execute(['id_estacion'=>$id_estacion]);
+			return true;
+		}
+		catch(PDOException $e) {
+			return false;
+		}
+		
 	}
 	
 }
