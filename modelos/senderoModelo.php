@@ -150,7 +150,7 @@ class SenderoModelo extends Modelo{
         }
 	}
 	
-	public function deletes($id_sendero){
+	public function deleteBD($id_sendero){
 		$sql = 'DELETE FROM sendero WHERE id_sendero=:id_sendero;';
 		
 		try{

@@ -36,22 +36,18 @@
 				$url_recursos = $this->sendero->get_url_recursos();
 			}
 			
-			if(sizeof($this->estacion_lista) > 0){
-				var_dump($this->estacion_lista); 
-				echo "Tenemos estaciones";
-			}
-			else{
-				echo "No hay estaciones";
-			}
 		?>
-
 
         <form action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
 
             <p>
-                <label for="id_sendero">ID sendero</label>
-                <input type="text" name="id_sendero" value="<?php echo $id_sendero; ?>" required>
+                <!-- <label for="id_sendero">ID sendero</label> -->
+                <input type="hidden" name="id_sendero" value="<?php echo $id_sendero; ?>" required>
             </p>
+			
+			<?php if($this->sendero !== null){ ?>
+				<a href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero.</a>
+			<?php } ?>
             
             <p>
             <label for="id_sendero">Nombre sendero</label>
@@ -65,7 +61,6 @@
             <label for="year">Año</label>
             <input type="text" name="year" value="<?php echo $year ?>" required>
             </p>
-			
 			
             <p>
             <label for="id_zona">Zona</label>
@@ -88,11 +83,33 @@
             </p>
         </form>
 		
-		<?php if($this->sendero !== null){ ?>
-			<a href="<?php echo constant('URL') ?>sendero/borrar"> Eliminar </a>
-		<?php } ?>
-		
 		<p> <?php echo $this->mensaje; ?></p>
+		
+		<h2> Estaciones de sendero </h2>
+		<?php
+		if(sizeof($this->estacion_lista) > 0){
+			//var_dump($this->estacion_lista); 
+			echo "Tenemos estaciones";
+			foreach ($this->estacion_lista as $estacion):
+		?>
+		
+		<div>
+		
+			<p>  
+				<?php echo $estacion->get_numero(); ?>: <?php echo $estacion->get_nombre(); ?> 
+				<a href="<?php echo constant('URL').'estacion/editar/'.$estacion->get_id_estacion(); ?>"> Editar </a>
+				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
+			</p>
+		
+		</div>
+		
+		<?php
+			endforeach;
+		}
+		else{
+			echo "No hay estaciones";
+		}
+		?>
 
 	</div>
 	

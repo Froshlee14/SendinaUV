@@ -97,14 +97,14 @@ class SenderoControlador extends Controlador{
 	function borrar($parametros=null){
 		$id_sendero = $parametros[0];
 		
-		if($this->modelo->deletes($id_sendero)){
+		if($this->modelo->deleteBD($id_sendero)){
 			$mensaje = "Sendero eliminado";
 		}
 		else{
 			$mensaje =  "No se pudo eliminar";
 		}
 		$this->vista->mensaje = $mensaje;
-		$this->renderizar();
+		$this->lista();
 	}
 
 }

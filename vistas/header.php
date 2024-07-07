@@ -8,7 +8,6 @@
 	<title> SENDINAUV </title>
 	
 	<!-- <link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/styles.css">  -->
-	<!-- <link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/meyawo.css"> -->
 	
 </head>
 
