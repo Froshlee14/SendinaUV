@@ -28,7 +28,10 @@ class EstacionControlador extends Controlador{
 		//Obtengo los datos de la estacion
 		$id_sendero = $parametros[0];
 		$id_estacion = $parametros[1];
-		$numero = $parametros[2];
+		$numero = 0;
+		if(isset($parametros[2])){
+			$numero = $parametros[2];
+		}
 		$estacion = $this->modelo->select($id_estacion);
 		
 		//Obtengo la lista de zonas para desplegarlas en un select field

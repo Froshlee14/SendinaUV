@@ -89,6 +89,82 @@ class RecursoModelo extends Modelo{
 		}
 	}
 	
+	public function insert($recurso,$id_estacion){
+        //Insertar datos de sendero a loa BD
+		
+        $sql = 'INSERT INTO recurso (numero,url, creditos, id_tipo_recurso) VALUES (:numero,:url,:creditos,:id_tipo_recurso);';
+        $parametros = [
+            'numero' => $recurso->get_numero(),
+            'url' => $recurso->get_url(),
+            'creditos' => $recurso->get_creditos(),
+            'id_tipo_recurso' => $recurso->get_id_tipo_recurso(),
+        ];
+		
+		$sql2 = "INSERT INTO estacion_recurso (id_estacion, id_recurso) VALUES (:id_estacion,:id_recurso);";
+        
+        try {
+			$conexion = $this->conexion->connect();
+			
+            $query = $conexion->prepare($sql);
+            $query->execute($parametros);
+			
+			//Obtengo la id del registro creado para usarlo en la proxima query
+			$id_recurso = $this->conexion->connect()->lastInsertId();
+
+			
+			//Agregamos los datos a la relacion estacion-recurso
+			$query2 = $conexion->prepare($sql2);
+			$parametros = [
+				'id_estacion' => $id_estacion,
+				'id_recurso' => $id_recurso
+			];
+			
+			$query2->execute($parametros);
+			return true;
+			
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+			return false;
+        }
+        //var_dump($parametros);
+	}
+	
+	public function update($recurso){
+		//Actualizar datos del recurso en la BD
+		//var_dump($estacion);
+		
+		$sql = 'UPDATE recurso SET  numero=:numero, url=:url, creditos=:creditos, id_tipo_recurso=:id_tipo_recurso where id_recurso=:id_recurso;';
+		$parametros = [
+            'numero' => $recurso->get_numero(),
+            'url' => $recurso->get_url(),
+            'creditos' => $recurso->get_creditos(),
+            'id_tipo_recurso' => $recurso->get_id_tipo_recurso(),
+			'id_recurso' => $recurso->get_id_recurso(),
+        ];
+		try {
+            $query = $this->conexion->connect()->prepare($sql);
+            $query->execute($parametros);
+			return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+			return false;
+        }
+	}
+	
+	public function deleteBD($id_recurso){
+		$sql = 'DELETE FROM recurso WHERE id_recurso=:id_recurso;';
+		
+		try{
+			$query = $this->conexion->connect()->prepare($sql);
+			$query->execute(['id_recurso'=>$id_recurso]);
+			return true;
+		}
+		catch(PDOException $e) {
+			return false;
+		}
+		
+	}
+	
 }
 
 ?>

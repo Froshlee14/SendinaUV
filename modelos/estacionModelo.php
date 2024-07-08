@@ -35,7 +35,7 @@ class EstacionModelo extends Modelo{
 		}
 	}
 	
-	public function selectBySendero($id_sendero){
+	public function selectBySendero($id_sendero,$cargar_recursos=false){
 		
 		$lista = [];
 		$sql = 'SELECT estacion.id_estacion, estacion.numero, estacion.nombre, estacion.descripcion, estacion.latitud, estacion.longitud FROM  estacion 
@@ -48,7 +48,7 @@ class EstacionModelo extends Modelo{
 			$query->execute([':id_sendero' => $id_sendero]);
 
 			while($row = $query->fetch()) {
-
+				//if cargar recursos
 				$sendero = new EstacionBean(
 					$row['id_estacion'],
 					$row['numero'],

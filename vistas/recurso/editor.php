@@ -36,7 +36,7 @@
 		?>
 		
 		<?php if($this->recurso !== null){ ?>
-				<a href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $this->id_sendero ?>/<?php echo $id_estacion ?>"> Eliminar recurso.</a>
+				<a href="<?php echo constant('URL') ?>recurso/borrar/<?php echo $this->id_sendero ?>/<?php echo $this->id_estacion ?>/<?php echo $id_recurso ?>"> Eliminar recurso.</a>
 			<?php } ?>
 
         <form action="<?php echo constant('URL') ?>recurso/guardar" method="post" id="senderoForm">

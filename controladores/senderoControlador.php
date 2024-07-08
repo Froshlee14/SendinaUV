@@ -30,6 +30,23 @@ class SenderoControlador extends Controlador{
 		$this->vista->sendero_lista = $senderos;
 		$this->renderizar();
 	}
+	
+	function ver($parametros=null){
+
+		//Obtengo los datos del sendero
+		$id_sendero = $parametros[0];
+		$sendero = $this->modelo->select($id_sendero);
+		
+		//Si id_sendero es diferente de 0 tratemos de enviar sus respectivas estaciones
+		if($id_sendero!=0){
+			$estaciones = $this->modeloEstacion->selectBySendero($id_sendero,true);
+			//No importa si la lista esta vacia, eso se comprueba en la vista
+			$this->vista->estacion_lista = $estaciones;
+		}
+		
+		$this->vista->sendero = $sendero;
+		$this->renderizar('sendero/editor');
+	}
 
 	//Funcion para guardar/actualizar un registro
     function guardar(){

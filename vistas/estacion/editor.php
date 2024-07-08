@@ -93,7 +93,7 @@
 			<p>  
 				<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
 				<a href="<?php echo constant('URL').'recurso/editar/'.$this->id_sendero.'/'.$id_estacion.'/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
-				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
+				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$recurso->get_id_recurso(); ?>"> Eliminar </a> -->
 			</p>
 		
 		</div>

@@ -42,6 +42,67 @@ class RecursoControlador extends Controlador{
 		$this->vista->tipo_recurso_lista = $tipos_recurso;
 		$this->renderizar();
 	}
+	
+	function guardar(){
+		$id_sendero = $_POST['id_sendero'];
+        $id_estacion = $_POST['id_estacion'];
+		$id_recurso = $_POST['id_recurso'];
+        $numero = $_POST['numero'];
+        $url = $_POST['url'];
+        $creditos = $_POST['creditos'];
+        $id_tipo_recurso = $_POST['id_tipo_recurso'];
+
+        $recurso = new RecursoBean(
+            $id_recurso,
+            $numero,
+            $url,
+            $creditos,
+            $id_tipo_recurso,
+            null
+        );
+        //var_dump($estacion);
+
+        //ASi la id es 0 significa que lo agregamos como nuevo recurso
+		if($id_recurso==0){
+			if($this->modelo->insert($recurso,$id_estacion)){
+				$mensaje = "Recurso creado";
+			}
+			else{
+				$mensaje =  "No se pudo crear";
+			}	
+		}
+		//Si no es cero entonces actualizamos el recurso
+		else{
+			if($this->modelo->update($recurso,$id_estacion)){
+				$mensaje = "Recurso actualizado";
+			}
+			else{
+				$mensaje =  "No se pudo actualizar";
+			}	
+		}
+		
+		$this->vista->mensaje = $mensaje;
+		
+		//Debo redirigir a sendero editor
+		header('Location: '.constant('URL').'estacion/editar/'.$id_sendero.'/'.$id_estacion);
+		exit();
+    }
+	
+	function borrar($parametros=null){
+		$id_sendero = $parametros[0];
+		$id_estacion = $parametros[1]; 
+		$id_recurso = $parametros[2]; 
+		
+		if($this->modelo->deleteBD($id_recurso)){
+			$mensaje = "Recurso eliminado";
+		}
+		else{
+			$mensaje =  "No se pudo eliminar";
+		}
+		$this->vista->mensaje = $mensaje;
+		header('Location: '.constant('URL').'estacion/editar/'.$id_sendero.'/'.$id_estacion);
+		exit();
+	}
 }
 
 ?>
