@@ -19,7 +19,6 @@
 			//require_once 'entidades/SenderoBean.php';
 			//var_dump($this->zona_lista);
 			
-			
 			$id_sendero = 0;
 			$nombre = '';
 			$sede = '';
@@ -87,7 +86,7 @@
 		
 		<h2> Estaciones de sendero </h2>
 		
-		<button> <a href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/0'?>"> Nueva estacion </a> </button>
+		<button> <a href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/0/'.(sizeof($this->estacion_lista)+1)?>"> Nueva estacion </a> </button>
 		
 		<?php
 		if(sizeof($this->estacion_lista) > 0){
@@ -96,13 +95,11 @@
 		?>
 		
 		<div>
-		
 			<p>  
 				<?php echo $estacion->get_numero(); ?>: <?php echo $estacion->get_nombre(); ?> 
-				<a href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/'.$estacion->get_id_estacion(); ?>"> Editar </a>
+				<a href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/'.$estacion->get_id_estacion().'/'.$estacion->get_numero(); ?>"> Editar </a>
 				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
 			</p>
-		
 		</div>
 		
 		<?php

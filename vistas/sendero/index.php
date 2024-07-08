@@ -27,9 +27,10 @@
 			
 			<div>
 				<p> <?php echo $sendero->get_id_sendero() . ': ' . $sendero->get_nombre();  ?> </p>
-				<p> <?php echo $sendero->get_sede(); ?> </p>
-				<p> <a href="<?php echo constant('URL').'sendero/editar/'.$sendero->get_id_sendero(); ?>"> Editar </a> </p>
-				<!-- <p> <a href="<?php echo constant('URL').'sendero/eliminar/'.$sendero->get_id_sendero(); ?>"> Borrar </a> </p> -->
+				<!-- <p> <?php echo $sendero->get_sede(); ?> </p> -->
+				<p> <a href="<?php echo constant('URL') . 'sendero/editar/' . $sendero->get_id_sendero(); ?>"> Editar </a> </p>
+				<p> <a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>"> Ver Sendero </a> </p>
+				<!-- <p> <a href="<?php echo constant('URL') . 'sendero/eliminar/' . $sendero->get_id_sendero(); ?>"> Borrar </a> </p> -->
 			</div>
 				
 		<?php	

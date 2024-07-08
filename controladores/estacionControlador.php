@@ -13,6 +13,7 @@ class EstacionControlador extends Controlador{
 		$this->vista->estacion = null;
 		$this->vista->recurso_lista = [];
 		$this->vista->id_sendero = 0;
+		$this->vista->numero = 0;
 		
 		//Modelos extra
 		$this->modeloRecurso = new RecursoModelo();
@@ -27,6 +28,7 @@ class EstacionControlador extends Controlador{
 		//Obtengo los datos de la estacion
 		$id_sendero = $parametros[0];
 		$id_estacion = $parametros[1];
+		$numero = $parametros[2];
 		$estacion = $this->modelo->select($id_estacion);
 		
 		//Obtengo la lista de zonas para desplegarlas en un select field
@@ -40,6 +42,7 @@ class EstacionControlador extends Controlador{
 		
 		$this->vista->id_sendero = $id_sendero;
 		$this->vista->estacion = $estacion;
+		$this->vista->numero = $numero;
 		$this->renderizar();
 	}
 	

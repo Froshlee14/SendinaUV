@@ -19,9 +19,8 @@
 			//require_once 'entidades/SenderoBean.php';
 			//var_dump($this->zona_lista);
 			
-			
 			$id_estacion = 0;
-			$numero = 0;
+			$numero = $this->numero;
 			$nombre = '';
 			$descripcion = '';
 			$latitud ='';
@@ -45,7 +44,6 @@
         <form action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
 
             <p>
-                <!-- <label for="id_estacion">ID estacion</label> -->
                 <input type="hidden" name="id_sendero" value="<?php echo $this->id_sendero; ?>" required>
 				<input type="hidden" name="id_estacion" value="<?php echo $id_estacion; ?>" required>
             </p>
@@ -82,7 +80,7 @@
 		
 		<h2> Recursos de sendero </h2>
 		
-		<button> <a href="<?php echo constant('URL').'recurso/editar/0'?>"> Nuevo recurso </a> </button>
+		<button> <a href="<?php echo constant('URL').'recurso/editar/'.$this->id_sendero.'/'.$id_estacion.'/0/'.(sizeof($this->recurso_lista)+1)?>"> Nuevo recurso </a> </button>
 		
 		<?php
 		if(sizeof($this->recurso_lista) > 0){
@@ -94,7 +92,7 @@
 		
 			<p>  
 				<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
-				<a href="<?php echo constant('URL').'recurso/editar/'.$estacion->get_id_estacion(); ?>"> Editar </a>
+				<a href="<?php echo constant('URL').'recurso/editar/'.$this->id_sendero.'/'.$id_estacion.'/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
 				<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
 			</p>
 		
@@ -104,7 +102,7 @@
 			endforeach;
 		}
 		else{
-			echo "No hay estaciones";
+			echo "No hay recursos";
 		}
 		?>
 
