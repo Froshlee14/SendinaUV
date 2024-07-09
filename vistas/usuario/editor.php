@@ -11,64 +11,82 @@
 <body>
 	<?php  require 'vistas/header.php' ?>
 	
-	<div id="main">
-		<h1> Detalles de usuario </h1>
+	<div class="container px-5 mt-5">
+	
+		<div class="card mb-4">
+			<div class="card-header navbar navbar-expand-sm p-4">
+				<h3> Detalles de usuario </h3>
+			</div>
 		
-		<?php 
-			//var_dump($this->usuario); 
-			//require_once 'entidades/SenderoBean.php';
-			//var_dump($this->zona_lista);
+			<?php 
+				//var_dump($this->usuario); 
+				//require_once 'entidades/SenderoBean.php';
+				//var_dump($this->zona_lista);
+				
+				$id_usuario = 0;
+				$nombre = '';
+				$contrasena = '';
+				$id_rol_usuario = 1;
+				
+				if($this->usuario !== null){
+					$id_usuario = $this->usuario->get_id_usuario();
+					$nombre = $this->usuario->get_nombre();
+					$contrasena = $this->usuario->get_contrasena();
+					$id_rol_usuario = $this->usuario->get_id_rol_usuario();
+				}
+				
+			?>
 			
-			$id_usuario = 0;
-			$nombre = '';
-			$contrasena = '';
-			$id_rol_usuario = 1;
-			
-			if($this->usuario !== null){
-				$id_usuario = $this->usuario->get_id_usuario();
-				$nombre = $this->usuario->get_nombre();
-				$contrasena = $this->usuario->get_contrasena();
-				$id_rol_usuario = $this->usuario->get_id_rol_usuario();
-			}
-			
-		?>
+			<div class="card-body">
+				<form action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
 
-        <form action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
+					<p>
+						<!-- <label for="id_usuario">ID usuario</label> -->
+						<input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>" required>
+					</p>
+					
+					<div class="form-group row">
+						<div class="col-12 col-sm-3">
+							<label for="nombre">Nombre de usuario</label>
+						</div>
+						<div class="col-12 col-sm-9">
+							<input class="form-control" type="text" name="nombre" value="<?php echo $nombre ?>" required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-12 col-sm-3">
+							<label for="contrasena">Contraseña</label>
+						</div>
+						<div class="col-12 col-sm-9">
+							<input class="form-control" type="password" name="contrasena" value="<?php echo $contrasena ?>" required>
+						</div>
+					</div>
 
-            <p>
-                <!-- <label for="id_usuario">ID usuario</label> -->
-                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>" required>
-            </p>
-			
-			<?php if($this->usuario !== null){ ?>
-				<a href="<?php echo constant('URL') ?>usuario/borrar/<?php echo $id_usuario ?>"> Eliminar usuario.</a>
-			<?php } ?>
-            
-            <p>
-            <label for="nombre">Nombre de usuario</label>
-            <input type="text" name="nombre" value="<?php echo $nombre ?>" required>
-            </p>
-
-            <p>
-            <label for="contrasena">Contraseña</label>
-            <input type="password" name="contrasena" value="<?php echo $contrasena ?>" required>
-            </p>
-		
-            <p>
-            <label for="id_rol_usuario">Tipo de usuario</label>
-            <select id="id_rol_usuario" name="id_rol_usuario">
-            <?php foreach ($this->rol_usuario_lista as $tu): ?>
-                <option value="<?= $tu->get_id_rol_usuario() ?>" <?= $tu->get_id_rol_usuario() == $id_rol_usuario ? 'selected' : '' ?>>
-                    <?php echo $tu->get_rol_usuario(); ?>
-                </option>
-            <?php endforeach; ?>
-			</select>
-            </p>
-
-            <p>
-                <input type="submit" value="Guardar" onclick="prepareSubmit('guardar')">
-            </p>
-        </form>
+					<div class="form-group row">
+						<div class="col-12 col-sm-3">
+							<label for="id_rol_usuario">Tipo de usuario</label>
+						</div>
+						<div class="col-12 col-sm-9">
+							<select class="form-control" id="id_rol_usuario" name="id_rol_usuario">
+							<?php foreach ($this->rol_usuario_lista as $tu): ?>
+								<option value="<?= $tu->get_id_rol_usuario() ?>" <?= $tu->get_id_rol_usuario() == $id_rol_usuario ? 'selected' : '' ?>>
+									<?php echo $tu->get_rol_usuario(); ?>
+								</option>
+							<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+				
+					<div class="float-right">
+						<input class="btn btn-primary" type="submit" value="Guardar">
+						<?php if($this->usuario !== null){ ?>
+							<a class="btn btn-danger" href="<?php echo constant('URL') ?>usuario/borrar/<?php echo $id_usuario ?>"> Eliminar</a>
+						<?php } ?>
+					</div>
+				</form>
+			</div>
+		</div>
 		
 		<p> <?php echo $this->mensaje; ?></p>
 

@@ -8,6 +8,10 @@
 	<title> SENDINAUV </title>
 	
 	<!-- <link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/styles.css">  -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	
 </head>
 
@@ -16,11 +20,13 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light  shadow-sm" id="mainNav"> 
 		<div class="container px-5">
-			<a class="navbar-brand fw-bold" href="<?php echo constant('URL') ?>inicio"> SENDINAUV </a>
 			
+			<div class="navbar-nav mr-auto ">
+				<a class="navbar-brand fw-bold" href="<?php echo constant('URL') ?>inicio"> SENDINAUV </a>
+			</div>
 
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+			<div class=" collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav me-4 my-3 my-lg-0 ml-auto">
 					<li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>sendero/lista">Senderos</a></li>
 					<li class="nav-item"><a class="nav-link me-lg-3" href="#download">Ayuda</a></li>
 					<li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>usuario/lista">Usuarios</a></li>
