@@ -38,6 +38,7 @@ class SenderoControlador extends Controlador{
 		$sendero = $this->modelo->select($id_sendero);
 		
 		//Si id_sendero es diferente de 0 tratemos de enviar sus respectivas estaciones
+		//Mandamos el parametro true para que nos devuelva las estaciones con sus recursos
 		if($id_sendero!=0){
 			$estaciones = $this->modeloEstacion->selectBySendero($id_sendero,true);
 			//No importa si la lista esta vacia, eso se comprueba en la vista
@@ -45,7 +46,7 @@ class SenderoControlador extends Controlador{
 		}
 		
 		$this->vista->sendero = $sendero;
-		$this->renderizar('sendero/editor');
+		$this->renderizar('sendero/visualizador');
 	}
 
 	//Funcion para guardar/actualizar un registro

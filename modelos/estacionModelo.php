@@ -1,9 +1,14 @@
 <?php 
 
+require_once 'modelos/recursoModelo.php';
+require_once 'entidades/RecursoBean.php';
+
 class EstacionModelo extends Modelo{
 	
 	public function __construct(){
 		parent::__construct();
+		
+		$this->modeloRecurso = new RecursoModelo();
 	}
 	
 	public function select($id_estacion){
@@ -48,7 +53,12 @@ class EstacionModelo extends Modelo{
 			$query->execute([':id_sendero' => $id_sendero]);
 
 			while($row = $query->fetch()) {
-				//if cargar recursos
+				
+				$recursos=null;
+				if ($cargar_recursos){
+					$recursos = $this->modeloRecurso->selectByEstacion($row['id_estacion']);
+				}
+				
 				$sendero = new EstacionBean(
 					$row['id_estacion'],
 					$row['numero'],
@@ -56,7 +66,7 @@ class EstacionModelo extends Modelo{
 					$row['descripcion'],
 					$row['latitud'],
 					$row['longitud'],
-					null //$row['recursos']
+					$recursos
 				);
 
 				array_push($lista, $sendero);
