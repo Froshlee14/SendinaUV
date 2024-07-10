@@ -18,26 +18,47 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light  shadow-sm" id="mainNav"> 
+	<div class="jumbotron bg-primary text-center mb-0">
+		<img src="logo.png" width="320" title="logo">
+	</div>
+
+	<nav class="navbar navbar-expand-lg navbar-light  shadow-sm"> 
 		<div class="container px-5">
+		
+		<a class="navbar-brand" href="#">SENDINA</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			
 			<div class="navbar-nav mr-auto ">
-				<a class="navbar-brand fw-bold" href="<?php echo constant('URL') ?>inicio"> SENDINAUV </a>
+				
+				<ul class="navbar-nav me-4 my-3 my-lg-0">
+					<li class="nav-item"> <a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>inicio">Inicio</a></li>
+					<li class="nav-item"> <a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>sendero/lista">Senderos</a></li>
+					<li class="nav-item"> <a class="nav-link me-lg-3" href="#download">Ayuda</a></li>
+					<!--li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>usuario/lista">Usuarios</a></li-->
+				</ul>
 			</div>
 
-			<div class=" collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav me-4 my-3 my-lg-0 ml-auto">
-					<li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>sendero/lista">Senderos</a></li>
-					<li class="nav-item"><a class="nav-link me-lg-3" href="#download">Ayuda</a></li>
-					<li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>usuario/lista">Usuarios</a></li>
+			<div class="navbar-nav ml-auto">
+				<ul class="navbar-nav me-4 my-3 my-lg-0">
+				<li class="nav-item dropdown">
+
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+					Sesion iniciada como invitado
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Iniciar sesion</a>
+						<a class="dropdown-item" href="<?php echo constant('URL') ?>usuario/lista">Gestionar usuarios</a>
+					</div>
+				</li>
 				</ul>
-				<button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0 " data-bs-toggle="modal" data-bs-target="#feedbackModal">
-					<span class="d-flex align-items-center">
-						<i class="bi-list me-2"></i>
-						<span class="small">Iniciar sesion</span>
-					</span>
-				</button>
 			</div>
+			
+			</div>
+			
 		</div>
 	</nav>
 
