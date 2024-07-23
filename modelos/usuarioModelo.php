@@ -1,11 +1,34 @@
 <?php 
 
 require_once 'entidades/RolUsuarioBean.php';
+require_once 'entidades/UsuarioBean.php';
 
 class UsuarioModelo extends Modelo{
 	
 	public function __construct(){
 		parent::__construct();
+	}
+	
+	public function exists($nombre){
+		
+		$sql = 'SELECT usuario.id_usuario FROM  usuario 
+				JOIN rol_usuario ON usuario.id_rol_usuario = rol_usuario.id_rol_usuario WHERE nombre = :nombre;';
+		$query = $this->conexion->connect()->prepare($sql);
+		
+		try{
+			$query->execute(['nombre'=>$nombre]);
+			$row = $query->fetch();
+        
+			if($row) {
+				return $row['id_usuario'];
+			}
+			else{
+				return false;
+			}
+		}
+		catch(PDOException $e){
+			return null;
+		}
 	}
 	
 	public function select($id_usuario){

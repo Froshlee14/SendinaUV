@@ -50,7 +50,7 @@
 					Sesion iniciada como invitado
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Iniciar sesion</a>
+						<a class="dropdown-item" href="<?php echo constant('URL') ?>login">Iniciar sesion</a>
 						<a class="dropdown-item" href="<?php echo constant('URL') ?>usuario/lista">Gestionar usuarios</a>
 					</div>
 				</li>
