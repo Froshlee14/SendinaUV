@@ -23,6 +23,7 @@ class Controlador{
 		header('Location: '.constant('URL').$url); //'sendero/editar/'.$id_sendero);
 		exit();
 	}
+	
 }
 
 ?>

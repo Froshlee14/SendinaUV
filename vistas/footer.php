@@ -1,12 +1,9 @@
-<footer class="bg-black text-center py-5">
-	<div class="container px-5">
-		<div class="text-white-50 small">
-			<div class="mb-2">&copy; Senderos Iterpretativos del Agua 2024. All Rights Reserved.</div>
-			<!-- <a href="#!">Privacy</a>
-			<span class="mx-1">&middot;</span>
-			<a href="#!">Terms</a>
-			<span class="mx-1">&middot;</span>
-			<a href="#!">FAQ</a> -->
-		</div>
-	</div>
+<footer class="bg-body-tertiary text-center">
+
+  <div class="container p-4"></div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    2024 Sendina. Todos los derechos reservados.
+  </div>
+
 </footer>

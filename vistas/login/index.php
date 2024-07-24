@@ -47,9 +47,9 @@ border-bottom-right-radius: .3rem;
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                  <img src="<?php echo constant('URL') ?>/public/imgs/logo.png"
                     style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">SENDINA</h4>
+                  <h5 class="mt-1 mb-5 pb-1">Autenticación</h5>
                 </div>
 
                 <form action="<?php echo constant('URL') ?>login/autenticar" method="post" id="senderoForm">
@@ -66,7 +66,7 @@ border-bottom-right-radius: .3rem;
 
 					<div class="text-center pt-1 mb-5 pb-1">
 						<button class="btn btn-primary btn-block fa-lg bg-primary mb-3" type="submit"> Iniciar sesion</button>
-						<a class="text-muted" href="<?php echo constant('URL') ?>inicio">Volver</a>
+						<a class="text-muted" href="<?php echo constant('URL') ?>inicio">Continuar como invitado</a>
 					</div>
 				  
 					<p> <?php echo $this->mensaje; ?></p>
@@ -75,7 +75,7 @@ border-bottom-right-radius: .3rem;
 
               </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+            <div class="col-lg-6 d-flex align-items-center bg-primary">
 
             </div>
           </div>

@@ -16,7 +16,12 @@
 	
 		<div  class="d-flex pb-4">
 			<h3>  Senderos Interpretativos </h3>
-			<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'sendero/editar/0'?>"> Agregar sendero </a>
+			
+			<?php if(isset($_SESSION['user_id'])){ ?>
+				<?php if($_SESSION['user_rol']=="Administrador"){ ?>
+					<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'sendero/editar/0'?>"> Agregar sendero </a>
+				<?php } ?>
+			<?php } ?>
 		</div>
 		
 		<div class="row">
@@ -37,7 +42,13 @@
 						<p class="text-secondary"> <?php echo $sendero->get_sede(); ?> </p> 
 						
 						<a class="btn btn-primary" href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>"> Ver Sendero </a>
-						<a class="btn btn-secondary" href="<?php echo constant('URL') . 'sendero/editar/' . $sendero->get_id_sendero(); ?>"> Editar </a> 
+						
+						<?php if(isset($_SESSION['user_id'])){ ?>
+							<?php if($_SESSION['user_rol']=="Administrador"){ ?>
+								<a class="btn btn-secondary" href="<?php echo constant('URL') . 'sendero/editar/' . $sendero->get_id_sendero(); ?>"> Editar </a> 
+							<?php } ?>
+						<?php } ?>
+						
 						<!-- <p> <a href="<?php echo constant('URL') . 'sendero/eliminar/' . $sendero->get_id_sendero(); ?>"> Borrar </a> </p> -->
 					</div>
 			

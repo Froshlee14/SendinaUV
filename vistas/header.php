@@ -18,10 +18,8 @@
 
 <body>
 
-	<?php session_start(); ?>
-
 	<div class="jumbotron bg-primary text-center mb-0">
-		<img src="logo.png" width="320" title="logo">
+		<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
 	</div>
 
 	<nav class="navbar navbar-expand-lg navbar-light  shadow-sm"> 
@@ -48,9 +46,10 @@
 				<ul class="navbar-nav me-4 my-3 my-lg-0">
 				<li class="nav-item dropdown">
 
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link text-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
 					Sesion iniciada como 
 					<?php 
+					//session_start();
 					if(isset($_SESSION['user_id'])){
 						echo $_SESSION['user_rol']; 
 					}

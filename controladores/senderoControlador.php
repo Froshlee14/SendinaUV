@@ -9,6 +9,8 @@ class SenderoControlador extends Controlador{
 	
 	function __construct(){
 		parent::__construct();
+
+		session_start();
 		//Variables usadas en la vista
 		$this->vista->mensaje = "";
 		$this->vista->sendero_lista = [];
@@ -51,6 +53,17 @@ class SenderoControlador extends Controlador{
 
 	//Funcion para guardar/actualizar un registro
     function guardar(){
+		
+		if( !isset($_POST['id_sendero']) || 
+			!isset($_POST['nombre']) ||
+			!isset($_POST['sede']) ||
+			!isset($_POST['year']) ||
+			!isset($_POST['id_zona']) ||
+			!isset($_POST['url_recursos']) 			
+			){
+			$this->redir('sendero/lista');
+		}
+		
         $id_sendero = $_POST['id_sendero'];
         $nombre = $_POST['nombre'];
         $sede = $_POST['sede'];
@@ -93,6 +106,11 @@ class SenderoControlador extends Controlador{
     }
 	
 	function editar($parametros=null){
+		
+		//Si no hay ningun administrador o editor redirige al inicio
+		if(!isset($_SESSION['user_id'])){ 
+			$this->redir('inicio');
+		}
 
 		//Obtengo los datos del sendero
 		$id_sendero = $parametros[0];
@@ -113,6 +131,12 @@ class SenderoControlador extends Controlador{
 	}
 	
 	function borrar($parametros=null){
+		
+		//Si no hay ningun administrador o editor redirige al inicio
+		if(!isset($_SESSION['user_id'])){ 
+			$this->redir('inicio');
+		}
+		
 		$id_sendero = $parametros[0];
 		
 		if($this->modelo->deleteBD($id_sendero)){
