@@ -44,8 +44,6 @@
 				<form action="<?php echo constant('URL') ?>recurso/guardar" method="post" id="senderoForm">
 
 					<p>
-						<input type="hidden" name="id_sendero" value="<?php echo $this->id_sendero; ?>" required>
-						<input type="hidden" name="id_estacion" value="<?php echo $this->id_estacion; ?>" required>
 						<input type="hidden" name="id_recurso" value="<?php echo $id_recurso; ?>" required>
 					</p>
 					
@@ -94,13 +92,15 @@
 					<div class="float-right">
 						<input class="btn btn-primary" type="submit" value="Guardar">
 						<?php if($this->recurso !== null){ ?>
-							<a class="btn btn-danger" href="<?php echo constant('URL') ?>recurso/borrar/<?php echo $this->id_sendero ?>/<?php echo $this->id_estacion ?>/<?php echo $id_recurso ?>"> Eliminar</a>
+							<a class="btn btn-danger" href="<?php echo constant('URL') ?>recurso/borrar/<?php echo $id_recurso ?>"> Eliminar</a>
 						<?php } ?>
 					</div>
 				</form>
 			
 			</div>
 
+	</div>
+	
 	</div>
 	
 	<?php  require 'vistas/footer.php' ?>

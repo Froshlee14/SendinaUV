@@ -44,7 +44,6 @@
 				<form action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
 
 					<p>
-						<input type="hidden" name="id_sendero" value="<?php echo $this->id_sendero; ?>" required>
 						<input type="hidden" name="id_estacion" value="<?php echo $id_estacion; ?>" required>
 					</p>
 					
@@ -97,7 +96,7 @@
 					<div class="float-right">
 						<input class="btn btn-primary" type="submit" value="Guardar">
 						<?php if($this->estacion !== null){ ?>
-							<a class="btn btn-danger" href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $this->id_sendero ?>/<?php echo $id_estacion ?>"> Eliminar</a>
+							<a class="btn btn-danger" href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $id_estacion ?>"> Eliminar</a>
 						<?php } ?>
 					</div>
 				</form>
@@ -111,7 +110,7 @@
 			
 			<div class="card-header navbar navbar-expand-sm p-4">
 				<h4> Recursos de la estacion </h4>
-				<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'recurso/editar/'.$this->id_sendero.'/'.$id_estacion.'/0/'.(sizeof($this->recurso_lista)+1)?>"> Nuevo recurso </a>
+				<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'recurso/editar/0/'.(sizeof($this->recurso_lista)+1)?>"> Nuevo recurso </a>
 			</div>
 			
 			<?php
@@ -124,7 +123,7 @@
 				<li class="list-group-item">
 					<div> 
 						<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
-						<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'recurso/editar/'.$this->id_sendero.'/'.$id_estacion.'/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
+						<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'recurso/editar/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
 						<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$recurso->get_id_recurso(); ?>"> Eliminar </a> -->
 					</div>
 				</li>

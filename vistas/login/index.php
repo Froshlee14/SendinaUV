@@ -47,8 +47,9 @@ border-bottom-right-radius: .3rem;
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="<?php echo constant('URL') ?>/public/imgs/logo.png"
-                    style="width: 185px;" alt="logo">
+				
+					<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" style="width: 185px;" alt="logo">
+                  
                   <h5 class="mt-1 mb-5 pb-1">Autenticación</h5>
                 </div>
 
@@ -76,6 +77,9 @@ border-bottom-right-radius: .3rem;
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center bg-primary">
+				<div class="text-white px-3 py-4 p-md-5 mx-md-4">
+
+				</div>
 
             </div>
           </div>

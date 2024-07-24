@@ -124,7 +124,10 @@ class SenderoControlador extends Controlador{
 			$estaciones = $this->modeloEstacion->selectBySendero($id_sendero);
 			//No importa si la lista esta vacia, eso se comprueba en la vista
 			$this->vista->estacion_lista = $estaciones;
+			
+			$_SESSION['id_sendero'] = $id_sendero;
 		}
+
 		
 		$this->vista->sendero = $sendero;
 		$this->vista->zona_lista = $zonas;

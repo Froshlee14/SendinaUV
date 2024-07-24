@@ -30,11 +30,10 @@ class EstacionControlador extends Controlador{
 		$this->verificaUsuario();
 
 		//Obtengo los datos de la estacion
-		$id_sendero = $parametros[0];
-		$id_estacion = $parametros[1];
+		$id_estacion = $parametros[0];
 		$numero = 0;
-		if(isset($parametros[2])){
-			$numero = $parametros[2];
+		if(isset($parametros[1])){
+			$numero = $parametros[1];
 		}
 		$estacion = $this->modelo->select($id_estacion);
 		
@@ -45,9 +44,10 @@ class EstacionControlador extends Controlador{
 			$recursos = $this->modeloRecurso->selectByEstacion($id_estacion);
 			//No importa si la lista esta vacia, eso se comprueba en la vista
 			$this->vista->recurso_lista = $recursos;
+			
+			$_SESSION['id_estacion'] = $id_estacion;
 		}
 		
-		$this->vista->id_sendero = $id_sendero;
 		$this->vista->estacion = $estacion;
 		$this->vista->numero = $numero;
 		$this->renderizar();
@@ -57,7 +57,7 @@ class EstacionControlador extends Controlador{
 		
 		$this->verificaUsuario();
 		
-		if( !isset($_POST['id_sendero']) || 
+		if(
 			!isset($_POST['id_estacion']) ||
 			!isset($_POST['numero']) ||
 			!isset($_POST['nombre']) ||
@@ -70,7 +70,7 @@ class EstacionControlador extends Controlador{
 			$this->redir('error');
 		}
 		
-		$id_sendero = $_POST['id_sendero'];
+		$id_sendero = $_SESSION['id_sendero'];
         $id_estacion = $_POST['id_estacion'];
         $numero = $_POST['numero'];
         $nombre = $_POST['nombre'];
@@ -122,8 +122,7 @@ class EstacionControlador extends Controlador{
 		
 		$this->verificaUsuario();
 		
-		$id_sendero = $parametros[0];
-		$id_estacion = $parametros[1]; 
+		$id_estacion = $parametros[0]; 
 		
 		if($this->modelo->deleteBD($id_estacion)){
 			$mensaje = "Estacion eliminada";
@@ -133,7 +132,7 @@ class EstacionControlador extends Controlador{
 		}
 		$this->vista->mensaje = $mensaje;
 		
-		$url = 'sendero/editar/'.$id_sendero;
+		$url = 'sendero/editar/'.$_SESSION['id_sendero'];
 		$this->redir($url);
 	}
 	

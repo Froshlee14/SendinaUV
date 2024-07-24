@@ -117,7 +117,7 @@
 			
 			<div class="card-header navbar navbar-expand-sm p-4">
 				<h4> Estaciones de sendero </h4>
-				<a  class="btn btn-primary ml-auto" href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/0/'.(sizeof($this->estacion_lista)+1)?>"> Nueva estacion </a>
+				<a  class="btn btn-primary ml-auto" href="<?php echo constant('URL').'estacion/editar/0/'.(sizeof($this->estacion_lista)+1)?>"> Nueva estacion </a>
 			</div>
 			
 			<?php
@@ -130,7 +130,7 @@
 				<li class="list-group-item">
 					<div>
 						<?php echo $estacion->get_numero(); ?>: <?php echo $estacion->get_nombre(); ?> 
-						<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'estacion/editar/'.$id_sendero.'/'.$estacion->get_id_estacion().'/'.$estacion->get_numero(); ?>"> Editar </a>
+						<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'estacion/editar/'.$estacion->get_id_estacion().'/'.$estacion->get_numero(); ?>"> Editar </a>
 						<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$estacion->get_id_estacion(); ?>"> Eliminar </a> -->
 					</div>
 				</li>
