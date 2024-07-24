@@ -6,6 +6,8 @@ class UsuarioControlador extends Controlador{
 	
 	function __construct(){
 		parent::__construct();
+		
+		session_start();
 		//Variables usadas en la vista
 		$this->vista->mensaje = "";
 		$this->vista->usuario = null;
@@ -19,6 +21,9 @@ class UsuarioControlador extends Controlador{
 
 	//Funcion para elistar todos los usuarios
 	function lista(){
+		
+		$this->verificaUsuario();
+		
 		$usuarios = $this->modelo->selectAll();
 		$this->vista->usuario_lista = $usuarios;
 		$this->renderizar();
@@ -26,6 +31,19 @@ class UsuarioControlador extends Controlador{
 	
 	//Funcion para guardar/actualizar un registro
     function guardar(){
+		
+		$this->verificaUsuario();
+		
+		if( !isset($_POST['id_usuario']) ||
+			!isset($_POST['nombre']) ||
+			!isset($_POST['contrasena']) ||
+			!isset($_POST['id_rol_usuario'])	
+			){
+			//Hace falta implementar un mejor manejo de los errores
+			//Port ahora queda esto
+			$this->redir('error');
+		}
+		
         $id_usuario = $_POST['id_usuario'];
         $nombre = $_POST['nombre'];
         $contrasena = $_POST['contrasena'];
@@ -63,7 +81,9 @@ class UsuarioControlador extends Controlador{
     }
 	
 	function editar($parametros=null){
-
+		
+		$this->verificaUsuario();
+		
 		//Obtengo los datos del usuario
 		$id_usuario = $parametros[0];
 		$usuario = $this->modelo->select($id_usuario);
@@ -77,6 +97,9 @@ class UsuarioControlador extends Controlador{
 	}
 	
 	function borrar($parametros=null){
+		
+		$this->verificaUsuario();
+		
 		$id_usuario = $parametros[0];
 		
 		if($this->modelo->deleteBD($id_usuario)){

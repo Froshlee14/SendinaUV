@@ -7,6 +7,8 @@ class RecursoControlador extends Controlador{
 	
 	function __construct(){
 		parent::__construct();
+		
+		session_start();
 		//Variables usadas en la vista
 		$this->vista->mensaje = "";
 		$this->vista->recurso = null;
@@ -24,6 +26,8 @@ class RecursoControlador extends Controlador{
 	}
 
 	function editar($parametros=null){
+		
+		$this->verificaUsuario();
 
 		//Obtengo los datos del recurso
 		$id_sendero = $parametros[0];
@@ -44,6 +48,22 @@ class RecursoControlador extends Controlador{
 	}
 	
 	function guardar(){
+		
+		$this->verificaUsuario();
+		
+		if( !isset($_POST['id_sendero']) || 
+			!isset($_POST['id_estacion']) ||
+			!isset($_POST['id_recurso']) ||
+			!isset($_POST['numero']) ||
+			!isset($_POST['url']) ||
+			!isset($_POST['creditos']) ||
+			!isset($_POST['id_tipo_recurso']) 		
+			){
+			//Hace falta implementar un mejor manejo de los errores
+			//Port ahora queda esto
+			$this->redir('error');
+		}
+		
 		$id_sendero = $_POST['id_sendero'];
         $id_estacion = $_POST['id_estacion'];
 		$id_recurso = $_POST['id_recurso'];
@@ -83,13 +103,16 @@ class RecursoControlador extends Controlador{
 		
 		$this->vista->mensaje = $mensaje;
 		
-		//Debo redirigir a sendero editor
+		//Debo redirigir a estacion editor
 		$url = 'estacion/editar/'.$id_sendero.'/'.$id_estacion;
 		$this->redir($url);
 	
     }
 	
 	function borrar($parametros=null){
+		
+		$this->verificaUsuario();
+		
 		$id_sendero = $parametros[0];
 		$id_estacion = $parametros[1]; 
 		$id_recurso = $parametros[2]; 

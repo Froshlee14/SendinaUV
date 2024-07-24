@@ -24,6 +24,13 @@ class Controlador{
 		exit();
 	}
 	
+	function verificaUsuario(){
+		//Si no hay ningun administrador o editor redirige al inicio
+		if(!isset($_SESSION['user_id'])){ 
+			$this->redir('inicio');
+		}
+	}
+
 }
 
 ?>

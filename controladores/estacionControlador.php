@@ -8,6 +8,8 @@ class EstacionControlador extends Controlador{
 	
 	function __construct(){
 		parent::__construct();
+		
+		session_start();
 		//Variables usadas en la vista
 		$this->vista->mensaje = "";
 		$this->vista->estacion = null;
@@ -24,6 +26,8 @@ class EstacionControlador extends Controlador{
 	}
 	
 	function editar($parametros=null){
+		
+		$this->verificaUsuario();
 
 		//Obtengo los datos de la estacion
 		$id_sendero = $parametros[0];
@@ -50,6 +54,22 @@ class EstacionControlador extends Controlador{
 	}
 	
 	function guardar(){
+		
+		$this->verificaUsuario();
+		
+		if( !isset($_POST['id_sendero']) || 
+			!isset($_POST['id_estacion']) ||
+			!isset($_POST['numero']) ||
+			!isset($_POST['nombre']) ||
+			!isset($_POST['descripcion']) ||
+			!isset($_POST['latitud']) ||
+			!isset($_POST['longitud']) 				
+			){
+			//Hace falta implementar un mejor manejo de los errores
+			//Port ahora queda esto
+			$this->redir('error');
+		}
+		
 		$id_sendero = $_POST['id_sendero'];
         $id_estacion = $_POST['id_estacion'];
         $numero = $_POST['numero'];
@@ -99,6 +119,9 @@ class EstacionControlador extends Controlador{
     }
 	
 	function borrar($parametros=null){
+		
+		$this->verificaUsuario();
+		
 		$id_sendero = $parametros[0];
 		$id_estacion = $parametros[1]; 
 		

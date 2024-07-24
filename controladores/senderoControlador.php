@@ -54,6 +54,8 @@ class SenderoControlador extends Controlador{
 	//Funcion para guardar/actualizar un registro
     function guardar(){
 		
+		$this->verificaUsuario();
+		
 		if( !isset($_POST['id_sendero']) || 
 			!isset($_POST['nombre']) ||
 			!isset($_POST['sede']) ||
@@ -61,7 +63,9 @@ class SenderoControlador extends Controlador{
 			!isset($_POST['id_zona']) ||
 			!isset($_POST['url_recursos']) 			
 			){
-			$this->redir('sendero/lista');
+			//Hace falta implementar un mejor manejo de los errores
+			//Port ahora queda esto
+			$this->redir('error');
 		}
 		
         $id_sendero = $_POST['id_sendero'];
@@ -107,10 +111,7 @@ class SenderoControlador extends Controlador{
 	
 	function editar($parametros=null){
 		
-		//Si no hay ningun administrador o editor redirige al inicio
-		if(!isset($_SESSION['user_id'])){ 
-			$this->redir('inicio');
-		}
+		$this->verificaUsuario();
 
 		//Obtengo los datos del sendero
 		$id_sendero = $parametros[0];
@@ -132,10 +133,7 @@ class SenderoControlador extends Controlador{
 	
 	function borrar($parametros=null){
 		
-		//Si no hay ningun administrador o editor redirige al inicio
-		if(!isset($_SESSION['user_id'])){ 
-			$this->redir('inicio');
-		}
+		$this->verificaUsuario();
 		
 		$id_sendero = $parametros[0];
 		
