@@ -18,6 +18,8 @@
 
 <body>
 
+	<?php session_start(); ?>
+
 	<div class="jumbotron bg-primary text-center mb-0">
 		<img src="logo.png" width="320" title="logo">
 	</div>
@@ -47,11 +49,26 @@
 				<li class="nav-item dropdown">
 
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-					Sesion iniciada como invitado
+					Sesion iniciada como 
+					<?php 
+					if(isset($_SESSION['user_id'])){
+						echo $_SESSION['user_rol']; 
+					}
+					else{
+					?>
+						invitado
+					<?php } ?>
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="<?php echo constant('URL') ?>login">Iniciar sesion</a>
-						<a class="dropdown-item" href="<?php echo constant('URL') ?>usuario/lista">Gestionar usuarios</a>
+						<?php if(!isset($_SESSION['user_id'])){ ?>
+							<a class="dropdown-item" href="<?php echo constant('URL') ?>login">Iniciar sesion</a>
+						<?php }else{?>
+							<a class="dropdown-item" href="<?php echo constant('URL') ?>login/salir">Cerrar sesion</a>
+							<?php if($_SESSION['user_rol'] === "Administrador"){ ?>
+								<a class="dropdown-item" href="<?php echo constant('URL') ?>usuario/lista">Gestionar usuarios</a>
+							<?php } ?>
+						<?php } ?>
+						
 					</div>
 				</li>
 				</ul>

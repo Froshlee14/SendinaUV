@@ -47,6 +47,7 @@ class UsuarioModelo extends Modelo{
 				$usuario->set_nombre($row['nombre']);
 				$usuario->set_contrasena($row['contrasena']);
 				$usuario->set_id_rol_usuario($row['id_rol_usuario']);
+				$usuario->set_rol_usuario($row['rol_usuario']);
 				return $usuario;
 			} else {
 				return null;

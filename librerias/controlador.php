@@ -17,6 +17,12 @@ class Controlador{
 			
 		}
 	}
+	
+	//Para hacer redirecciones
+	function redir($url){
+		header('Location: '.constant('URL').$url); //'sendero/editar/'.$id_sendero);
+		exit();
+	}
 }
 
 ?>

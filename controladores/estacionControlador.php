@@ -91,8 +91,11 @@ class EstacionControlador extends Controlador{
 		$this->vista->mensaje = $mensaje;
 		
 		//Debo redirigir a sendero editor
-		header('Location: '.constant('URL').'sendero/editar/'.$id_sendero);
-		exit();
+		$url = 'sendero/editar/'.$id_sendero;
+		$this->redir($url);
+		//mejor uso la funcion de arriba
+		//header('Location: '.constant('URL').'sendero/editar/'.$id_sendero);
+		//exit();
     }
 	
 	function borrar($parametros=null){
@@ -106,8 +109,9 @@ class EstacionControlador extends Controlador{
 			$mensaje =  "No se pudo eliminar";
 		}
 		$this->vista->mensaje = $mensaje;
-		header('Location: '.constant('URL').'sendero/editar/'.$id_sendero);
-		exit();
+		
+		$url = 'sendero/editar/'.$id_sendero;
+		$this->redir($url);
 	}
 	
 }
