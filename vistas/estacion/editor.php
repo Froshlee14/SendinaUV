@@ -106,6 +106,7 @@
 		
 		<p> <?php echo $this->mensaje; ?></p>
 			
+		<?php if($id_estacion != 0){ ?>
 		<div class="card mb-4">
 			
 			<div class="card-header navbar navbar-expand-sm p-4">
@@ -137,6 +138,7 @@
 			}
 			?>
 		</div>
+		<?php } ?>
 
 	</div>
 	

@@ -44,7 +44,7 @@
 						<a class="btn btn-primary" href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>"> Ver Sendero </a>
 						
 						<?php if(isset($_SESSION['user_id'])){ ?>
-							<?php if($_SESSION['user_rol']=="Administrador"){ ?>
+							<?php if($_SESSION['user_rol']=="Administrador" || $_SESSION['user_rol']=="Editor" ){ ?>
 								<a class="btn btn-secondary" href="<?php echo constant('URL') . 'sendero/editar/' . $sendero->get_id_sendero(); ?>"> Editar </a> 
 							<?php } ?>
 						<?php } ?>
