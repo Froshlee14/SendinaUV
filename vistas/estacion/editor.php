@@ -70,7 +70,7 @@
 							<label for="descripcion">Descripcion</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<textarea class="form-control" id="textAreaExample2" rows="8" name="descripcion"> <?php echo $descripcion ?></textarea>
+							<textarea class="form-control" id="textAreaExample2" rows="6" name="descripcion"> <?php echo $descripcion ?></textarea>
 							<!-- <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion ?>" required> -->
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 							<label for="latitud"> Latitud</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="latitud" value="<?php echo $latitud ?>" required>
+							<input class="form-control" type="number" name="latitud" value="<?php echo $latitud ?>" required>
 						</div>
 					</div>
 
@@ -89,10 +89,9 @@
 							<label for="longitud"> Longitud</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="longitud" value="<?php echo $longitud ?>" required>
+							<input class="form-control" type="number" name="longitud" value="<?php echo $longitud ?>" required>
 						</div>
-					</div>			
-					
+					</div>
 
 					<div class="float-right">
 						<input class="btn btn-primary" type="submit" value="Guardar">
