@@ -70,7 +70,8 @@
 							<label for="descripcion">Descripcion</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion ?>" required>
+							<textarea class="form-control" id="textAreaExample2" rows="8" name="descripcion"> <?php echo $descripcion ?></textarea>
+							<!-- <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion ?>" required> -->
 						</div>
 					</div>
 
