@@ -6,17 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+
 </head>
 
-<body>
+<body class="bg-primary">
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container px-5 mt-5">
+	
+	
+	
+	<div class="container w-md-75 px-5 mt-3">
+	
+		<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>sendero/lista"> <i class="bi bi-arrow-bar-left"></i> Volver </a>
 	
 		<div class="card mb-4">
 		
 			<div class="card-header navbar navbar-expand-sm p-4">
-				<h3> Detalles de sendero </h3>
+				<h3 class="mt-0 mb-4 text-center">Detalles de sendero</h3>
 			</div>
 			
 			<?php 
@@ -41,7 +47,7 @@
 				}
 				
 			?>
-			<div class="card-body">
+			<div class="card-body form-card">
 			<form action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
 
 				<p>
@@ -54,7 +60,54 @@
 						<label for="id_sendero">Nombre sendero</label>
 					</div>
 					<div class="col-12 col-sm-9">
-						<input class="form-control" type="text" name="nombre" value="<?php echo $nombre ?>" required>
+						<input class="form-control" type="text" name="nombre" maxlength="50" value="<?php echo $nombre ?>" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-12 col-sm-3">
+						<div class="input-group"> 
+							<input type="number" name="year" placeholder="2024" value="<?php echo $year?>" required> 
+							<label>Año de inauguración</label> 
+						</div>
+					</div>
+					<div class="col">
+						<div class="input-group"> 
+							<input type="text" name="nombre" placeholder="Sendero interpretativo" value="<?php echo $nombre ?>" maxlength="50" required> 
+							<label>Nombre de sendero</label> 
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<div class="input-group"> 
+							<input type="text" name="sede" placeholder="Lugar donde se encuentra" value="<?php echo $sede ?>" maxlength="50" required> 
+							<label>Sede</label> 
+						</div>
+					</div>
+					<div class="col-12 col-sm-6">
+						<div class="input-group"> 
+							<select id="id_zona" name="id_zona">
+								<option value="" disabled selected>Select your option</option>
+								<?php foreach ($this->zona_lista as $z): ?>
+									<option value="<?= $z->get_id_zona() ?>" <?= $z->get_id_zona() == $id_zona ? 'selected' : '' ?>>
+										<?php echo $z->get_nombre(); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+							<label>Zona</label> 
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<div class="input-group"> 
+							<input type="text" name="url_recursos" placeholder="/public/imgs/archivo.jpg" value="<?php echo $url_recursos ?>" maxlength="255" required> 
+							<label>Ruta de portada</label> 
+						</div>
 					</div>
 				</div>
 				
@@ -63,7 +116,7 @@
 						<label for="sede">Sede</label>
 					</div>
 					<div class="col-12 col-sm-9">
-						<input class="form-control" type="text" name="sede" value="<?php echo $sede ?>" required>
+						<input class="form-control" type="text" name="sede" maxlength="50" value="<?php echo $sede ?>" required>
 					</div>
 				</div>
 				
@@ -81,7 +134,7 @@
 						<label for="id_zona">Zona</label>
 					</div>
 					<div class="col-12 col-sm-9">
-						<select class="form-control" id="id_zona" name="id_zona">
+						<select class="form-control" id="id_zona" neame="id_zona">
 						<?php foreach ($this->zona_lista as $z): ?>
 							<option value="<?= $z->get_id_zona() ?>" <?= $z->get_id_zona() == $id_zona ? 'selected' : '' ?>>
 								<?php echo $z->get_nombre(); ?>
@@ -96,7 +149,7 @@
 						<label for="url_recursos">URL vista previa</label>
 					</div>
 					<div class="col-12 col-sm-9">
-						<input class="form-control" type="text" name="url_recursos" value="<?php echo $url_recursos ?>" required>
+						<input class="form-control" type="text" name="url_recursos" maxlength="255" value="<?php echo $url_recursos ?>" required>
 					</div>
 				</div>
 

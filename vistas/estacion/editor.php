@@ -11,7 +11,9 @@
 <body>
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container px-5 mt-5">
+	<div class="container px-5 mt-3">
+	
+	<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>sendero/editar/<?php echo $_SESSION['id_sendero']?>"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
 	
 		<div class="card mb-4">
 			<div class="card-header navbar navbar-expand-sm p-4">
@@ -61,7 +63,7 @@
 							<label for="nombre">Nombre de estacion</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="nombre" value="<?php echo $nombre ?>" required>
+							<input class="form-control" type="text" name="nombre" maxlength="50" value="<?php echo $nombre ?>" required>
 						</div>
 					</div>
 					
@@ -80,7 +82,7 @@
 							<label for="latitud"> Latitud</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="number" name="latitud" value="<?php echo $latitud ?>" required>
+							<input class="form-control" type="number" name="latitud" maxlength="20" value="<?php echo $latitud ?>" required>
 						</div>
 					</div>
 
@@ -89,7 +91,7 @@
 							<label for="longitud"> Longitud</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="number" name="longitud" value="<?php echo $longitud ?>" required>
+							<input class="form-control" type="number" name="longitud" maxlength="20" value="<?php echo $longitud ?>" required>
 						</div>
 					</div>
 

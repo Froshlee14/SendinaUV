@@ -11,8 +11,10 @@
 <body>
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container px-5 mt-5">
-		<p> <?php echo $this->mensaje; ?></p>
+	<div class="container px-5 mt-3">
+	
+		<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>estacion/editar/<?php echo $_SESSION['id_estacion']?>"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
+		<!-- <p> <?php echo $this->mensaje; ?></p> -->
 	
 		<div class="card mb-4">
 			<div class="card-header navbar navbar-expand-sm p-4">
@@ -61,7 +63,7 @@
 							<label for="url">Url de recurso</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="url" value="<?php echo $url ?>" required>
+							<input class="form-control" type="text" name="url" maxlength="500" value="<?php echo $url ?>" required>
 						</div>
 					</div>
 					
@@ -70,7 +72,7 @@
 							<label for="creditos">Creditos</label>
 						</div>
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="creditos" value="<?php echo $creditos ?>" required>
+							<input class="form-control" type="text" name="creditos" maxlength="100" value="<?php echo $creditos ?>" required>
 						</div>
 					</div>
 					

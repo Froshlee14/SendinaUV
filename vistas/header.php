@@ -12,72 +12,18 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="<?php echo constant('URL') ?>/public/css/custom.css">
+	<script src="<?php echo constant('URL') ?>/public/js/custom.js"></script>
 	
 </head>
 
 
 <body>
 
-	<div class="jumbotron bg-primary text-center mb-0">
+	<div class="jumbotron bg-sendina text-center mb-0">
 		<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
 	</div>
-
-	<nav class="navbar navbar-expand-lg navbar-light  shadow-sm"> 
-		<div class="container px-5">
-		
-		<a class="navbar-brand" href="#">SENDINA</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			
-			<div class="navbar-nav mr-auto ">
-				
-				<ul class="navbar-nav me-4 my-3 my-lg-0">
-					<li class="nav-item"> <a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>inicio">Inicio</a></li>
-					<li class="nav-item"> <a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>sendero/lista">Senderos</a></li>
-					<li class="nav-item"> <a class="nav-link me-lg-3" href="#download">Ayuda</a></li>
-					<!--li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo constant('URL') ?>usuario/lista">Usuarios</a></li-->
-				</ul>
-			</div>
-
-			<div class="navbar-nav ml-auto">
-				<ul class="navbar-nav me-4 my-3 my-lg-0">
-				<li class="nav-item dropdown">
-
-					<a class="nav-link text-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-					Sesion iniciada como 
-					<?php 
-					//session_start();
-					if(isset($_SESSION['user_id'])){
-						echo $_SESSION['user_rol']; 
-					}
-					else{
-					?>
-						invitado
-					<?php } ?>
-					</a>
-					<div class="dropdown-menu">
-						<?php if(!isset($_SESSION['user_id'])){ ?>
-							<a class="dropdown-item" href="<?php echo constant('URL') ?>login">Iniciar sesion</a>
-						<?php }else{?>
-							<a class="dropdown-item" href="<?php echo constant('URL') ?>login/salir">Cerrar sesion</a>
-							<?php if($_SESSION['user_rol'] === "Administrador"){ ?>
-								<a class="dropdown-item" href="<?php echo constant('URL') ?>usuario/lista">Gestionar usuarios</a>
-							<?php } ?>
-						<?php } ?>
-						
-					</div>
-				</li>
-				</ul>
-			</div>
-			
-			</div>
-			
-		</div>
-	</nav>
-
 	
 </body>
 

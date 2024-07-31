@@ -11,7 +11,9 @@
 <body>
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container px-5 mt-5">
+	<div class="container px-5 mt-3">
+	
+		<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>usuario/lista"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
 	
 		<div class="card mb-4">
 			<div class="card-header navbar navbar-expand-sm p-4">

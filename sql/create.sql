@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS estacion (
   id_estacion INT NOT NULL AUTO_INCREMENT,
   numero INT NULL,
   nombre VARCHAR(50) NULL,
-  descripcion VARCHAR(200) NULL,
+  descripcion TEXT NULL,
   latitud VARCHAR(20) NULL,
   longitud VARCHAR(20) NULL,
   PRIMARY KEY (id_estacion))
