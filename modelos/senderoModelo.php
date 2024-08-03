@@ -8,7 +8,8 @@ class SenderoModelo extends Modelo{
 	
 	public function select($id_sendero){
 		
-		$sql = 'SELECT sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre as nombre_zona, sendero.url_recursos FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero where sendero.id_sendero = :id_sendero;';
+		$sql = 'SELECT sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre as nombre_zona, sendero.url_logo, sendero.url_portada, sendero.status
+			FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero where sendero.id_sendero = :id_sendero;';
 		$query = $this->conexion->connect()->prepare($sql);
 		
 		try{
@@ -16,14 +17,27 @@ class SenderoModelo extends Modelo{
 			$row = $query->fetch();
         
 			if ($row) {
-				$sendero = new SenderoBean();
-				$sendero->set_id_sendero($id_sendero);
-				$sendero->set_nombre($row['nombre']);
-				$sendero->set_sede($row['sede']);
-				$sendero->set_year($row['anio_fundacion']);
-				$sendero->set_id_zona($row['id_zona']);
-				$sendero->set_nombre_zona($row['nombre_zona']);
-				$sendero->set_url_recursos($row['url_recursos']);
+				// $sendero = new SenderoBean();
+				// $sendero->set_id_sendero($id_sendero);
+				// $sendero->set_nombre($row['nombre']);
+				// $sendero->set_sede($row['sede']);
+				// $sendero->set_year($row['anio_fundacion']);
+				// $sendero->set_id_zona($row['id_zona']);
+				// $sendero->set_nombre_zona($row['nombre_zona']);
+				// $sendero->set_url_logo($row['url_logo']);
+				
+				$sendero = new SenderoBean(
+					$id_sendero,
+					$row['nombre'],
+					$row['sede'],
+					$row['anio_fundacion'],
+					$row['id_zona'],
+					$row['nombre_zona'],
+					$row['url_logo'],
+					$row['url_portada'],
+					$row['status'],
+					null
+				);
 				return $sendero;
 			} else {
 				return null;
@@ -37,10 +51,18 @@ class SenderoModelo extends Modelo{
 	public function selectAll(){
 		
 		$lista = [];
-		$sql = 'SELECT sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre as nombre_zona, sendero.url_recursos FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero ;';
+		$sql = 'SELECT sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre as nombre_zona, sendero.url_logo, sendero.url_portada 
+			FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero ;';
+		$sql2 = 'SELECT 
+			sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, 
+			zona.nombre AS nombre_zona, sendero.url_logo, sendero.url_portada, COUNT(sendero_estacion.id_estacion) AS num_estaciones
+			FROM zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona 
+			JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero
+			LEFT JOIN sendero_estacion ON sendero.id_sendero = sendero_estacion.id_sendero
+			GROUP BY sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, zona.nombre, sendero.url_logo;';
 		
 		try{
-			$query = $this->conexion->connect()->query($sql);
+			$query = $this->conexion->connect()->query($sql2);
 
 			while($row = $query->fetch()) {
 
@@ -51,7 +73,10 @@ class SenderoModelo extends Modelo{
 					$row['anio_fundacion'],
 					$row['id_zona'],
 					$row['nombre_zona'],
-					$row['url_recursos']
+					$row['url_logo'],
+					$row['url_portada'],
+					null,
+					$row['num_estaciones']
 				);
 
 				array_push($lista, $sendero);
@@ -89,13 +114,15 @@ class SenderoModelo extends Modelo{
 	public function insert($sendero){
         //Insertar datos de sendero a loa BD
 		
-        $sql = 'INSERT INTO sendero (nombre,sede,anio_fundacion,id_zona,url_recursos) VALUES (:nombre,:sede,:anio_fundacion,:id_zona,:url_recursos);';
+        $sql = 'INSERT INTO sendero (nombre,sede,anio_fundacion,id_zona,url_logo,url_portada,status) VALUES (:nombre,:sede,:anio_fundacion,:id_zona,:url_logo,:url_portada,:status);';
         $parametros = [
             'nombre' => $sendero->get_nombre(),
             'sede' => $sendero->get_sede(),
             'anio_fundacion' => $sendero->get_year(),
             'id_zona' => $sendero->get_id_zona(),
-            'url_recursos' => $sendero->get_url_recursos(),
+            'url_logo' => $sendero->get_url_logo(),
+			'url_portada' => $sendero->get_url_portada(),
+			'status' => $sendero->get_status(),
         ];
 		
 		$sql2 = 'INSERT INTO zona_sendero (id_zona, id_sendero) VALUES (:id_zona,:id_sendero);';
@@ -131,13 +158,15 @@ class SenderoModelo extends Modelo{
 		//Actualizar datos del sendero en la BD
 		//var_dump($sendero);
 		
-		$sql = 'UPDATE sendero SET nombre=:nombre, sede=:sede, anio_fundacion=:anio_fundacion, id_zona=:id_zona, url_recursos=:url_recursos where id_sendero=:id_sendero;';
+		$sql = 'UPDATE sendero SET nombre=:nombre, sede=:sede, anio_fundacion=:anio_fundacion, id_zona=:id_zona, url_logo=:url_logo, url_portada=:url_portada, status=:status where id_sendero=:id_sendero;';
 		$parametros = [
             'nombre' => $sendero->get_nombre(),
             'sede' => $sendero->get_sede(),
             'anio_fundacion' => $sendero->get_year(),
             'id_zona' => $sendero->get_id_zona(),
-            'url_recursos' => $sendero->get_url_recursos(),
+            'url_logo' => $sendero->get_url_logo(),
+			'url_portada' => $sendero->get_url_portada(),
+			'status' => $sendero->get_status(),
 			'id_sendero' => $sendero->get_id_sendero(),
         ];
 		try {

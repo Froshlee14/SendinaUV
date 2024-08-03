@@ -46,7 +46,7 @@
 			$sede = '';
 			$year = '';
 			$id_zona = 0;
-			$url_recursos = '';
+			$url_logo = '';
 			
 			if($this->sendero !== null){
 				$id_sendero = $this->sendero->get_id_sendero();
@@ -54,7 +54,7 @@
 				$sede = $this->sendero->get_sede();
 				$year = $this->sendero->get_year();
 				$id_zona = $this->sendero->get_id_zona();
-				$url_recursos = $this->sendero->get_url_recursos();
+				$url_logo = $this->sendero->get_url_logo();
 			}
 			
 		?>

@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS sendero (
   sede VARCHAR(50),
   anio_fundacion INT,
   id_zona INT,
-  url_recursos VARCHAR(255),
+  url_logo VARCHAR(255),
+  url_portada VARCHAR(255),
+  status BOOLEAN,
   PRIMARY KEY (id_sendero))
 ENGINE = InnoDB;
 
@@ -141,6 +143,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   nombre VARCHAR(20) NULL,
   contrasena VARCHAR(20) NULL,
   id_rol_usuario INT NULL,
+  status BOOLEAN,
   PRIMARY KEY (id_usuario),
   CONSTRAINT fk_rol_usuario_usuario1
     FOREIGN KEY (id_rol_usuario)

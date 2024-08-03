@@ -7,7 +7,10 @@ class SenderoBean {
     private $year;
     private $id_zona;
 	private $nombre_zona;
-    private $url_recursos;
+    private $url_logo;
+	private $url_portada;
+	private $status;
+	private $num_estaciones;
 
     // Constructor
     public function __construct(
@@ -17,7 +20,10 @@ class SenderoBean {
             $year = null, 
             $id_zona = null,
 			$nombre_zona = null,
-            $url_recursos = null
+            $url_logo = null,
+			$url_portada = null,
+			$status = null,
+			$num_estaciones = null
         ) {
         
         $this->id_sendero = $id_sendero;
@@ -26,7 +32,10 @@ class SenderoBean {
         $this->year = $year;
         $this->id_zona = $id_zona;
 		$this->nombre_zona = $nombre_zona;
-        $this->url_recursos = $url_recursos;
+        $this->url_logo = $url_logo;
+		$this->url_portada = $url_portada;
+		$this->status = $status;
+		$this->num_estaciones = $num_estaciones;
     }
 
     // Setters y Getters
@@ -79,12 +88,36 @@ class SenderoBean {
         return $this->nombre_zona;
     }
 
-    public function set_url_recursos($url_recursos) {
-        $this->url_recursos = $url_recursos;
+    public function set_url_logo($url_logo) {
+        $this->url_logo = $url_logo;
     }
     
-    public function get_url_recursos() {
-        return $this->url_recursos;
+    public function get_url_logo() {
+        return $this->url_logo;
+    }
+	
+    public function set_url_portada($url_portada) {
+        $this->url_portada = $url_portada;
+    }
+    
+    public function get_url_portada() {
+        return $this->url_portada;
+    }
+	
+    public function set_status($status) {
+        $this->status = $status;
+    }
+    
+    public function get_status() {
+        return $this->status;
+    }
+	
+    public function set_num_estaciones($num_estaciones) {
+        $this->num_estaciones = $num_estaciones;
+    }
+    
+    public function get_num_estaciones() {
+        return $this->num_estaciones;
     }
 }
 

@@ -24,7 +24,7 @@ VALUES
     ('Poza Rica-Tuxpan'),
     ('Coatzacoalcos-Minatitlán');
 	
-INSERT INTO sendero (nombre,sede,anio_fundacion,id_zona,url_recursos)
+INSERT INTO sendero (nombre,sede,anio_fundacion,id_zona,url_logo)
 VALUES
 	('Sendero Interpretativo del Agua','Unidad de Ciencias de la Salud',2023,1,'sendero_agua_xalapa/logo.png'),
 	('Tehuan Ti Ameh','Grandes Montañas',2022,3,'sendero_agua_xalapa/logo.png');

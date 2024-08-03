@@ -61,7 +61,9 @@ class SenderoControlador extends Controlador{
 			!isset($_POST['sede']) ||
 			!isset($_POST['year']) ||
 			!isset($_POST['id_zona']) ||
-			!isset($_POST['url_recursos']) 			
+			!isset($_POST['url_logo']) ||
+			!isset($_POST['url_portada']) ||	
+			!isset($_POST['status'])
 			){
 			//Hace falta implementar un mejor manejo de los errores
 			//Port ahora queda esto
@@ -73,7 +75,9 @@ class SenderoControlador extends Controlador{
         $sede = $_POST['sede'];
         $year = $_POST['year'];
         $id_zona = $_POST['id_zona'];
-        $url_recursos = $_POST['url_recursos'];
+        $url_logo = $_POST['url_logo'];
+		$url_portada = $_POST['url_portada'];
+		$status = $_POST['status'];
 
         $sendero = new SenderoBean(
             $id_sendero,
@@ -82,7 +86,10 @@ class SenderoControlador extends Controlador{
             $year,
             $id_zona,
 			null,
-            $url_recursos
+            $url_logo,
+			$url_portada,
+			$status,
+			null
         );
         //var_dump($sendero);
 

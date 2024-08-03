@@ -1,4 +1,4 @@
-	<nav class="navbar navbar-expand-lg sticky-top navbar-light shadow-sm p-1 bg-primary"> 
+	<nav class="navbar-lg sticky-top navbar-light shadow-sm p-1 bg-primary"> 
 		
 			<button class="btn btn-primary" id="menu-toggle">
 				<h3> <i class="bi bi-list"></i> </h3>
