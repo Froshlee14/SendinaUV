@@ -143,7 +143,6 @@ CREATE TABLE IF NOT EXISTS usuario (
   nombre VARCHAR(20) NULL,
   contrasena VARCHAR(20) NULL,
   id_rol_usuario INT NULL,
-  status BOOLEAN,
   PRIMARY KEY (id_usuario),
   CONSTRAINT fk_rol_usuario_usuario1
     FOREIGN KEY (id_rol_usuario)

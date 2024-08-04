@@ -24,7 +24,6 @@
 			
 			<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 			
-				
 			
 			<form action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
 			
@@ -196,10 +195,13 @@
 				</div>
 				<?php } ?>
 				
+				<?php if($this->sendero !== null){ ?>
+					<!-- <a  class="btn-block btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero</a> -->
 				
-						<?php if($this->sendero !== null){ ?>
-							<a  class="btn-block btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero</a>
-						<?php } ?>
+					<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
+					Borrar sendero
+					</button>
+				<?php } ?>
 					
 			</div>
 		
@@ -208,6 +210,29 @@
 		</div>
 	
 	</div>
+	
+	
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Precaución</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Esta accion es irreversible.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <!-- <button type="button" class="btn btn-danger">Borrar sendero</button> -->
+		<a  class=" btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Borrar</a>
+      </div>
+    </div>
+  </div>
+</div>
 		
 </body>
 
