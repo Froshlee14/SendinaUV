@@ -8,143 +8,183 @@
 	<title>Document</title>
 </head>
 
-<body>
+<body class="bg-primary">
+
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container px-5 mt-3">
+	<?php  require 'vistas/navbar.php' ?>
 	
-	<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>sendero/editar/<?php echo $_SESSION['id_sendero']?>"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 	
-		<div class="card mb-4">
-			<div class="card-header navbar navbar-expand-sm p-4">
-				<h3> Detalles de estación </h3>
-			</div>
-			
-			<?php 
-				//var_dump($this->estacion); 
-				//require_once 'entidades/SenderoBean.php';
-				//var_dump($this->zona_lista);
+		<form class="form-card" action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
+	
+			<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>sendero/editar/<?php echo $_SESSION['id_sendero']?>"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
+
+			<h3 class="mt-0 mb-4 text-center"> DETALLES DE ESTACIÓN </h3>
+
+			<div class="card mb-4">
 				
-				$id_estacion = 0;
-				$numero = $this->numero;
-				$nombre = '';
-				$descripcion = '';
-				$latitud ='';
-				$longitud = '';
+				<?php 
+					//var_dump($this->estacion); 
+					//require_once 'entidades/SenderoBean.php';
+					//var_dump($this->zona_lista);
+					
+					$id_estacion = 0;
+					$numero = $this->numero;
+					$nombre = '';
+					$descripcion = '';
+					$latitud ='';
+					$longitud = '';
+					
+					if($this->estacion !== null){
+						$id_estacion = $this->estacion->get_id_estacion();
+						$numero = $this->estacion->get_numero();
+						$nombre = $this->estacion->get_nombre();
+						$descripcion = $this->estacion->get_descripcion();
+						$latitud = $this->estacion->get_latitud();
+						$longitud = $this->estacion->get_longitud();
+					}
+				?>
 				
-				if($this->estacion !== null){
-					$id_estacion = $this->estacion->get_id_estacion();
-					$numero = $this->estacion->get_numero();
-					$nombre = $this->estacion->get_nombre();
-					$descripcion = $this->estacion->get_descripcion();
-					$latitud = $this->estacion->get_latitud();
-					$longitud = $this->estacion->get_longitud();
-				}
-			?>
-			
-			<div class="card-body">
-				<form action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
+				<div class="card-body form-card bg-light">
 
 					<p>
 						<input type="hidden" name="id_estacion" value="<?php echo $id_estacion; ?>" required>
 					</p>
 					
-					<div class="form-group row">
+					<div class="row">
+						
 						<div class="col-12 col-sm-3">
-							<label for="numero">Numero de estacion</label>
+							<div class="input-group"> 
+								<input type="number" name="numero" placeholder="0" value="<?php echo $numero?>" required> 
+								<label>Numero</label> 
+							</div>
 						</div>
+						
 						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="numero" value="<?php echo $numero ?>" required>
+							<div class="input-group">
+								<input type="text" name="nombre" placeholder="Estación" value="<?php echo $nombre ?>" maxlength="50" required> 
+								<label>Nombre de la estación</label> 
+							</div>
+						</div>
+					
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							<div class="input-group"> 
+								<textarea name="descripcion" rows="6"><?php echo $descripcion ?> </textarea>
+								<label>Descripción</label> 
+							</div>
 						</div>
 					</div>
 					
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="nombre">Nombre de estacion</label>
+					<div class="row">
+						
+						<div class="col-12 col-sm-6">
+							<div class="input-group"> 
+								<input type="number" name="latitud" placeholder="0.0" maxlength="20" value="<?php echo $latitud?>" required> 
+								<label>Latitud</label> 
+							</div>
 						</div>
-						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="nombre" maxlength="50" value="<?php echo $nombre ?>" required>
+						
+						<div class="col-12 col-sm-6">
+							<div class="input-group">
+								<input type="number" name="longitud" placeholder="0.0" maxlength="20" value="<?php echo $longitud ?>" required> 
+								<label>Longitud</label> 
+							</div>
 						</div>
+					
 					</div>
 					
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="descripcion">Descripcion</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<textarea class="form-control" id="textAreaExample2" rows="6" name="descripcion"> <?php echo $descripcion ?></textarea>
-							<!-- <input class="form-control" type="text" name="descripcion" value="<?php echo $descripcion ?>" required> -->
-						</div>
-					</div>
+				</div>
 
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="latitud"> Latitud</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<input class="form-control" type="number" name="latitud" maxlength="20" value="<?php echo $latitud ?>" required>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="longitud"> Longitud</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<input class="form-control" type="number" name="longitud" maxlength="20" value="<?php echo $longitud ?>" required>
-						</div>
-					</div>
-
-					<div class="float-right">
-						<input class="btn btn-primary" type="submit" value="Guardar">
-						<?php if($this->estacion !== null){ ?>
-							<a class="btn btn-danger" href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $id_estacion ?>"> Eliminar</a>
-						<?php } ?>
-					</div>
-				</form>
 			</div>
-
-		</div>
+			
+			<!-- No usar input, el css de los input text tambien le afecta -->
+			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
+			<button class="btn btn-block btn-success text-light mb-3 float-right" type="submit">Guardar cambios</button>
+			
+			<?php if($this->estacion !== null){ ?>
+				<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
+				Borrar estación
+				</button>
+			<?php } ?>
+		
+		</form>
 		
 		<p> <?php echo $this->mensaje; ?></p>
+		
+	</div>
+	
+	
+	<?php if($id_estacion != 0){ ?>
+		
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+		
+		<h5 class="mt-0 mb-4 text-center"> RECURSOS DE ESTACIÓN </h5>
+		
+		<a class="btn btn-block btn-primary ml-auto mb-3"  href="<?php echo constant('URL').'recurso/editar/0/'.(sizeof($this->recurso_lista)+1)?>"> Nuevo recurso </a>
 			
-		<?php if($id_estacion != 0){ ?>
 		<div class="card mb-4">
 			
-			<div class="card-header navbar navbar-expand-sm p-4">
-				<h4> Recursos de la estacion </h4>
-				<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'recurso/editar/0/'.(sizeof($this->recurso_lista)+1)?>"> Nuevo recurso </a>
+			<div class="card-body form-card bg-light">
+			
+				<?php
+				if(sizeof($this->recurso_lista) > 0){
+					//var_dump($this->estacion_lista); 
+					foreach ($this->recurso_lista as $recurso):
+				?>
+				
+				<ul class="list-group list-group-flush p-2">
+					<li class="list-group-item border">
+						<div> 
+							<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
+							<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'recurso/editar/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
+							<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$recurso->get_id_recurso(); ?>"> Eliminar </a> -->
+						</div>
+					</li>
+				</ul>
+				
+				<?php
+					endforeach;
+				}
+				else{
+					echo "No hay recursos";
+				}
+				?>
+					
 			</div>
-			
-			<?php
-			if(sizeof($this->recurso_lista) > 0){
-				//var_dump($this->estacion_lista); 
-				foreach ($this->recurso_lista as $recurso):
-			?>
-			
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">
-					<div> 
-						<?php echo $recurso->get_numero(); ?>: <?php echo $recurso->get_tipo_recurso(); ?> 
-						<a class="btn btn-secondary float-right" href="<?php echo constant('URL').'recurso/editar/'.$recurso->get_id_recurso().'/'.(sizeof($this->recurso_lista)+1)?>"> Editar </a>
-						<!-- <a href="<?php echo constant('URL').'estacion/eliminar/'.$recurso->get_id_recurso(); ?>"> Eliminar </a> -->
-					</div>
-				</li>
-			</ul>
-			
-			<?php
-				endforeach;
-			}
-			else{
-				echo "No hay recursos";
-			}
-			?>
 		</div>
-		<?php } ?>
 
 	</div>
 	
+	<?php } ?>
+	
 	<?php  require 'vistas/footer.php' ?>
+	
+	
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Precaución</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Esta accion es irreversible.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <!-- <button type="button" class="btn btn-danger">Borrar sendero</button> -->
+		<a  class=" btn btn-danger text-light" href="<?php echo constant('URL') ?>estacion/borrar/<?php echo $id_estacion ?>"> Borrar</a>
+      </div>
+    </div>
+  </div>
+</div>
 		
 </body>
 

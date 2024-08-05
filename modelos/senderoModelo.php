@@ -17,14 +17,6 @@ class SenderoModelo extends Modelo{
 			$row = $query->fetch();
         
 			if ($row) {
-				// $sendero = new SenderoBean();
-				// $sendero->set_id_sendero($id_sendero);
-				// $sendero->set_nombre($row['nombre']);
-				// $sendero->set_sede($row['sede']);
-				// $sendero->set_year($row['anio_fundacion']);
-				// $sendero->set_id_zona($row['id_zona']);
-				// $sendero->set_nombre_zona($row['nombre_zona']);
-				// $sendero->set_url_logo($row['url_logo']);
 				
 				$sendero = new SenderoBean(
 					$id_sendero,
@@ -55,7 +47,7 @@ class SenderoModelo extends Modelo{
 			FROM  zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero ;';
 		$sql2 = 'SELECT 
 			sendero.id_sendero, sendero.nombre, sendero.sede, sendero.anio_fundacion, sendero.id_zona, 
-			zona.nombre AS nombre_zona, sendero.url_logo, sendero.url_portada, COUNT(sendero_estacion.id_estacion) AS num_estaciones
+			zona.nombre AS nombre_zona, sendero.url_logo, sendero.url_portada, sendero.status, COUNT(sendero_estacion.id_estacion) AS num_estaciones
 			FROM zona JOIN zona_sendero ON zona.id_zona = zona_sendero.id_zona 
 			JOIN sendero ON zona_sendero.id_sendero = sendero.id_sendero
 			LEFT JOIN sendero_estacion ON sendero.id_sendero = sendero_estacion.id_sendero
@@ -75,7 +67,7 @@ class SenderoModelo extends Modelo{
 					$row['nombre_zona'],
 					$row['url_logo'],
 					$row['url_portada'],
-					null,
+					$row['status'],
 					$row['num_estaciones']
 				);
 

@@ -1,3 +1,29 @@
+/* Estilos generales */
+
+@media (min-width: 768px){
+	#sidebar-wrapper{
+		margin-left: 0
+	}
+	
+	#page-content-wrapper{
+		min-width: 0;
+		width: 100%
+	}
+	
+	#wrapper.toggled #sidebar-wrapper{
+		margin-left: -15rem;
+		display: none
+	}
+	
+	.w-md-75 {
+		width: 75% !important;
+	}
+	
+	.h-md-75 {
+		height: 75% !important;
+	}
+}
+
 .bg-sendina{
 	background:linear-gradient(315deg, #0499f2 0%, #26f596 74%);
 }
@@ -6,8 +32,6 @@
 	background:radial-gradient(circle at 10% 20%, rgb(137, 247, 254) 0%, rgb(102, 166, 255) 90%);
 
 }
-
-*{margin: 0;padding: 0}
 
 body{
 	overflow-x: hidden;
@@ -36,15 +60,8 @@ body{
 	box-shadow: 0px 35px 2px -35px lightgray
 }
 
-#test{
-	margin-top: 0px;
-	margin-bottom: 40px;
-	border: 1px solid #FFE082;
-	border-radius: 0.25rem;
-	width: 60px;
-	height: 30px;
-	background-color: #FFECB3
-	}
+
+/* Estilo de sidebar (en desuso) */
 
 .active1{
 	color: #00C853 !important;
@@ -111,43 +128,11 @@ body{
 	border-color: #fff !important
 }
 
-@media (min-width: 768px){
-	#sidebar-wrapper{
-		margin-left: 0
-	}
-	
-	#page-content-wrapper{
-		min-width: 0;
-		width: 100%
-	}
-	
-	#wrapper.toggled #sidebar-wrapper{
-		margin-left: -15rem;
-		display: none
-	}
-	
-	.w-md-75 {
-		width: 75% !important;
-	}
-	
-	.h-md-75 {
-		height: 75% !important;
-	}
-}
+/* Estilo de formulario */
 
-
-.card0{
-	margin-top: 10px;
-	margin-bottom: 10px
-}
-
-.top-highlight{
-	color: #00C853;
-	font-weight: bold;
-	font-size: 20px
-}
-
-.form-card input, .form-card textarea, .form-card select{
+.form-card input,
+.form-card textarea,
+.form-card select{
 	padding: 10px 15px 5px 15px;
 	border: none;
 	border: 1px solid lightgrey;
@@ -162,12 +147,14 @@ body{
 	letter-spacing: 1px
 }
 
-.form-card input:focus, .form-card textarea:focus .form-card select:focus{
+.form-card input:focus,
+.form-card textarea:focus
+.form-card select:focus{
 	-moz-box-shadow: 0px 0px 0px 1.5px skyblue !important;
 	-webkit-box-shadow: 0px 0px 0px 1.5px skyblue !important;
 	box-shadow: 0px 0px 0px 1.5px skyblue !important;
 	font-weight: bold;
-	border: 1px solid skyblue;
+	border: 1px solid skyblue !important;
 	outline-width: 0
 }
 
@@ -198,6 +185,16 @@ input.btn-success{
 	padding-left: 25px
 }
 
+.input-group textarea{
+	position:relative;
+	height:150px;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius:6px;
+	padding-top: 30px;
+	padding-left: 25px
+}
+
 .input-group select{
 	position:relative;
 	height:70px;
@@ -210,15 +207,28 @@ input.btn-success{
 
 .input-group label{
 	position:absolute;
+	left: 1px;
 	height: 24px;
 	background: none;
 	border-radius: 6px;
 	line-height: 48px;
 	font-size: 15px;
 	color: gray;
-	width:100%;
+	width: calc(100% - 2px);
 	font-weight:100;
-	padding-left: 25px
+	padding-left: 25px;
+	
+	/* border-top: 1px solid lightgrey;  */
+    /* border-left: 1px solid lightgrey;  */
+    /* border-right: 1px solid lightgrey; */
+    /* border-bottom: none; */
+    /* border-top-left-radius: 6px;  */
+    /* border-top-right-radius: 6px; */
+    /* border-bottom-left-radius: 0; */
+    /* border-bottom-right-radius: 0;  */
+	
+	/* background: white; */
+    /* z-index: 2;  */
 }
 
 input:focus + label{
@@ -226,6 +236,10 @@ input:focus + label{
 }
 
 select:focus + label{
+	color: #1E88E5
+}
+
+textarea:focus + label{
 	color: #1E88E5
 }
 
@@ -241,7 +255,7 @@ select:focus + label{
 
 
 
-
+/* Estilo de tarjetas de senderos */
 
 .img-header {
   width: 100%;
@@ -332,4 +346,18 @@ select:focus + label{
 }
 .text-lg {
     font-size: 75%;
+}
+
+
+/* Estilo de navbar */
+
+.nav-link.btn-transparent {
+    background-color: transparent; 
+    color: #007bff; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.nav-link.btn-transparent:hover {
+    background-color: rgba(0, 123, 255, 0.1); 
+    color: #0056b3;
 }

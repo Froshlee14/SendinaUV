@@ -30,7 +30,7 @@
 
 <body>
 
-	<div class="jumbotron bg-sendina text-center mb-0 rounded-0">
+	<div class="jumbotron bg-sendina-lt text-center mb-0 rounded-0">
 		<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
 	</div>
 	

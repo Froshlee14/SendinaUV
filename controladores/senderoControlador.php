@@ -30,6 +30,7 @@ class SenderoControlador extends Controlador{
 	function lista(){
 		$senderos = $this->modelo->selectAll();
 		$this->vista->sendero_lista = $senderos;
+		//var_dump($senderos);
 		$this->renderizar();
 	}
 	
