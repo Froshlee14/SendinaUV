@@ -9,7 +9,7 @@
 </head>
 
 
-<body class="bg-sendina-lt">
+<body class="bg-white">
 	
 	<?php  require 'vistas/header.php' ?>
 			
@@ -44,18 +44,32 @@
 			<div class="col-12 col-sm-12 mb-5 mx-auto mx-5">
 				<div class="card rounded bg-sendina-lt border">
 					<div class="card-body p-0">
+					
 						<div class="widget-header bg-primary m-0 p-0 border-0" style="height:250px;">
 							<img class="img-header" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_portada(); ?>">
 						</div>
+						
 						<div class="row align-items-center p-4">
+						
 							<div class="col-lg-2 col-6 mx-auto text-nowrap text-center px-2">
 								<a href="">
 									<img class="d-block mx-auto rounded-circle img-fluid shadow-sm" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_logo(); ?>">
 								</a>
 							</div>
+							
 							<div class="col-lg-7 text-center text-lg-left">
-								<h3 class="d-inline text-primary"><?php echo $sendero->get_nombre(); ?> <span class="badge badge-<?php echo $sendero->get_status() == 1 ? 'success' : 'danger'; ?>"><?php echo $sendero->get_status() == 1 ? 'Activo' : 'Inactivo'; ?></span></h3>
+							
+								<h3 class="d-inline text-primary">
+									<?php echo $sendero->get_nombre(); ?>
+									<?php if (isset($_SESSION['user_id'])): ?>
+										<span class="badge badge-<?php echo $sendero->get_status() == 1 ? 'success' : 'danger'; ?>">
+											<?php echo $sendero->get_status() == 1 ? 'Activo' : 'Inactivo'; ?>
+										</span>
+									<?php endif; ?>
+								</h3>
+								
 								<h6 class="text-black"><?php echo $sendero->get_sede(); ?> </h6>
+								
 								<ul class="list-inline mt-3">
 									<li class="list-inline-item">
 										<a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>" class="btn btn-primary rounded">Ver sendero</a>
@@ -69,7 +83,9 @@
 										<?php } ?>
 									<?php } ?>
 								</ul>
+								
 							</div>
+							
 							<div class="col-lg-2 col-6 mx-auto">
 								<div class="row no-gutters text-center justify-content-end align-items-end">
 									<div class="col">
@@ -78,7 +94,9 @@
 									</div>
 								</div>
 							</div>
+							
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -93,8 +111,6 @@
 	</div>
 	
 	<?php  require 'vistas/footer.php' ?>
-		
-
 
 </body>
 

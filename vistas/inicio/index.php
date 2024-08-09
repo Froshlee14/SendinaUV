@@ -8,7 +8,7 @@
 	<title>Sendina</title>
 </head>
 
-<body class="bg-sendina-lt">
+<body class="bg-light">
 	
 	<?php  require 'vistas/header.php' ?>
 	

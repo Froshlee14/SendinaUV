@@ -34,6 +34,8 @@ class UsuarioControlador extends Controlador{
 		
 		$this->verificaUsuario();
 		
+		//var_dump($_POST);
+		
 		if( !isset($_POST['id_usuario']) ||
 			!isset($_POST['nombre']) ||
 			!isset($_POST['contrasena']) ||

@@ -121,12 +121,7 @@ body{
 	margin-left: 0
 }
 
-.list-group-item.active{
-	z-index: 2;
-	color: #fff;
-	background-color: #fff !important;
-	border-color: #fff !important
-}
+
 
 /* Estilo de formulario */
 
@@ -249,12 +244,6 @@ textarea:focus + label{
 }
 
 
-
-
-
-
-
-
 /* Estilo de tarjetas de senderos */
 
 .img-header {
@@ -361,3 +350,4 @@ textarea:focus + label{
     background-color: rgba(0, 123, 255, 0.1); 
     color: #0056b3;
 }
+

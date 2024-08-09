@@ -5,96 +5,131 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Sendina - Editor</title>
 </head>
 
-<body>
+<body class="bg-primary">
+
 	<?php  require 'vistas/header.php' ?>
-	
-	<div class="container px-5 mt-3">
-	
-		<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>usuario/lista"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
-	
-		<div class="card mb-4">
-			<div class="card-header navbar navbar-expand-sm p-4">
-				<h3> Detalles de usuario </h3>
-			</div>
-		
-			<?php 
-				//var_dump($this->usuario); 
-				//require_once 'entidades/SenderoBean.php';
-				//var_dump($this->zona_lista);
-				
-				$id_usuario = 0;
-				$nombre = '';
-				$contrasena = '';
-				$id_rol_usuario = 1;
-				
-				if($this->usuario !== null){
-					$id_usuario = $this->usuario->get_id_usuario();
-					$nombre = $this->usuario->get_nombre();
-					$contrasena = $this->usuario->get_contrasena();
-					$id_rol_usuario = $this->usuario->get_id_rol_usuario();
-				}
-				
-			?>
 			
-			<div class="card-body">
-				<form action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
+	<?php  require 'vistas/navbar.php' ?>
+	
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+	
+		<form  class="form-card" action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
+	
+			<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>usuario/lista"> <i class="bi bi-arrow-bar-left"> </i> Volver </a>
+		
+			<h3 class="mt-0 mb-4 text-center"> Detalles de usuario </h3>
+		
+			<div class="card mb-4">
+			
+				<?php 
+					//var_dump($this->usuario); 
+					//require_once 'entidades/SenderoBean.php';
+					//var_dump($this->zona_lista);
+					
+					$id_usuario = 0;
+					$nombre = '';
+					$contrasena = '';
+					$id_rol_usuario = 1;
+					
+					if($this->usuario !== null){
+						$id_usuario = $this->usuario->get_id_usuario();
+						$nombre = $this->usuario->get_nombre();
+						$contrasena = $this->usuario->get_contrasena();
+						$id_rol_usuario = $this->usuario->get_id_rol_usuario();
+					}
+					
+				?>
+				
+				<div class="card-body form-card bg-light">
 
 					<p>
 						<!-- <label for="id_usuario">ID usuario</label> -->
 						<input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>" required>
 					</p>
+						
+					<div class="row">
+						<div class="col-12">
+							<div class="input-group"> 
+								<input type="text" name="nombre" placeholder="Usuario" value="<?php echo $nombre ?>" maxlength="20" required> 
+								<label>Nombre de usuario</label> 
+							</div>
+						</div>
+					</div>
 					
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="nombre">Nombre de usuario</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<input class="form-control" type="text" name="nombre" value="<?php echo $nombre ?>" required>
+					<div class="row">
+						<div class="col-12">
+							<div class="input-group"> 
+								<input type="password" name="contrasena" placeholder="" value="<?php echo $contrasena ?>" maxlength="20" required> 
+								<label>Contraseña</label> 
+							</div>
 						</div>
 					</div>
 					
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="contrasena">Contraseña</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<input class="form-control" type="password" name="contrasena" value="<?php echo $contrasena ?>" required>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<div class="col-12 col-sm-3">
-							<label for="id_rol_usuario">Tipo de usuario</label>
-						</div>
-						<div class="col-12 col-sm-9">
-							<select class="form-control" id="id_rol_usuario" name="id_rol_usuario">
-							<?php foreach ($this->rol_usuario_lista as $tu): ?>
-								<option value="<?= $tu->get_id_rol_usuario() ?>" <?= $tu->get_id_rol_usuario() == $id_rol_usuario ? 'selected' : '' ?>>
-									<?php echo $tu->get_rol_usuario(); ?>
-								</option>
-							<?php endforeach; ?>
-							</select>
+					<div class="row">
+						<div class="col-12 ">
+							<div class="input-group"> 
+								<select id="id_rol_usuario" name="id_rol_usuario">
+									<option value="" disabled selected>Selecciona tipo de usuario</option>
+									<?php foreach ($this->rol_usuario_lista as $tu): ?>
+										<option value="<?= $tu->get_id_rol_usuario() ?>" <?= $tu->get_id_rol_usuario() == $id_rol_usuario ? 'selected' : '' ?>>
+										<?php echo $tu->get_rol_usuario(); ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+								<label>Tipo de usuario</label> 
+							</div>
 						</div>
 					</div>
-				
-					<div class="float-right">
-						<input class="btn btn-primary" type="submit" value="Guardar">
-						<?php if($this->usuario !== null){ ?>
-							<a class="btn btn-danger" href="<?php echo constant('URL') ?>usuario/borrar/<?php echo $id_usuario ?>"> Eliminar</a>
-						<?php } ?>
-					</div>
-				</form>
+					
+				</div>
 			</div>
-		</div>
+			
+			
+			<!-- No usar input, el css de los input text tambien le afecta -->
+			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
+			<button class="btn btn-success btn-block text-light mb-3 " type="submit">Guardar cambios</button>
+			
+			<?php if($this->usuario !== null){ ?>
+				<!-- <a  class="btn-block btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero</a> -->
+			
+				<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
+				Borrar usuario
+				</button>
+			<?php } ?>	
+			
+			
+		</form>
 		
 		<p> <?php echo $this->mensaje; ?></p>
 
 	</div>
 	
 	<?php  require 'vistas/footer.php' ?>
+		
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Precaución</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Esta accion es irreversible.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <!-- <button type="button" class="btn btn-danger">Borrar sendero</button> -->
+		<a  class=" btn btn-danger text-light" href="<?php echo constant('URL') ?>usuario/borrar/<?php echo $id_usuario ?>"> Borrar</a>
+      </div>
+    </div>
+  </div>
+</div>
 		
 </body>
 

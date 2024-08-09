@@ -5,113 +5,135 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-	
+	<title>Sendina</title>
 
+    <style>
 	
-<style>
- 	.row {
- 		height: 90vh; 
- 	}
+		#side.sticky-top {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 60px; 
+		}
+		
+		.estacion-seccion{
+			height: 100vh;
+		}
+		
+		.map_card{
+			width: 200px;
+			height:300px,
+		}
 	
-	.map_card{
-		width: 300px;
-		height:auto,
-	}
-	
-	#map {
-		height: 100%;
-		width: 100%;
-	}
-	
-	#info {
-		overflow-y: scroll;
-		height: 100%;
-		scrollbar-width: thin; 
-      }
-</style>
+		#map {
+			width: 100%;
+			height: 300px;
+		}
+
+    </style>
 </head>
 
-<body>
+<body class="bg-white">
+
 	<?php  require 'vistas/header.php' ?>
+			
+	<?php  require 'vistas/navbar.php' ?>
 	
+	<?php 
+		//var_dump($this->estacion_lista); 
+		//require_once 'entidades/SenderoBean.php';
+		//var_dump($this->zona_lista);
 		
-		<?php 
-			//var_dump($this->estacion_lista); 
-			//require_once 'entidades/SenderoBean.php';
-			//var_dump($this->zona_lista);
+		$id_sendero = 0;
+		$nombre = '';
+		$sede = '';
+		$year = '';
+		$id_zona = 0;
+		$url_logo = '';
+		
+		if($this->sendero !== null){
+		
+			$id_sendero = $this->sendero->get_id_sendero();
+			$nombre = $this->sendero->get_nombre();
+			$sede = $this->sendero->get_sede();
+			$year = $this->sendero->get_year();
+			$id_zona = $this->sendero->get_id_zona();
+			$url_logo = $this->sendero->get_url_logo();
+		}
+		
+	?>
+	
+	<div class="row" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+		<div class="col-md-4 bg-sendina-lt p-0">
+			<div class="sticky-top pl-2" id="side">
 			
-			$id_sendero = 0;
-			$nombre = '';
-			$sede = '';
-			$year = '';
-			$id_zona = 0;
-			$url_logo = '';
-			
-			if($this->sendero !== null){
-				$id_sendero = $this->sendero->get_id_sendero();
-				$nombre = $this->sendero->get_nombre();
-				$sede = $this->sendero->get_sede();
-				$year = $this->sendero->get_year();
-				$id_zona = $this->sendero->get_id_zona();
-				$url_logo = $this->sendero->get_url_logo();
-			}
-			
-		?>
-
-	<div class="row container-fluid no-gutters full-height">
- 		
-		<div id="info" class="col-4">
-			<?php 
-			if ($this->estacion_lista !== null ) {
-				foreach ($this->estacion_lista as $estacion):
-			?>
-				<div class="slide" style="display: none;">
-
-					<?php
-					$recursos =  $estacion->get_recursos();
-					foreach ($recursos as $recurso) {
-						if ($recurso->get_tipo_recurso()=="Imagen"){
-					?>
-						<img src="<?php echo constant('URL').'public/imgs/'.$recurso->get_url() ?>" style="width:100%; ">
-					<?php 
-						}
-						if ($recurso->get_tipo_recurso()=="Video"){
-					?>
-						<video controls>
-							<source src="<?php echo recurso.get_url() ?>" type="video/mp4">
-						</video>
-					<?php
-						}
-					}
-					?>
+				<div id="map" class="container-fluid full-height">
+					<!-- Aquí va el mapa -->
 				</div>
-			<?php   
-				endforeach;
-			}
-			?>
-		</div>
-		<div id="map_container" class="col">
-		
-			<div id="map" class="container-fluid">
-	
-				<!--Aqui va el mapa --> 
-			</div>
 			
+				<nav class="bg-light sidebar mb-2" id="myScrollspy">
+					<div class="list-group">
+						
+						<label  class="list-group-item list-group-item-action p-1 center">ESTACIONES</label>
+						<?php 
+						if ($this->estacion_lista !== null) {
+							foreach ($this->estacion_lista as $index => $estacion):
+						?>
+							<a class="list-group-item list-group-item-action p-1" href="#list-item-<?php echo $index + 1; ?>">
+								<?php echo $estacion->get_nombre(); ?>
+							</a>
+						<?php
+							endforeach;
+						}
+						?>
+					</div>
+				</nav>
+
+			</div>
 		</div>
-    </div>
+		<div class="col">
+		
+				<h2 class="mt-0 mb-4 text-center"> <?php echo $this->sendero->get_nombre()?> </h2>
+				<?php 
+				if ($this->estacion_lista !== null) {
+					foreach ($this->estacion_lista as $index => $estacion):
+				?>
+				<div class="pt-5" id="list-item-<?php echo $index + 1; ?>"> </div>
+				<div class="estacion-seccion">
+					<div class="p-5">
+						<h2 class="text-primary">
+							<?php echo $estacion->get_nombre(); ?>
+						</h2>
+					</div>
+					<div class="px-5">
+						<p>
+							<?php echo $estacion->get_descripcion(); ?>
+						</p>
+					</div>
+				</div>
+				<?php
+					endforeach;
+				}
+				?>
+		</div>
+	</div>
 
 	
 	<?php  require 'vistas/footer.php' ?>
 	
-
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
 <script>
+
+	$(document).ready(function () {
+		$('body').scrollspy({ target: '#myScrollspy', offset: 20 });
+	});
 
   (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
     key: "AIzaSyANYrOfEcKN46yxrjSmY6JTjXLlpXKBK7w",
     v: "weekly",
   });
-  
   
   
   let map;
@@ -120,14 +142,13 @@
   let currentInfoWindow = null;
   var slideIndex = 0;
 
-  //Cargamos las estaciones 
+  //Cargo las estaciones a un arreglo que javascript pueda leer.
   const estaciones = [
       <?php if ($this->estacion_lista !== null) { ?>
           <?php foreach ($this->estacion_lista as $estacion): ?>
               {
                   nombre: "<?php echo $estacion->get_nombre() ?>",
                   numero: <?php echo $estacion->get_numero() ?>,
-                  descripcion: "<?php echo $estacion->get_descripcion() ?>",
                   latitud: <?php echo $estacion->get_latitud() ?>,
                   longitud: <?php echo $estacion->get_longitud() ?>
               },
@@ -172,13 +193,14 @@
       mapTypeId: 'terrain',
       zoomControl: true,
     });
-    
+	
+
     const pathCoordinates = [];
 
-    estaciones.forEach(estacion => {
+    estaciones.forEach((estacion,index )=> {
     	const content = document.createElement('div');
         content.className = 'map_card';
-        content.innerHTML = ' <h4 class="text-primary">'+estacion.nombre+'</h4> <p class="text-secondary">'+estacion.descripcion+'</p>';
+        content.innerHTML = ' <h4 class="text-primary">'+estacion.nombre+'</h4>';
           
         const infoWindow = new google.maps.InfoWindow({
         	headerContent: `Estacion #${estacion.numero}`,
@@ -190,13 +212,12 @@
         
         const pin = new PinElement({
             //glyph: `${estacion.numero}`,
-            glyphColor: '#FF7F50',
+            //glyphColor: '#FF7F50',
             scale: 1.2,
-            background: '#FFD700',
-            borderColor: '#FF7F50',
+            //background: '#FFD700',
+            //borderColor: '#FF7F50',
             
           });
-    	
     	
         const marker = new AdvancedMarkerElement({
             map: map,
@@ -208,12 +229,19 @@
         
         marker.addListener('click', () => {
             infoWindow.open({anchor: marker});
+			//Ademas de abrir la ventana cambiamos de seccion
+			//en el scrollspy
+			const targetSection = document.querySelector(`#list-item-${index + 1}`);
+			if (targetSection) {
+				targetSection.scrollIntoView({ behavior: 'smooth' });
+			}
           });
         
         markers.push(marker);
         
      	//Agregamos el punto al path para dibujar el sendero
         pathCoordinates.push({ lat: estacion.latitud, lng: estacion.longitud });
+
     });
     
     //A dibujar
@@ -231,85 +259,45 @@
             repeat: '50px' 
           }],
         geodesic: true,
-        strokeColor: '#7CB9E8',
-        strokeOpacity: 0.4,
+        strokeColor: '#fad02c',//'#7CB9E8',
+        strokeOpacity: 0.6,
         strokeWeight: 15,
     });
     trailPath.setMap(map);
-    
-	//Variable para el control del slide
-	slideIndex = 1;
-	cambia_slide(slideIndex);
-	
-	//Controles adicionales
-	//const controlesDiv = document.createElement("div");
-	
-	//Boton para sig. estacion
-	const sig_btn = document.createElement("button");
-	sig_btn.className = "btn btn-primary m-3";
-	sig_btn.textContent = "Siguiente";
-	sig_btn.title = "Cambiar siguiente";
-	sig_btn.type = "button";
-	sig_btn.addEventListener("click", () => {
-		aumenta_indice(1);
-	});
-	
-	//Boton para ant. estacion
-	const ant_btn = document.createElement("button");
-	ant_btn.className = "btn btn-primary m-3";
-	ant_btn.textContent = "Anterior";
-	ant_btn.title = "Cambiar anterior";
-	ant_btn.type = "button";
-	ant_btn.addEventListener("click", () => {
-		aumenta_indice(-1);
-	});
 
-	//Agrego los controles al mapa
-	//controlesDiv.appendChild(ant_btn);
-	//controlesDiv.appendChild(sig_btn);
-	map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(sig_btn);
-	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(ant_btn);
+ }
 
-  }
+	initMap();
 
-  initMap();
+
  
  	//Funcion para centrar el mapa a un punto en especifico 
-	function centrar_mapa(lat, lng) {
+	function centrar_mapa(lat, lng, index) {
 		map.panTo({ lat: lat, lng: lng });
-	}
-
-	//Funcion para aumentar el indice del slide
-	function aumenta_indice(n) {
-		cambia_slide(slideIndex += n);
-	}
-	
-	//Funcion para ir a un indice del slide en especifico
-	function marcar_indice(n) {
-		cambia_slide(slideIndex = n);
-	}
-
-	//Funcion para mostrar la informacion del slide actual en
-	//el div de informacion
-	function cambia_slide(n) {
-		var i;
-		var x = document.getElementsByClassName("slide");
-		if (n > x.length) {slideIndex = 1}
-		if (n < 1) {slideIndex = x.length}
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";  
+		
+		// Cierra el InfoWindow actual
+		if (currentInfoWindow) {
+			currentInfoWindow.close();
 		}
 		
-		x[slideIndex-1].style.display = "block";
-    
-		const estacion = estaciones[slideIndex - 1];
-		centrar_mapa(estacion.latitud, estacion.longitud);
-		if (currentInfoWindow) {
-	         currentInfoWindow.close();
-	     }
-		currentInfoWindow = infoWindows[slideIndex - 1]
-		infoWindows[slideIndex - 1].open(map, markers[slideIndex - 1]);
+		// Abre el InfoWindow de la estación correspondiente
+		currentInfoWindow = infoWindows[index];
+		currentInfoWindow.open(map, markers[index]);
 	}
+
+	
+	$(document).ready(function () {
+		$(window).on('activate.bs.scrollspy', function (e, obj) {
+			console.log("Se activó el elemento:", obj.relatedTarget);
+	
+			const index = parseInt(obj.relatedTarget.split('-')[2]) - 1; 
+			if (estaciones[index]) {
+				centrar_mapa(estaciones[index].latitud, estaciones[index].longitud, index);
+			}
+		});
+	});
+	
+
 </script>
 
 	

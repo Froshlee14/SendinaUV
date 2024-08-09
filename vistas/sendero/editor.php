@@ -5,17 +5,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Sendina - Editor</title>
 
 </head>
 
-<body class="bg-primary">
+<body class="bg-sendina-lt">
 
 	<?php  require 'vistas/header.php' ?>
-
-	<!-- <?php  require 'vistas/sidebar.php' ?> -->
 			
 	<?php  require 'vistas/navbar.php' ?>
+	
+	<div class="bg-light border-top"> 
+		<div class="mx-4">
+			 <p class="text-secondary"> Sendero > Estacion > Recurso </p>
+		</div>
+	</div>
 			
 	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 	
@@ -158,7 +162,7 @@
 		
 		<p> <?php echo $this->mensaje; ?></p>
 		
-		</div>
+	</div>
 	
 
 	<?php if($id_sendero != 0){ ?>	
