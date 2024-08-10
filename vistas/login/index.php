@@ -17,7 +17,7 @@
             border-radius: .3rem;
         }
         body {
-            background-color: #007bff; /* bg-primary */
+            background-color: #007bff;
         }
     </style>
 </head>

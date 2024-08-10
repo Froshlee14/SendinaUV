@@ -23,10 +23,10 @@
 	  font-family: "Varela Round", sans-serif;
 	}
 	
-	.jumbotron {
+	.banner {
 		padding: 0;
-		height: 150px;
-		background-image: url('<?php echo constant('URL') ?>/public/imgs/banner.png');
+		height: 200px;
+		background-image: linear-gradient(to bottom, rgba(117, 183, 221, 0) 50%, rgba(117, 183, 221, 1) 100%), url('<?php echo constant('URL') ?>/public/imgs/banner.png');
 		background-size: cover;
 		background-position: center;
 		display: flex;
@@ -40,7 +40,7 @@
 
 <body>
 
-	<div class="jumbotron bg-sendina-lt text-center mb-0 rounded-0">
+	<div class="jumbotron bg-sendina-lt text-center mb-0 rounded-0 banner">
 		<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
 	</div>
 	

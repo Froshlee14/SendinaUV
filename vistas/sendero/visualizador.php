@@ -9,10 +9,10 @@
 
     <style>
 	
-		#side.sticky-top {
+		.sidebar-map{
 			position: -webkit-sticky;
 			position: sticky;
-			top: 60px; 
+			top: 42px; 
 		}
 		
 		.estacion-seccion{
@@ -27,6 +27,19 @@
 		#map {
 			width: 100%;
 			height: 300px;
+		}
+		
+		@media (max-width: 768px) {
+
+			#myScrollspy {
+				display: none;
+			}
+		}
+		
+		.list-group-item-action.active {
+			background-color:#7c7c7c !important; 
+			color: white !important;
+			border: none;
 		}
 
     </style>
@@ -61,25 +74,25 @@
 		}
 		
 	?>
-	
-	<div class="row" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-		<div class="col-md-4 bg-sendina-lt p-0">
-			<div class="sticky-top pl-2" id="side">
+	<div class="container-fluid">
+	<div class="row rounded" data-spy="scroll" data-target="#myScrollspy" data-offset="200">
+		<div class="col-sm-4 col-12 bg-sendina ">
+			<div class="sidebar-map">
 			
-				<div id="map" class="container-fluid full-height">
+				<div id="map" class="container-fluid full-height mb-3 rounded border border-dark">
 					<!-- Aquí va el mapa -->
 				</div>
 			
-				<nav class="bg-light sidebar mb-2" id="myScrollspy">
-					<div class="list-group">
+				<nav class="bg-light sidebar rounded" id="myScrollspy">
+					<div class="list-group border-0 rounded">
 						
-						<label  class="list-group-item list-group-item-action p-1 center">ESTACIONES</label>
+						<label  class="list-group-item list-group-item-action p-2 text-center bg-primary text-white">ESTACIONES</label>
 						<?php 
 						if ($this->estacion_lista !== null) {
 							foreach ($this->estacion_lista as $index => $estacion):
 						?>
 							<a class="list-group-item list-group-item-action p-1" href="#list-item-<?php echo $index + 1; ?>">
-								<?php echo $estacion->get_nombre(); ?>
+								<?php echo ($index + 1) .') '. $estacion->get_nombre(); ?>
 							</a>
 						<?php
 							endforeach;
@@ -90,9 +103,13 @@
 
 			</div>
 		</div>
-		<div class="col">
-		
-				<h2 class="mt-0 mb-4 text-center"> <?php echo $this->sendero->get_nombre()?> </h2>
+		<div class="col p-0">
+			
+				<div class="jumbotron bg-light text-center mb-0 rounded-0">
+					<h2> "<?php echo $this->sendero->get_nombre()?>" </h2>
+					<h5 class=" text-secondary"> <?php echo $this->sendero->get_sede()?> </h5>
+				</div>
+
 				<?php 
 				if ($this->estacion_lista !== null) {
 					foreach ($this->estacion_lista as $index => $estacion):
@@ -100,7 +117,7 @@
 				<div class="pt-5" id="list-item-<?php echo $index + 1; ?>"> </div>
 				<div class="estacion-seccion">
 					<div class="p-5">
-						<h2 class="text-primary">
+						<h2 class="text-primary text-center">
 							<?php echo $estacion->get_nombre(); ?>
 						</h2>
 					</div>
@@ -115,6 +132,7 @@
 				}
 				?>
 		</div>
+	</div>
 	</div>
 
 	

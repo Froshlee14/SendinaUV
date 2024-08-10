@@ -25,7 +25,7 @@
 }
 
 .bg-sendina{
-	background:linear-gradient(315deg, #0499f2 0%, #26f596 74%);
+	background:linear-gradient(0deg, #2e89b8 0%, #75b7d9 74%);
 }
 
 .bg-sendina-lt{
@@ -38,9 +38,6 @@ body{
 	/* background: #000000 */
 }
 
-.sticky-offset {
-    top: 0px;
-}
 
 .bi {
   vertical-align: text-bottom;
@@ -340,14 +337,13 @@ textarea:focus + label{
 
 /* Estilo de navbar */
 
-.nav-link.btn-transparent {
-    background-color: transparent; 
-    color: #007bff; 
-    transition: background-color 0.3s, color 0.3s; 
-}
+/* .nav-link.btn-transparent { */
+    /* background-color: transparent;  */
+    /* color: #007bff;  */
+    /* transition: background-color 0.3s, color 0.3s;  */
+/* } */
 
-.nav-link.btn-transparent:hover {
-    background-color: rgba(0, 123, 255, 0.1); 
-    color: #0056b3;
-}
-
+/* .nav-link.btn-transparent:hover { */
+    /* background-color: rgba(0, 123, 255, 0.1);  */
+    /* color: #0056b3; */
+/* } */

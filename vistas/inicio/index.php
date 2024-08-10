@@ -8,17 +8,16 @@
 	<title>Sendina</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-sendina">
+
+	<?php  require 'vistas/navbar.php' ?>
 	
 	<?php  require 'vistas/header.php' ?>
-	
-	<div class="d-flex" id="wrapper">
-		
-		<?php  require 'vistas/sidebar.php' ?>
+
 		
 		<div class="container-fluid p-0">
 		
-			<?php  require 'vistas/navbar.php' ?>
+
 			
 			<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 				
@@ -59,7 +58,13 @@ Descubre, aprende y divierte en nuestros corridos virtuales de nuestros senderos
 		
 		</div>
 
-	</div> 
+
+	
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
 
 </body>
 
