@@ -11,6 +11,7 @@ VALUES
 	
 INSERT INTO tipo_recurso (tipo) 
 VALUES
+	('Cartel'),
 	('Imagen'),
 	('Video'),
 	('PDF'),
