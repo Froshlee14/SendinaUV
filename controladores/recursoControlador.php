@@ -53,6 +53,7 @@ class RecursoControlador extends Controlador{
 		if(
 			!isset($_POST['id_recurso']) ||
 			!isset($_POST['numero']) ||
+			!isset($_POST['nombre']) ||
 			!isset($_POST['url']) ||
 			!isset($_POST['creditos']) ||
 			!isset($_POST['id_tipo_recurso']) 		
@@ -66,6 +67,7 @@ class RecursoControlador extends Controlador{
         $id_estacion = $_SESSION['id_estacion'];
 		$id_recurso = $_POST['id_recurso'];
         $numero = $_POST['numero'];
+		$nombre = $_POST['nombre'];
         $url = $_POST['url'];
         $creditos = $_POST['creditos'];
         $id_tipo_recurso = $_POST['id_tipo_recurso'];
@@ -73,6 +75,7 @@ class RecursoControlador extends Controlador{
         $recurso = new RecursoBean(
             $id_recurso,
             $numero,
+			$nombre,
             $url,
             $creditos,
             $id_tipo_recurso,

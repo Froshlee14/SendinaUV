@@ -73,11 +73,11 @@
 							<div class="input-group"> 
 								<select id="id_rol_usuario" name="id_rol_usuario">
 									<option value="" disabled selected>Selecciona tipo de usuario</option>
-									<?php foreach ($this->rol_usuario_lista as $tu): ?>
+									<?php foreach ($this->rol_usuario_lista as $tu){ ?>
 										<option value="<?= $tu->get_id_rol_usuario() ?>" <?= $tu->get_id_rol_usuario() == $id_rol_usuario ? 'selected' : '' ?>>
 										<?php echo $tu->get_rol_usuario(); ?>
 										</option>
-									<?php endforeach; ?>
+									<?php } ?>
 								</select>
 								<label>Tipo de usuario</label> 
 							</div>

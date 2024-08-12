@@ -4,6 +4,7 @@ class RecursoBean{
 	
 	private $id_recurso;
 	private $numero;
+	private $nombre;
 	private $url;
 	private $creditos;
 	private $id_tipo_recurso;
@@ -13,6 +14,7 @@ class RecursoBean{
     public function __construct(
             $id_recurso = null, 
             $numero = null, 
+			$nombre = null,
             $url = null, 
             $creditos = null, 
             $id_tipo_recurso = null,
@@ -21,6 +23,7 @@ class RecursoBean{
         
         $this->id_recurso = $id_recurso;
         $this->numero = $numero;
+		$this->nombre = $nombre;
         $this->url = $url;
         $this->creditos = $creditos;
         $this->id_tipo_recurso = $id_tipo_recurso;
@@ -43,6 +46,14 @@ class RecursoBean{
 
     public function get_numero() {
         return $this->numero;
+    }
+	
+    public function set_nombre($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function get_nombre() {
+        return $this->nombre;
     }
 	
     public function set_url($url) {

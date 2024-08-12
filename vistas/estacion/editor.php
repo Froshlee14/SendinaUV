@@ -134,7 +134,7 @@
 				<?php
 				if(sizeof($this->recurso_lista) > 0){
 					//var_dump($this->estacion_lista); 
-					foreach ($this->recurso_lista as $recurso):
+					foreach ($this->recurso_lista as $recurso){
 				?>
 				
 				<ul class="list-group list-group-flush p-2">
@@ -148,7 +148,7 @@
 				</ul>
 				
 				<?php
-					endforeach;
+					}
 				}
 				else{
 					echo "No hay recursos";

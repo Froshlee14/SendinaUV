@@ -16,10 +16,10 @@
 			
 
 	
-	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+	<div class="container w-md-75 bg-white p-sm-5 p-3 mt-4 mb-4 border-0 rounded">
 		
 		<div  class="d-flex pb-4">
-			<h3>  Senderos Interpretativos </h3>
+			<h3> Lista de senderos interpretativos</h3>
 			
 			<?php if(isset($_SESSION['user_id'])){ ?>
 				<?php if($_SESSION['user_rol']=="Administrador"){ ?>
@@ -43,7 +43,7 @@
 			
 			
 			<div class="col-12 col-sm-12 mb-5 mx-auto mx-5">
-				<div class="card rounded bg-sendina-lt border">
+				<div class="card rounded bg-dark border">
 					<div class="card-body p-0">
 					
 						<div class="widget-header bg-primary m-0 p-0 border-0" style="height:250px;">
@@ -62,14 +62,17 @@
 							
 								<h3 class="d-inline text-primary">
 									<?php echo $sendero->get_nombre(); ?>
-									<?php if (isset($_SESSION['user_id'])): ?>
-										<span class="badge badge-<?php echo $sendero->get_status() == 1 ? 'success' : 'danger'; ?>">
-											<?php echo $sendero->get_status() == 1 ? 'Activo' : 'Inactivo'; ?>
-										</span>
-									<?php endif; ?>
 								</h3>
 								
-								<h6 class="text-black"><?php echo $sendero->get_sede(); ?> </h6>
+								<h6 class="text-light"><?php echo $sendero->get_sede(); ?> </h6>
+								
+								<h4 class="d-inline text-primary">
+									<?php if (isset($_SESSION['user_id'])){ ?>
+										<span class="badge badge-<?php echo $sendero->get_status() == 1 ? 'success' : 'danger'; ?>">
+											Este sendero es<?php echo $sendero->get_status() == 1 ? ' público' : 'tá oculto'; ?>
+										</span>
+									<?php } ?>
+								</h4>
 								
 								<ul class="list-inline mt-3">
 									<li class="list-inline-item">
@@ -90,7 +93,7 @@
 							<div class="col-lg-2 col-6 mx-auto">
 								<div class="row no-gutters text-center justify-content-end align-items-end">
 									<div class="col">
-										<h2><?php echo $sendero->get_num_estaciones(); ?></h2>
+										<h2 class="text-light"><?php echo $sendero->get_num_estaciones(); ?></h2>
 										<span class="badge badge-pill badge-dark font-weight-normal">estaciones</span>
 									</div>
 								</div>

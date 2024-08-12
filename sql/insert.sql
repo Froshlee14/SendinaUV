@@ -57,17 +57,17 @@ VALUES
 	(1,7),
 	(1,8);
 
-INSERT INTO recurso (numero,url,creditos,id_tipo_recurso)
+INSERT INTO recurso (numero,nombre,url,creditos,id_tipo_recurso)
 VALUES
-	(1,'sendero_agua_xalapa/cartel_01.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_02.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_03.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_04_1.png', ' Universidad Veracruzana', 1),
-	(2,'sendero_agua_xalapa/cartel_04_2.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_05.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_06.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_07.png', ' Universidad Veracruzana', 1),
-	(1,'sendero_agua_xalapa/cartel_08.png', ' Universidad Veracruzana', 1);
+	(1,'Cartel 1','sendero_agua_xalapa/cartel_01.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 2','sendero_agua_xalapa/cartel_02.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 3','sendero_agua_xalapa/cartel_03.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 4','sendero_agua_xalapa/cartel_04_1.png', ' Universidad Veracruzana', 1),
+	(2,'Cartel 5','sendero_agua_xalapa/cartel_04_2.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 6','sendero_agua_xalapa/cartel_05.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 7','sendero_agua_xalapa/cartel_06.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 8','sendero_agua_xalapa/cartel_07.png', ' Universidad Veracruzana', 1),
+	(1,'Cartel 9','sendero_agua_xalapa/cartel_08.png', ' Universidad Veracruzana', 1);
 
 INSERT INTO estacion_recurso (id_estacion,id_recurso)
 VALUES

@@ -12,7 +12,7 @@
 		.sidebar-map{
 			position: -webkit-sticky;
 			position: sticky;
-			top: 42px; 
+			top: 70px; 
 		}
 		
 		.estacion-seccion{
@@ -133,9 +133,9 @@
 		}
 		
 	?>
-	<div class="container bg-white p-5 mt-4 mb-4 border-0 rounded">
+	<div class="container bg-white p-0 mt-4 mb-4 border-0 rounded">
 		<div class="row rounded" data-spy="scroll" data-target="#myScrollspy" data-offset="200">
-			<div class="col-sm-5 col-12 bg-white px-0 mx-0 pr-5">
+			<div class="col-sm-5 col-12 p-4 mx-0 bg-light border">
 				<div class="sidebar-map">
 				
 					<div id="map" class="container-fluid full-height rounded mb-3 border">
@@ -148,13 +148,13 @@
 							<label  class="list-group-item list-group-item-action p-2 text-center bg-primary text-white">ESTACIONES</label>
 							<?php 
 							if ($this->estacion_lista !== null) {
-								foreach ($this->estacion_lista as $index => $estacion):
+								foreach ($this->estacion_lista as $index => $estacion){
 							?>
 								<a class="list-group-item list-group-item-action p-1" href="#list-item-<?php echo $index + 1; ?>">
 									<?php echo ($index + 1) .') '. $estacion->get_nombre(); ?>
 								</a>
 							<?php
-								endforeach;
+								}
 							}
 							?>
 						</div>
@@ -162,7 +162,7 @@
 
 				</div>
 			</div>
-			<div class="col p-0">
+			<div class="col p-5">
 				
 				<div class="jumbotron bg-light text-center mb-0 rounded-0">
 					<h2> "<?php echo $this->sendero->get_nombre()?>" </h2>
@@ -215,9 +215,13 @@
 								?>
 									<div class="col-md-4 col-4 mb-4 rounded">
 										<div class="thumbnail-container position-relative rounded square-thumbnail">
-											<img src="<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>" class="img-thumbnail" style="cursor: pointer;" onclick="showModal('<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>')">
+										
+											<img src="<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>" class="img-thumbnail" style="cursor: pointer;" 
+											onclick="showModal( '<?php echo $recurso->get_nombre(); ?>','<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>', '<?php echo $recurso->get_creditos(); ?>')">
+											
 											<div class="overlay-text position-absolute w-100 h-100 d-flex justify-content-center align-items-center">
 												<span class="text-white">Ver imagen</span>
+												
 											</div>
 										</div>
 									</div>
@@ -240,10 +244,14 @@
 								?>
 									<div class="col-md-12 col-12 mb-4 rounded">
 										<div class="thumbnail-container position-relative rounded rectangular-thumbnail">
-											<img src="<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>" class="img-thumbnail" style="cursor: pointer;" onclick="showModal('<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>')">
+										
+											<img src="<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>" class="img-thumbnail" style="cursor: pointer;" 
+											onclick="showModal( '<?php echo $recurso->get_nombre(); ?>','<?php echo constant('URL') . '/public/imgs/'.$recurso->get_url(); ?>', '<?php echo $recurso->get_creditos(); ?>')">
+											
 											<div class="overlay-text position-absolute w-100 h-100 d-flex justify-content-center align-items-center">
 												<span class="text-white">Ver cartel</span>
 											</div>
+											
 										</div>
 									</div>
 								<?php 
@@ -292,14 +300,18 @@
 	<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg">
 			<div class="modal-content">
-				<div class="modal-header">
-					<!-- <h5 class="modal-title" id="imageModalLabel">Cartel</h5> -->
+				<div class="modal-header border-0">
+					<span class="text-primary" id="modal_nombre"></span>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body p-0">
-					<img id="modalImage" src="" class="img-fluid">
+				<div class="modal-body p-0 border-0">
+					<img id="modal_imagen" src="" class="img-fluid">
+				</div>
+				
+				<div class="modal-footer border-0">
+					Créditos: <span id="modal_creditos"></span>
 				</div>
 			</div>
 		</div>
@@ -319,15 +331,12 @@
 	});
 	
 
-  function showModal(imageUrl) {
-    document.getElementById('modalImage').src = imageUrl;
-    var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-    imageModal.show();
-  }
-
-
-	
-	
+	function showModal(nombre, url, credits) {
+		document.getElementById('modal_nombre').innerText = nombre;
+		document.getElementById('modal_imagen').src = url;
+		document.getElementById('modal_creditos').innerText = credits;
+		$('#imageModal').modal('show');
+	}
 	
 	
 
@@ -346,14 +355,14 @@
   //Cargo las estaciones a un arreglo que javascript pueda leer.
   const estaciones = [
       <?php if ($this->estacion_lista !== null) { ?>
-          <?php foreach ($this->estacion_lista as $estacion): ?>
+          <?php foreach ($this->estacion_lista as $estacion){ ?>
               {
                   nombre: "<?php echo $estacion->get_nombre() ?>",
                   numero: <?php echo $estacion->get_numero() ?>,
                   latitud: <?php echo $estacion->get_latitud() ?>,
                   longitud: <?php echo $estacion->get_longitud() ?>
               },
-          <?php endforeach; ?>
+          <?php } ?>
       <?php } ?>
   ];
   

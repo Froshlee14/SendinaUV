@@ -67,7 +67,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS recurso (
   id_recurso INT NOT NULL AUTO_INCREMENT,
   numero INT NULL,
-  url VARCHAR(500) NULL,
+  nombre VARCHAR(50) NULL,
+  url TEXT NULL,
   creditos VARCHAR(100) NULL,
   id_tipo_recurso INT NULL,
   PRIMARY KEY (id_recurso),

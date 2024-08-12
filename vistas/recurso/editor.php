@@ -34,6 +34,7 @@
 					
 					$id_recurso = 0;
 					$numero = $this->numero;
+					$nombre = '';
 					$url = '';
 					$creditos = '';
 					$id_tipo_recurso ='';
@@ -41,6 +42,7 @@
 					if($this->recurso !== null){
 						$id_recurso = $this->recurso->get_id_recurso();
 						$numero = $this->recurso->get_numero();
+						$nombre = $this->recurso->get_nombre();
 						$url = $this->recurso->get_url();
 						$creditos = $this->recurso->get_creditos();
 						$id_tipo_recurso = $this->recurso->get_id_tipo_recurso();
@@ -66,11 +68,11 @@
 						<div class="col-12 col-sm-9">
 							<div class="input-group">
 								<select id="id_tipo_recurso" name="id_tipo_recurso">
-								<?php foreach ($this->tipo_recurso_lista as $tr): ?>
+								<?php foreach ($this->tipo_recurso_lista as $tr){ ?>
 									<option value="<?= $tr->get_id_tipo_recurso() ?>" <?= $tr->get_id_tipo_recurso() == $id_tipo_recurso ? 'selected' : '' ?>>
 										<?php echo $tr->get_tipo_recurso(); ?>
 									</option>
-								<?php endforeach; ?>
+								<?php } ?>
 								</select>
 								<label>Tipo de recurso</label> 
 							</div>
@@ -81,7 +83,16 @@
 					<div class="row">
 						<div class="col">
 							<div class="input-group">
-								<input type="text" name="url" placeholder="" value="<?php echo $url ?>" maxlength="500" required> 
+								<input type="text" name="nombre" placeholder="" value="<?php echo $nombre ?>" required> 
+								<label>Nombre del recurso</label> 
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							<div class="input-group">
+								<input type="text" name="url" placeholder="" value="<?php echo $url ?>" required> 
 								<label>URL del recurso</label> 
 							</div>
 						</div>

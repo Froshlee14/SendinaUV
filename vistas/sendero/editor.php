@@ -112,11 +112,11 @@
 							<div class="input-group"> 
 								<select id="id_zona" name="id_zona">
 									<option value="" disabled selected>Select your option</option>
-									<?php foreach ($this->zona_lista as $z): ?>
+									<?php foreach ($this->zona_lista as $z){ ?>
 										<option value="<?= $z->get_id_zona() ?>" <?= $z->get_id_zona() == $id_zona ? 'selected' : '' ?>>
 											<?php echo $z->get_nombre(); ?>
 										</option>
-									<?php endforeach; ?>
+									<?php } ?>
 								</select>
 								<label>Zona</label> 
 							</div>
@@ -179,7 +179,7 @@
 				<?php
 				if(sizeof($this->estacion_lista) > 0){
 					//var_dump($this->estacion_lista); 
-					foreach ($this->estacion_lista as $estacion):
+					foreach ($this->estacion_lista as $estacion){
 				?>
 				
 				
@@ -195,7 +195,7 @@
 				
 				
 				<?php
-					endforeach;
+					}
 				}
 				else{
 					echo "No hay estaciones";
