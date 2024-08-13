@@ -53,7 +53,13 @@
 						<?php } ?>
 						<li class="nav-item">
 							<a class="nav-link btn btn-link btn-transparent py-0 mr-3 text-secondary" href="<?php echo constant('URL') ?>login/salir">
-								<i class="bi bi-door-closed-fill"></i> Cerrar sesion
+								<i class="bi bi-door-closed-fill"></i> 
+								<?php		
+								if(isset($_SESSION['user_id'])){
+									echo $_SESSION['user_rol']; 
+								}
+								?>
+								 - Cerrar sesion
 							</a>
 						</li>
 					<?php } ?>

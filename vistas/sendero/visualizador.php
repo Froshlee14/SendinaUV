@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sendina</title>
+	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
 
     <style>
 	
@@ -162,7 +163,7 @@
 
 				</div>
 			</div>
-			<div class="col p-5">
+			<div class="col px-md-5 bg-white">
 				
 				<div class="jumbotron bg-light text-center mb-0 rounded-0">
 					<h2> "<?php echo $this->sendero->get_nombre()?>" </h2>
@@ -176,12 +177,12 @@
 					<div class="pt-5" id="list-item-<?php echo $index + 1; ?>"> </div>
 				
 					<div class="estacion-seccion">
-						<div class="p-5">
+						<div class="px-0 py-5">
 							<h2 class="text-primary text-center">
 								<?php echo $estacion->get_nombre(); ?>
 							</h2>
 						</div>
-						<div class="px-md-5">
+						<div class="px-0 py-5">
 							<p>
 								<?php echo $estacion->get_descripcion(); ?>
 							</p>

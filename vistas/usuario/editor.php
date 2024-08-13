@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sendina - Editor</title>
+	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
 </head>
 
 <body class="bg-sendina">
@@ -92,13 +93,19 @@
 			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
 			<button class="btn btn-success btn-block text-light mb-3 " type="submit">Guardar cambios</button>
 			
-			<?php if($this->usuario !== null){ ?>
-				<!-- <a  class="btn-block btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero</a> -->
+			<?php 
+			if($this->usuario !== null){
+				//No se puede borrar el administrador principal
+				if($id_usuario != 1){
+			?>
 			
 				<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
-				Borrar usuario
+					Borrar usuario
 				</button>
-			<?php } ?>	
+			<?php 
+				}
+			}
+			?>	
 			
 			
 		</form>

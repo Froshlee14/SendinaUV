@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sendina - Editor</title>
+	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
 </head>
 
 <body class="bg-sendina">
@@ -113,13 +114,19 @@
 			
 			<!-- No usar input, el css de los input text tambien le afecta -->
 			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
-			<button class="btn btn-block btn-success text-light mb-3 float-right" type="submit">Guardar cambios</button>
+			<button class="btn btn-block btn-success text-light mb-3" type="submit">Guardar cambios</button>
 			
-			<?php if($this->recurso	 !== null){ ?>
+			<?php 
+			if($this->recurso	 !== null){ 
+				if($_SESSION['user_rol']=="Administrador"){
+			?>
 				<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
-				Borrar estación
+					Borrar estación
 				</button>
-			<?php } ?>
+			<?php 
+				}
+			}
+			?>
 		
 		</form>
 	

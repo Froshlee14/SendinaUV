@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sendina - Editor</title>
+	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
 
 </head>
 
@@ -150,13 +151,17 @@
 			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
 			<button class="btn btn-success btn-block text-light mb-3 " type="submit">Guardar cambios</button>
 			
-			<?php if($this->sendero !== null){ ?>
-				<!-- <a  class="btn-block btn btn-danger text-light" href="<?php echo constant('URL') ?>sendero/borrar/<?php echo $id_sendero ?>"> Eliminar sendero</a> -->
-			
+			<?php 
+			if($this->sendero !== null){ 
+				 if($_SESSION['user_rol']=="Administrador"){
+			?>
 				<button type="button" class="btn-block btn btn-danger text-light" data-toggle="modal" data-target="#exampleModal">
-				Borrar sendero
+					Borrar sendero
 				</button>
-			<?php } ?>	
+			<?php 
+				}
+			} 
+			?>	
 			
 		</form>
 		
@@ -170,8 +175,11 @@
 	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 
 		<h5 class=" mb-3 text-center"> ESTACIONES DE SENDERO </h5>
-		<a  class="btn btn-block btn-primary ml-auto mb-3" href="<?php echo constant('URL').'estacion/editar/0/'.(sizeof($this->estacion_lista)+1)?>"> Nueva estacion </a>
-
+		
+		<?php if($_SESSION['user_rol']=="Administrador"){ ?>
+			<a  class="btn btn-block btn-primary ml-auto mb-3" href="<?php echo constant('URL').'estacion/editar/0/'.(sizeof($this->estacion_lista)+1)?>"> Nueva estacion </a>
+		<?php } ?>	
+			
 		<div class="card mb-4">
 			
 			<div class="card-body form-card bg-light">
