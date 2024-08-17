@@ -1,5 +1,9 @@
 /* Estilos generales */
 
+body, h1, h2, h3, h4, h5, h6  {
+  font-family: "Varela Round", sans-serif;
+}
+
 @media (min-width: 768px){
 	#sidebar-wrapper{
 		margin-left: 0
@@ -333,6 +337,40 @@ textarea:focus + label{
 .text-lg {
     font-size: 75%;
 }
+
+
+/* Estilo de header */
+
+.separator {
+	background: transparent;
+	margin-top: -48px;
+	position: relative;
+	z-index: 1; 
+	height: 60px;
+}
+
+.separator svg {
+	display: block;
+}
+
+.separator path {
+	fill: #75b7d9; 
+}
+
+
+@media (max-width: 767px) {
+	.banner{
+		height: 200px; 
+		background-size: cover;
+	}
+	
+	.separator {
+		margin-top: -10px;
+		height: 20px;
+	}
+}
+	
+
 
 
 /* Estilo de navbar */

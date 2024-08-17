@@ -31,7 +31,6 @@ class LoginControlador extends Controlador{
 			
 			if ($id_usuario) {
 				$usuario = $this->modeloUsuario->select($id_usuario);
-				var_dump($usuario);
 				
 				if ($contrasena === $usuario->get_contrasena()) {
 					echo "sesion iniciada exitosamente";
@@ -43,14 +42,14 @@ class LoginControlador extends Controlador{
 					$this->redir('inicio');
 				}
 				else{
-					echo "contraseña incorrecta";
+					$this->vista->mensaje = "Contraseña incorrecta.";
 					$this->renderizar();
 				}
 			}
 			
 			else{
-				echo "no se encontro el usuario";
-				//imprimo mensaje en la vista
+				$this->vista->mensaje = "No se encontro el usuario.";
+				$this->renderizar();
 			}
 		
 		}

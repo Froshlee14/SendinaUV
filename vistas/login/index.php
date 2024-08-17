@@ -8,7 +8,7 @@
     <title>Sendina - Autenticación</title>
 	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/custom.css">
 
     <style>
         .gradient-form {
@@ -17,15 +17,13 @@
         .card {
             border-radius: .3rem;
         }
-        body {
-            background-color: #007bff;
-        }
+
     </style>
 </head>
 
-<body>
+<body class="bg-sendina">
 
-<section class="h-100 gradient-form">
+<section class="gradient-form">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-6">
@@ -33,22 +31,33 @@
                     <div class="card-body p-md-5 mx-md-4">
                         <div class="text-center">
                             <img src="<?php echo constant('URL') ?>/public/imgs/logo.png" style="width: 185px;" alt="logo">
-                            <h5 class="mt-1 mb-5 pb-1">Autenticación</h5>
+                            <h5 class="mt-1 mb-5 pb-1 text-secondary">Autenticación</h5>
                         </div>
-                        <form action="<?php echo constant('URL') ?>login/autenticar" method="post" id="senderoForm">
-                            <div class="form-outline mb-4">
-                                <input type="text" name="nombre" class="form-control" required>
-                                <label class="form-label" for="nombre">Nombre de usuario</label>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <input type="password" name="contrasena" class="form-control" required>
-                                <label class="form-label" for="contrasena">Contraseña</label>
-                            </div>
+                        <form class="form-card"  action="<?php echo constant('URL') ?>login/autenticar" method="post" id="senderoForm">
+							
+							<div class="row">
+								<div class="col">
+									<div class="input-group"> 
+										<input type="text" name="nombre"  maxlength="20" required> 
+										<label>Nombre de usuario</label> 
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col">
+									<div class="input-group"> 
+										<input type="password" name="contrasena"  maxlength="20" required> 
+										<label>Contraseña</label> 
+									</div>
+								</div>
+							</div>
+
                             <div class="text-center pt-1 mb-5 pb-1">
                                 <button class="btn btn-primary btn-block fa-lg bg-primary mb-3" type="submit">Iniciar sesión</button>
                                 <a class="text-muted" href="<?php echo constant('URL') ?>inicio">Continuar como invitado</a>
                             </div>
-                            <p><?php echo $this->mensaje; ?></p>
+                            <?php echo $this->mensaje; ?>
                         </form>
                     </div>
                 </div>

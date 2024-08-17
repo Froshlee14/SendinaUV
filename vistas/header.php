@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="<?php echo constant('URL') ?>/public/css/custom.css">
+	<link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/custom.css">
 	<!-- <script src="<?php echo constant('URL') ?>/public/js/custom.js"></script> -->
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 	
 	<style>
-	body, h1, h2, h3, h4, h5, h6  {
-	  font-family: "Varela Round", sans-serif;
-	}
 	
 	.banner {
 		padding: 0;
@@ -34,34 +31,6 @@
 		justify-content: center;
 	}
 	
-	.separator {
-		background: transparent;
-		margin-top: -48px; /* Ajusta el margen superior según el diseño */
-		position: relative;
-		z-index: 1; /* Coloca el SVG por encima del contenido */
-	}
-
-	.separator svg {
-		display: block;
-	}
-
-	.separator path {
-		fill: #75b7d9; /* El color de la onda */
-	}
-
-	
-	@media (max-width: 767px) {
-		.banner{
-			height: 150px; /* Altura ajustada para móviles */
-			background-size: cover;
-		}
-		
-		.separator {
-			margin-top: -38px; /* Ajusta la posición del separador en móviles */
-		}
-	}
-	
-
 	</style>
 
 </head>
@@ -74,7 +43,7 @@
 	</div>
 	
 	<div class="separator">
-		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="60px" viewBox="0 0 1440 60" fill="currentColor">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="currentColor">
 			<path d="M0,20 C120,40 240,0 360,20 C480,40 600,0 720,20 C840,40 960,0 1080,20 C1200,40 1320,0 1440,20 L1440,60 L0,60 Z"></path>
 		</svg>
 	</div>

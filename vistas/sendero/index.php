@@ -62,7 +62,9 @@
 							<div class="col-lg-7 text-center text-lg-left">
 							
 								<h3 class="d-inline text-primary">
-									<?php echo $sendero->get_nombre(); ?>
+									<a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>" class="">
+										<?php echo $sendero->get_nombre(); ?>
+									</a>
 								</h3>
 								
 								<h6 class="text-light"><?php echo $sendero->get_sede(); ?> </h6>
@@ -76,9 +78,9 @@
 								</h4>
 								
 								<ul class="list-inline mt-3">
-									<li class="list-inline-item">
+									<!-- <li class="list-inline-item">
 										<a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>" class="btn btn-primary rounded">Ver sendero</a>
-									</li>
+									</li> -->
 									
 									<?php if(isset($_SESSION['user_id'])){ ?>
 										<?php if($_SESSION['user_rol']=="Administrador" || $_SESSION['user_rol']=="Editor" ){ ?>
