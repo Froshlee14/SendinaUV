@@ -46,14 +46,14 @@
 		.gallery-container {
 		  display: flex;
 		  flex-wrap: wrap;
-		  justify-content: center; /* Centra las columnas horizontalmente */
+		  justify-content: center; 
 		}
 
 		.gallery-container .col-lg-3,
 		.gallery-container .col-md-4,
 		.gallery-container .col-6 {
 		  display: flex;
-		  justify-content: center; /* Centra las imágenes dentro de cada columna */
+		  justify-content: center;
 		}
 
 		.gallery-container img {
@@ -64,7 +64,7 @@
 
 		.square-thumbnail {
 			width: 100%;
-			padding-top: 100%; /* Relación de aspecto 1:1 */
+			padding-top: 100%; 
 			position: relative;
 		}
 
@@ -74,12 +74,12 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			object-fit: cover; /* Para que la imagen se ajuste al contenedor cuadrado */
+			object-fit: cover;
 		}
 
 		.rectangular-thumbnail {
 			width: 100%;
-			padding-top: 40%; /* Relación de aspecto 16:9 */
+			padding-top: 40%; 
 			position: relative;
 		}
 
@@ -89,7 +89,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			object-fit: cover; /* Para que la imagen se ajuste al contenedor rectangular */
+			object-fit: cover; 
 		}
 
 		.overlay-text {
@@ -100,7 +100,7 @@
 		  font-size: 1.2em;
 		  font-weight: bold;
 		  text-align: center;
-		  pointer-events: none; /* Permite que los clics pasen a través del overlay */
+		  pointer-events: none;
 		}
     </style>
 </head>
@@ -387,22 +387,22 @@
     // Configuracion del mapa
     const zoom = 20
     map = new Map(document.getElementById("map"), {
-      zoom: zoom,
-      minZoom: zoom - 1,
-      maxZoom: zoom + 2,
-      gestureHandling: "cooperative",
-      zoomControlOptions: {
-          position: google.maps.ControlPosition.TOP_RIGHT,
-      },
-      center: initialPosition,
-      mapId: "DEMO_MAP_ID",
-      //disableDefaultUI: true,
-      fullscreenControl: false,
-      streetViewControl: false,
-      mapTypeControl: true,
-      mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-      mapTypeId: 'terrain',
-      zoomControl: true,
+		zoom: zoom,
+		minZoom: zoom - 1,
+		maxZoom: zoom + 2,
+		gestureHandling: "cooperative",
+		zoomControlOptions: {
+			position: google.maps.ControlPosition.TOP_RIGHT,
+		},
+		center: initialPosition,
+		mapId: "DEMO_MAP_ID",
+		//disableDefaultUI: true,
+		fullscreenControl: true,
+		streetViewControl: false,
+		mapTypeControl: true,
+		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+		mapTypeId: 'terrain',
+		zoomControl: true,
     });
 	
 

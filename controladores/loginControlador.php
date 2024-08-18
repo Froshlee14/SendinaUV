@@ -48,7 +48,7 @@ class LoginControlador extends Controlador{
 			}
 			
 			else{
-				$this->vista->mensaje = "No se encontro el usuario.";
+				$this->vista->mensaje = "No se encontró el usuario.";
 				$this->renderizar();
 			}
 		

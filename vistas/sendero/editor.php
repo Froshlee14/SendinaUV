@@ -13,20 +13,28 @@
 <body class="bg-sendina">
 
 	<?php  require 'vistas/navbar.php' ?>
+	
+	<div class="bg-secondary border-bottom border-dark sticky-2 p-1">
+		<div class="container">
+			<span class="text-white"> 
+				<a href="<?php echo constant('URL') ?>sendero/lista" 
+				class="btn btn-secondary p-0 text-white">
+					<i class="bi bi-list-ul"></i> Senderos 
+				</a>
+				<a href="#" class="btn btn-secondary p-0 text-dark mx-0">
+					/ Detalles de sendero 
+				</a>
+			</span>
+		</div>
+	</div>
 
 	<?php  require 'vistas/header.php' ?>
 	
-	<!-- <div class="bg-light border-top">  -->
-		<!-- <div class="mx-4"> -->
-			 <!-- <p class="text-secondary"> Sendero > Estacion > Recurso </p> -->
-		<!-- </div> -->
-	<!-- </div> -->
+
 			
 	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 	
 		<form class="form-card" action="<?php echo constant('URL') ?>sendero/guardar" method="post" id="senderoForm">
-		
-			<a class="btn btn-secondary mb-3" href="<?php echo constant('URL') ?>sendero/lista"> <i class="bi bi-arrow-bar-left"></i> Volver </a>
 		
 			<h3 class="mt-0 mb-4 text-center">DETALLES DE SENDERO</h3>
 		

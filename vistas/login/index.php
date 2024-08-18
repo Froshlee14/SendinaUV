@@ -24,7 +24,9 @@
 <body class="bg-sendina">
 
 <section class="gradient-form">
+
     <div class="container py-5 h-100">
+	
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-6">
                 <div class="card rounded-3 text-black">
@@ -52,12 +54,19 @@
 									</div>
 								</div>
 							</div>
+							
+							<?php if (!empty($this->mensaje)){ ?>
+								<div class="alert alert-danger alert-dismissible">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									<strong> <?php echo $this->mensaje; ?> </strong>
+								</div>
+							<?php } ?>
 
                             <div class="text-center pt-1 mb-5 pb-1">
                                 <button class="btn btn-primary btn-block fa-lg bg-primary mb-3" type="submit">Iniciar sesión</button>
                                 <a class="text-muted" href="<?php echo constant('URL') ?>inicio">Continuar como invitado</a>
                             </div>
-                            <?php echo $this->mensaje; ?>
+							
                         </form>
                     </div>
                 </div>
@@ -65,6 +74,20 @@
         </div>
     </div>
 </section>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+
+<script>
+$(document).ready(function(){
+  $('.toast').toast('show');
+});
+</script>
+
+
 
 </body>
 

@@ -14,21 +14,20 @@
 	
 	<?php  require 'vistas/navbar.php' ?>
 	<?php  require 'vistas/header.php' ?>
-			
-
 	
 	<div class="container w-md-75 bg-white p-sm-5 p-3 mt-4 mb-4 border-0 rounded">
 		
-		<div  class="d-flex pb-4">
-			<h3> Lista de senderos interpretativos</h3>
+
+			<h3 class="mt-0 mb-4 text-center"> Lista de senderos </h3>
 			
 			<?php if(isset($_SESSION['user_id'])){ ?>
 				<?php if($_SESSION['user_rol']=="Administrador"){ ?>
-					<a class="btn btn-primary ml-auto" href="<?php echo constant('URL').'sendero/editar/0'?>"> Nuevo Sendero </a>
+					<a class="btn btn-block btn-primary ml-auto mb-5" href="<?php echo constant('URL').'sendero/editar/0'?>"> 
+						Agregar Sendero
+					</a>
 				<?php } ?>
 			<?php } ?>
-			
-		</div>
+
 		
 		<div class="row">
 		
@@ -45,24 +44,23 @@
 			
 			<div class="col-12 col-sm-12 mb-5 mx-auto mx-5">
 				<div class="card rounded bg-dark border">
-					<div class="card-body p-0">
+				
+					<div class="widget-header bg-primary m-0 p-0 border-0" style="height:250px;">
+						<img class="img-header" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_portada(); ?>">
+					</div>
 					
-						<div class="widget-header bg-primary m-0 p-0 border-0" style="height:250px;">
-							<img class="img-header" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_portada(); ?>">
-						</div>
+					<div class="card-body p-0">
 						
 						<div class="row align-items-center p-4">
 						
 							<div class="col-lg-2 col-6 mx-auto text-nowrap text-center px-2">
-								<a href="">
-									<img class="d-block mx-auto rounded-circle img-fluid shadow-sm" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_logo(); ?>">
-								</a>
+								<img class="d-block mx-auto rounded-circle img-fluid shadow-sm" src="<?php  echo constant('URL') . '/public/imgs/'. $sendero->get_url_logo(); ?>">
 							</div>
 							
 							<div class="col-lg-7 text-center text-lg-left">
 							
 								<h3 class="d-inline text-primary">
-									<a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>" class="">
+									<a href="<?php echo constant('URL') . 'sendero/ver/' . $sendero->get_id_sendero(); ?>" class="stretched-link">
 										<?php echo $sendero->get_nombre(); ?>
 									</a>
 								</h3>
@@ -101,6 +99,7 @@
 									</div>
 								</div>
 							</div>
+
 							
 						</div>
 						

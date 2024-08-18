@@ -1,5 +1,5 @@
 
-<div class="sticky-top bg-white border" style="background-color: #e3f2fd;">
+<div class="sticky-top bg-white border">
 
 	<nav class=" navbar navbar-expand-lg container"> 
 	
@@ -15,7 +15,7 @@
 				<ul class="navbar-nav me-4 my-3 my-lg-0">
 					<li class="nav-item">
 						<a class="nav-link btn btn-link btn-transparent	py-0 mr-3 text-secondary" href="<?php echo constant('URL') ?>inicio">
-							<i class="bi bi-house-door-fill"></i> Inicio
+							<i class="bi bi-house-fill"></i> Inicio
 						</a>
 					</li>
 					<li class="nav-item">
@@ -23,6 +23,12 @@
 							<i class="bi bi-signpost-2-fill"></i> Senderos
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link btn btn-link btn-transparent py-0 mr-3 text-secondary" href="<?php echo constant('URL') ?>sendero/lista">
+							<i class="bi bi-person-square"></i> Conócenos
+						</a>
+					</li>
+					
 					<li class="nav-item">
 						<a class="nav-link btn btn-link btn-transparent py-0 mr-3 text-secondary" href="#download">
 							<i class="bi bi-question-circle-fill"></i> Ayuda

@@ -22,7 +22,7 @@
 	
 	.banner {
 		padding: 0;
-		height: 200px;
+		height: 250px;
 		background-image: url('<?php echo constant('URL') ?>/public/imgs/banner.png');
 		background-size: cover;
 		background-position: center;
@@ -38,14 +38,16 @@
 
 <body>
 
-	<div class="jumbotron bg-sendina-lt text-center mb-0 rounded-0 banner">
-		<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
-	</div>
-	
-	<div class="separator">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="currentColor">
-			<path d="M0,20 C120,40 240,0 360,20 C480,40 600,0 720,20 C840,40 960,0 1080,20 C1200,40 1320,0 1440,20 L1440,60 L0,60 Z"></path>
-		</svg>
+	<div class="header-custom">
+		<div class="jumbotron bg-sendina-lt text-center mb-0 rounded-0 banner">
+			<img src="<?php echo constant('URL') ?>/public/imgs/logo.png" width="320" title="logo">
+		</div>
+		
+		<div class="separator">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="currentColor">
+				<path d="M0,20 C120,40 240,0 360,20 C480,40 600,0 720,20 C840,40 960,0 1080,20 C1200,40 1320,0 1440,20 L1440,60 L0,60 Z"></path>
+			</svg>
+		</div>
 	</div>
 	
 </body>

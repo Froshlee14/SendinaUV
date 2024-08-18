@@ -61,6 +61,12 @@ body{
 	box-shadow: 0px 35px 2px -35px lightgray
 }
 
+.sticky-2 {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 45px;
+	z-index: 1019;
+}
 
 /* Estilo de sidebar (en desuso) */
 
@@ -357,6 +363,12 @@ textarea:focus + label{
 	fill: #75b7d9; 
 }
 
+/* .header-custom {
+    margin-top: -44px;
+    position: relative;
+    z-index: 1;
+}
+ */
 
 @media (max-width: 767px) {
 	.banner{
@@ -368,6 +380,12 @@ textarea:focus + label{
 		margin-top: -10px;
 		height: 20px;
 	}
+	
+/* 	.header-custom {
+		margin-top: -60px;
+		position: relative;
+		z-index: 1;
+	} */
 }
 	
 
