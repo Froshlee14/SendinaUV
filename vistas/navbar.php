@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> SENDINA </title>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/custom.css">
+</head>
+
+
+<body>
+
 
 <div class="sticky-top bg-white border">
 
@@ -23,11 +40,11 @@
 							<i class="bi bi-signpost-2-fill"></i> Senderos
 						</a>
 					</li>
-					<li class="nav-item">
+					<!--<li class="nav-item">
 						<a class="nav-link btn btn-link btn-transparent py-0 mr-3 text-secondary" href="<?php echo constant('URL') ?>sendero/lista">
 							<i class="bi bi-person-square"></i> Conócenos
 						</a>
-					</li>
+					</li> -->
 					
 					<li class="nav-item">
 						<a class="nav-link btn btn-link btn-transparent py-0 mr-3 text-secondary" href="#download">
@@ -77,3 +94,7 @@
 		</div>
 	</nav>
 </div>
+
+</body>
+
+</html>

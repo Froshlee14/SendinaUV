@@ -1,8 +1,5 @@
 /* Estilos generales */
 
-body, h1, h2, h3, h4, h5, h6  {
-  font-family: "Varela Round", sans-serif;
-}
 
 @media (min-width: 768px){
 	#sidebar-wrapper{
@@ -387,9 +384,6 @@ textarea:focus + label{
 		z-index: 1;
 	} */
 }
-	
-
-
 
 /* Estilo de navbar */
 
@@ -403,3 +397,98 @@ textarea:focus + label{
     /* background-color: rgba(0, 123, 255, 0.1);  */
     /* color: #0056b3; */
 /* } */
+
+
+/* Estilos del visualizador */
+.sidebar-map{
+	position: -webkit-sticky;
+	position: sticky;
+	top: 70px; 
+}
+
+.estacion-seccion{
+	min-height: 90vh;
+}
+
+.map_card{
+	width: 200px;
+	height:300px,
+}
+
+#map {
+	width: 100%;
+	height: 300px;
+}
+
+@media (max-width: 768px) {
+
+	#myScrollspy {
+		display: none;
+	}
+}
+
+.list-group-item-action.active {
+	background-color:#7c7c7c !important; 
+	color: white !important;
+	border: none;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+.gallery-container .col-lg-3,
+.gallery-container .col-md-4,
+.gallery-container .col-6 {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.square-thumbnail {
+	width: 100%;
+	padding-top: 100%; 
+	position: relative;
+}
+
+.square-thumbnail img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.rectangular-thumbnail {
+	width: 100%;
+	padding-top: 40%; 
+	position: relative;
+}
+
+.rectangular-thumbnail img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; 
+}
+
+.overlay-text {
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+}

@@ -7,109 +7,19 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sendina</title>
 	<link rel="icon" type="image/x-icon" href="<?php echo constant('URL') ?>/public/imgs/icon.ico">
-
-    <style>
 	
-		.sidebar-map{
-			position: -webkit-sticky;
-			position: sticky;
-			top: 70px; 
-		}
-		
-		.estacion-seccion{
-			min-height: 90vh;
-		}
-		
-		.map_card{
-			width: 200px;
-			height:300px,
-		}
-	
-		#map {
-			width: 100%;
-			height: 300px;
-		}
-		
-		@media (max-width: 768px) {
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/custom.css">
 
-			#myScrollspy {
-				display: none;
-			}
-		}
-		
-		.list-group-item-action.active {
-			background-color:#7c7c7c !important; 
-			color: white !important;
-			border: none;
-		}
-		
-		.gallery-container {
-		  display: flex;
-		  flex-wrap: wrap;
-		  justify-content: center; 
-		}
 
-		.gallery-container .col-lg-3,
-		.gallery-container .col-md-4,
-		.gallery-container .col-6 {
-		  display: flex;
-		  justify-content: center;
-		}
-
-		.gallery-container img {
-		  width: 100%;
-		  height: auto;
-		  object-fit: cover;
-		}
-
-		.square-thumbnail {
-			width: 100%;
-			padding-top: 100%; 
-			position: relative;
-		}
-
-		.square-thumbnail img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-
-		.rectangular-thumbnail {
-			width: 100%;
-			padding-top: 40%; 
-			position: relative;
-		}
-
-		.rectangular-thumbnail img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover; 
-		}
-
-		.overlay-text {
-		  top: 0;
-		  left: 0;
-		  background-color: rgba(0, 0, 0, 0.4);
-		  color: white;
-		  font-size: 1.2em;
-		  font-weight: bold;
-		  text-align: center;
-		  pointer-events: none;
-		}
-    </style>
 </head>
 
 <body class="bg-sendina">
 
 	<?php  require 'vistas/navbar.php' ?>
 
-	<?php  require 'vistas/header.php' ?>
+	<?php  require 'vistas/header.php' ?> 
 	
 	<?php 
 		//var_dump($this->estacion_lista); 
@@ -174,7 +84,9 @@
 				if ($this->estacion_lista !== null) {
 					foreach ($this->estacion_lista as $index => $estacion){
 				?>
-					<div class="pt-5" id="list-item-<?php echo $index + 1; ?>"> </div>
+					<div > </div>
+					
+					<hr class="pt-5" id="list-item-<?php echo $index + 1; ?>">
 				
 					<div class="estacion-seccion">
 						<div class="px-0 py-5">
@@ -182,8 +94,8 @@
 								<?php echo $estacion->get_nombre(); ?>
 							</h2>
 						</div>
-						<div class="px-0 py-5">
-							<p>
+						<div class="px-0 py-2">
+							<p class="text-justify">
 								<?php echo $estacion->get_descripcion(); ?>
 							</p>
 						</div>
@@ -273,10 +185,11 @@
 									if ($recurso->get_tipo_recurso() === 'Video'){
 								?>
 									<div class="col-md-12 col-12 mb-4 rounded">
-										<video controls class="w-100">
-											<source src="<?php echo $recurso->get_url(); ?>" type="video/mp4">
-											Tu navegador no soporta la etiqueta de video.
-										</video>
+										<iframe width="560" height="315" src="<?php echo $recurso->get_url(); ?>" 
+										class="border"
+										title="YouTube video player" frameborder="0" 
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+										referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 									</div>
 								<?php 
 									}
@@ -287,6 +200,8 @@
 						<?php } ?>
 
 					</div>
+					
+
 					
 				<?php
 					}
