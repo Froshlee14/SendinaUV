@@ -52,7 +52,7 @@
 				Descubre, aprende y diviértete en nuestros recorridos virtuales de los senderos. 
 			</p>
 			<div class="text-center">
-				<a href="" class="btn btn-block btn-primary font-weight-bold mt-3 py-2">Ver senderos</a>
+				<a href="<?php echo constant('URL') ?>sendero/lista" class="btn btn-block btn-primary font-weight-bold mt-3 py-2">Ver senderos</a>
 			</div>
 		</div>
 	</div>
