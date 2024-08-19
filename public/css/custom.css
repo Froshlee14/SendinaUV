@@ -400,6 +400,26 @@ textarea:focus + label{
 
 
 /* Estilos del visualizador */
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        border-radius: 0.5rem;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
 .sidebar-map{
 	position: -webkit-sticky;
 	position: sticky;
@@ -412,12 +432,12 @@ textarea:focus + label{
 
 .map_card{
 	width: 200px;
-	height:300px,
+	height:320px,
 }
 
 #map {
 	width: 100%;
-	height: 300px;
+	height: 320px;
 }
 
 @media (max-width: 768px) {

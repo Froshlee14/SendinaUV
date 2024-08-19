@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="<?php echo constant('URL') ?>public/css/custom.css">
 
 
+<style>
+
+</style>
 </head>
 
 <body class="bg-sendina">
@@ -44,36 +47,11 @@
 		}
 		
 	?>
-	<div class="container bg-white p-0 mt-4 mb-4 border-0 rounded">
-		<div class="row rounded" data-spy="scroll" data-target="#myScrollspy" data-offset="200">
-			<div class="col-sm-5 col-12 p-4 mx-0 bg-light border">
-				<div class="sidebar-map">
-				
-					<div id="map" class="container-fluid full-height rounded mb-3 border">
-						<!-- Aquí va el mapa -->
-					</div>
-				
-					<nav class="bg-light sidebar rounded" id="myScrollspy">
-						<div class="list-group border-0 rounded">
-							
-							<label  class="list-group-item list-group-item-action p-2 text-center bg-primary text-white">ESTACIONES</label>
-							<?php 
-							if ($this->estacion_lista !== null) {
-								foreach ($this->estacion_lista as $index => $estacion){
-							?>
-								<a class="list-group-item list-group-item-action p-1" href="#list-item-<?php echo $index + 1; ?>">
-									<?php echo ($index + 1) .') '. $estacion->get_nombre(); ?>
-								</a>
-							<?php
-								}
-							}
-							?>
-						</div>
-					</nav>
 
-				</div>
-			</div>
-			<div class="col px-md-5 bg-white">
+	<div class="container bg-white p-0 mt-4 mb-4 border-0 rounded">
+	
+		<div class="row rounded" data-spy="scroll" data-target="#myScrollspy" data-offset="200">
+			<div class="col-12 col-sm-7 p-5 bg-white rounded">
 				
 				<div class="jumbotron bg-light text-center mb-0 rounded-0">
 					<h2> "<?php echo $this->sendero->get_nombre()?>" </h2>
@@ -184,13 +162,16 @@
 								foreach ($estacion->get_recursos() as $recurso){
 									if ($recurso->get_tipo_recurso() === 'Video'){
 								?>
-									<div class="col-md-12 col-12 mb-4 rounded">
+								
+								<div class="col-md-12 col-12 mb-4 rounded">
+									<div class="video-container">
 										<iframe width="560" height="315" src="<?php echo $recurso->get_url(); ?>" 
 										class="border"
 										title="YouTube video player" frameborder="0" 
 										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 										referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 									</div>
+								</div>
 								<?php 
 									}
 								}
@@ -201,17 +182,46 @@
 
 					</div>
 					
-
-					
 				<?php
 					}
 				}
 				?>
 				
+			</div>		
+			
+			<div class="col-12 col-sm-5 p-4 bg-dark rounded">
+			
+				<div class="sidebar-map">
+					<div id="map" class="container-fluid full-height rounded mb-3 border">
+						<!-- Aquí va el mapa -->
+					</div>
+					
+					
+					<nav class="bg-light sidebar rounded" id="myScrollspy">
+						<div class="list-group border-0 rounded">
+							
+							<label  class="list-group-item list-group-item-action p-2 text-center bg-primary text-white">ESTACIONES</label>
+							<?php 
+							if ($this->estacion_lista !== null) {
+								foreach ($this->estacion_lista as $index => $estacion){
+							?>
+								<a class="list-group-item list-group-item-action p-1" href="#list-item-<?php echo $index + 1; ?>">
+									<?php echo ($index + 1) .') '. $estacion->get_nombre(); ?>
+								</a>
+							<?php
+								}
+							}
+							?>
+						</div>
+					</nav>
+				</div>
+			
 			</div>
+
 		</div>
+		
 	</div>
-	
+
 	
 	<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg">
@@ -316,7 +326,7 @@
 		streetViewControl: false,
 		mapTypeControl: true,
 		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-		mapTypeId: 'terrain',
+		mapTypeId: 'roadmap',
 		zoomControl: true,
     });
 	
@@ -414,7 +424,7 @@
 	
 	$(document).ready(function () {
 		$(window).on('activate.bs.scrollspy', function (e, obj) {
-			console.log("Se activó el elemento:", obj.relatedTarget);
+			//console.log("Se activó el elemento:", obj.relatedTarget);
 	
 			const index = parseInt(obj.relatedTarget.split('-')[2]) - 1; 
 			if (estaciones[index]) {
