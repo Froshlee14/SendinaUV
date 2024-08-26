@@ -14,7 +14,7 @@
 	<?php require 'vistas/navbar.php' ?>
 	<?php require 'vistas/header.php' ?>
 	
-	<div class="container-fluid p-0">
+	<div class="container-fluid p-0 mb-5">
 		<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded shadow">
 			<h3 class="pb-4 text-primary text-center">¿Qué son los senderos interpretativos?</h3>
 

@@ -15,7 +15,7 @@
 	<?php  require 'vistas/navbar.php' ?>
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container w-md-75 bg-white p-sm-5 p-3 mt-4 mb-4 border-0 rounded">
+	<div class="container w-md-75 bg-white p-sm-5 p-3 mt-4 mb-5 border-0 rounded">
 		
 
 			<h3 class="mt-0 mb-4 text-center"> Lista de senderos </h3>

@@ -145,7 +145,7 @@
 	
 	<?php if($id_estacion != 0){ ?>
 		
-	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-5 border-0 rounded">
 		
 		<h5 class="mt-0 mb-4 text-center"> RECURSOS DE ESTACIÓN </h5>
 		

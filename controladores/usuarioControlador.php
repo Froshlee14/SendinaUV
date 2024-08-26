@@ -104,6 +104,11 @@ class UsuarioControlador extends Controlador{
 		
 		$id_usuario = $parametros[0];
 		
+		if($id_usuario==1){
+			$this->lista();
+			return;
+		}
+		
 		if($this->modelo->deleteBD($id_usuario)){
 			$mensaje = "Usuario eliminado";
 		}

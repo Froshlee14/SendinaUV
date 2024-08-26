@@ -15,7 +15,7 @@
 
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-5 border-0 rounded">
 	
 		<h5 class=" mb-3 text-center"> USUARIOS </h5>
 		<a  class="btn btn-block btn-primary ml-auto mb-3" href="<?php echo constant('URL').'usuario/editar/0'?>"> Agregar usuario </a>

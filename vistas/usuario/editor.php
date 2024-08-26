@@ -30,7 +30,7 @@
 
 	<?php  require 'vistas/header.php' ?>
 	
-	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
+	<div class="container w-md-75 bg-white p-5 mt-4 mb-5 border-0 rounded">
 	
 		<form  class="form-card" action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
 	

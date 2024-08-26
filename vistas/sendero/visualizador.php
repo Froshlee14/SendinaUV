@@ -48,7 +48,7 @@
 		
 	?>
 
-	<div class="container bg-white p-0 mt-4 mb-4 border-0 rounded">
+	<div class="container bg-white p-0 mt-4 mb-5 border-0 rounded">
 	
 		<div class="row rounded" data-spy="scroll" data-target="#myScrollspy" data-offset="200">
 			<div class="col-12 col-sm-7 p-5 bg-white rounded">
