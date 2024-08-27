@@ -57,7 +57,6 @@ class App{
 					else {
                         //El método no existe en el controlador
                         $controlador = new Errores();
-                        $controlador->index();
                     }
 				}
 				else{
@@ -68,13 +67,11 @@ class App{
             else{
                 //No se encuentra clase de controlador
                 $controlador = new Errores();
-				$controlador->index();
             }
 		}
 		else{
             //No se encuentra archivo de controlador
 			$controlador = new Errores();
-			$controlador->index();
 		}
 		
 	}

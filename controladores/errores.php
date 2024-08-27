@@ -8,6 +8,7 @@ class Errores extends Controlador{
 		parent::__construct();
 
 		//echo "<p> Error al cargar el recurso </p>";
+		$this->renderizar();
 	}
 	
 	function index(){
