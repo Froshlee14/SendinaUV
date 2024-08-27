@@ -37,7 +37,7 @@
 	
 	<div class="container w-md-75 bg-white p-5 mt-4 mb-4 border-0 rounded">
 	
-		<form class="form-card" action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="senderoForm">
+		<form class="form-card" action="<?php echo constant('URL') ?>estacion/guardar" method="post" id="estacionForm">
 	
 			<h3 class="mt-0 mb-4 text-center"> DETALLES DE ESTACIÓN </h3>
 
@@ -122,7 +122,8 @@
 			
 			<!-- No usar input, el css de los input text tambien le afecta -->
 			<!-- <input class="btn btn-primary text-light" type="submit" value="Guardar"> -->
-			<button class="btn btn-block btn-success text-light mb-3" type="submit">Guardar cambios</button>
+			<button class="btn btn-block btn-success text-light mb-3" type="submit"
+			<?php if($this->estacion !== null) echo 'disabled'; ?> id="btnGuardar">Guardar cambios</button>
 			
 			<?php
 			if($this->estacion !== null){ 
@@ -212,6 +213,15 @@
 	  </div>
 	</div>
 	
+	<script>
+		const form = document.getElementById('estacionForm');
+		const boton = document.getElementById('btnGuardar');
+
+		// Habilita el botón cuando se detecta un cambio en el formulario
+		form.addEventListener('input', function() {
+			boton.disabled = false;
+		});
+	</script>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
