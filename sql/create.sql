@@ -142,7 +142,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS usuario (
   id_usuario INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(20) NULL,
-  contrasena VARCHAR(20) NULL,
+  contrasena VARCHAR(255) NULL,
   id_rol_usuario INT NULL,
   PRIMARY KEY (id_usuario),
   CONSTRAINT fk_rol_usuario_usuario1

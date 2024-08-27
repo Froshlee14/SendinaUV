@@ -72,7 +72,7 @@ class UsuarioModelo extends Modelo{
 				$usuario = new UsuarioBean(
 					$row['id_usuario'],
 					$row['nombre'],
-					$row['contrasena'],
+					null,//$row['contrasena'],
 					$row['id_rol_usuario'],
 					$row['rol_usuario']
 				);
@@ -112,6 +112,9 @@ class UsuarioModelo extends Modelo{
 	public function insert($usuario){
         //Insertar datos de usuario a la BD
 		
+		//El hash ya fue realizado
+		//$contrasena = password_hash($usuario->get_contrasena(), PASSWORD_BCRYPT);
+		
         $sql = 'INSERT INTO usuario (nombre,contrasena,id_rol_usuario) VALUES (:nombre,:contrasena,:id_rol_usuario);';
         $parametros = [
             'nombre' => $usuario->get_nombre(),
@@ -135,6 +138,9 @@ class UsuarioModelo extends Modelo{
 	public function update($usuario){
 		//Actualizar datos del usuario en la BD
 		//var_dump($usuario);
+		
+		//"Hasheando" la contraseña
+		//$contrasena = password_hash($usuario->get_contrasena(), PASSWORD_DEFAULT);
 		
 		$sql = 'UPDATE usuario SET  nombre=:nombre, contrasena=:contrasena, id_rol_usuario=:id_rol_usuario where id_usuario=:id_usuario;';
 		$parametros = [

@@ -32,7 +32,7 @@
 	
 	<div class="container w-md-75 bg-white p-5 mt-4 mb-5 border-0 rounded">
 	
-		<form  class="form-card" action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="senderoForm">
+		<form  class="form-card" action="<?php echo constant('URL') ?>usuario/guardar" method="post" id="usuarioForm">
 	
 			<h3 class="mt-0 mb-4 text-center"> Detalles de usuario </h3>
 		
@@ -51,7 +51,7 @@
 					if($this->usuario !== null){
 						$id_usuario = $this->usuario->get_id_usuario();
 						$nombre = $this->usuario->get_nombre();
-						$contrasena = $this->usuario->get_contrasena();
+						//$contrasena = $this->usuario->get_contrasena();
 						$id_rol_usuario = $this->usuario->get_id_rol_usuario();
 					}
 					
@@ -76,7 +76,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="input-group"> 
-								<input type="password" name="contrasena" placeholder="" value="<?php echo $contrasena ?>" maxlength="20" required> 
+								<input type="password" name="contrasena" placeholder="Ingrese contraseña" value="" maxlength="20">
 								<label>Contraseña</label> 
 							</div>
 						</div>

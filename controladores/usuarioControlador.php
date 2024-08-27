@@ -15,6 +15,10 @@ class UsuarioControlador extends Controlador{
 		
 	}
 	
+	function index(){
+		$this->lista();
+	}
+	
 	function renderizar($vista = "usuario/index"){
 		$this->vista->mostrar($vista);
 	}
@@ -41,8 +45,7 @@ class UsuarioControlador extends Controlador{
 			!isset($_POST['contrasena']) ||
 			!isset($_POST['id_rol_usuario'])	
 			){
-			//Hace falta implementar un mejor manejo de los errores
-			//Port ahora queda esto
+			//Manejo de los errores
 			$this->redir('error');
 		}
 		
@@ -50,16 +53,42 @@ class UsuarioControlador extends Controlador{
         $nombre = $_POST['nombre'];
         $contrasena = $_POST['contrasena'];
         $id_rol_usuario = $_POST['id_rol_usuario'];
+		
+		
+		
+	   // Obtengo datos en caso de que no ingrese nueva contrasena
+		if ($id_usuario > 0) {
+			$usuarioExistente = $this->modelo->select($id_usuario);
+			if ($usuarioExistente === null) {
+				$this->vista->mensaje = "Usuario no encontrado.";
+				$this->redir('error');
+				return;
+			}
+		}
+
+		// Caso contrario, la ciframos
+		if (!empty($contrasena)) {
+			//"Heasheo" de contrasena
+			$contrasenah = password_hash($contrasena, PASSWORD_DEFAULT);
+		} else {
+			// Mantener la contraseña existente si no se proporciona una nueva
+			if ($id_usuario > 0) {
+				$contrasenah = $usuarioExistente->get_contrasena();
+			} else {
+				$contrasenah = '';
+			}
+		}
+		
 
         $usuario = new UsuarioBean(
             $id_usuario,
             $nombre,
-            $contrasena,
+            $contrasenah,
             $id_rol_usuario
         );
         //var_dump($usuario);
 
-        //ASi la id es 0 significa que lo agregamos como nuevo sendero
+        //Si la id es 0 significa que lo agregamos como nuevo sendero
 		if($id_usuario==0){
 			if($this->modelo->insert($usuario)){
 				$mensaje = "Usuario creado";

@@ -20,12 +20,13 @@ class Controlador{
 	
 	//Para hacer redirecciones
 	function redir($url){
-		header('Location: '.constant('URL').$url); //'sendero/editar/'.$id_sendero);
+		header('Location: '.constant('URL').$url);
 		exit();
 	}
 	
 	function verificaUsuario(){
-		//Si no hay ningun administrador o editor redirige al inicio
+		//Si no hay ningun administrador o editor logeado redirige al inicio
+		//Para evitar intrusos en el sistema
 		if(!isset($_SESSION['user_id'])){ 
 			$this->redir('inicio');
 		}

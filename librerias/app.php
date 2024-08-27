@@ -39,31 +39,42 @@ class App{
 				//Numero de elementos que componen el URL
 				$n_param = sizeof($url);
 				if($n_param>1){
-					if($n_param>2){
-						//Si hay mas de 2 significa que estamos pasando parametros.
-						$parametros = [];
-						for($i=2; $i<$n_param; $i++){
-							array_push($parametros,$url[$i]);
+					//Hay que ver si existe el metodo
+					$metodo = $url[1];
+					if (method_exists($controlador, $metodo)) {
+						if($n_param>2){
+							//Si hay mas de 2 significa que estamos pasando parametros.
+							$parametros = [];
+							for($i=2; $i<$n_param; $i++){
+								array_push($parametros,$url[$i]);
+							}
+							$controlador->{$metodo}($parametros);
 						}
-						$controlador->{$url[1]}($parametros);
+						else{
+							$controlador->{$metodo}();
+						}
 					}
-					else{
-						$controlador->{$url[1]}();
-					}
+					else {
+                        //El método no existe en el controlador
+                        $controlador = new Errores();
+                        $controlador->index();
+                    }
 				}
 				else{
-					$controlador->renderizar();
+					$controlador->index();
 				}
 			
             }
             else{
                 //No se encuentra clase de controlador
                 $controlador = new Errores();
+				$controlador->index();
             }
 		}
 		else{
             //No se encuentra archivo de controlador
 			$controlador = new Errores();
+			$controlador->index();
 		}
 		
 	}

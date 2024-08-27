@@ -21,6 +21,10 @@ class EstacionControlador extends Controlador{
 		$this->modeloRecurso = new RecursoModelo();
 	}
 	
+	function index(){
+		$this->redir("sendero/lista");
+	}
+	
 	function renderizar($vista = "estacion/editor"){
 		$this->vista->mostrar($vista);
 	}
@@ -65,8 +69,8 @@ class EstacionControlador extends Controlador{
 			!isset($_POST['latitud']) ||
 			!isset($_POST['longitud']) 				
 			){
-			//Hace falta implementar un mejor manejo de los errores
-			//Port ahora queda esto
+			//Manejo de los errores
+			//En caso de que algun valor no exista
 			$this->redir('error');
 		}
 		
@@ -89,7 +93,7 @@ class EstacionControlador extends Controlador{
         );
         //var_dump($estacion);
 
-        //ASi la id es 0 significa que lo agregamos como nueva estacion
+        //Si la id es 0 significa que lo agregamos como nueva estacion
 		if($id_estacion==0){
 			if($this->modelo->insert($estacion,$id_sendero)){
 				$mensaje = "Estacion creada";

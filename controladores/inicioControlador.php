@@ -8,6 +8,10 @@ class inicioControlador extends Controlador{
 		//echo "<p> Nuevo sendero controlador </p>";
 	}
 	
+	function index(){
+		$this->renderizar();
+	}
+	
 	function renderizar(){
 		$this->vista->mostrar("inicio/index");
 	}

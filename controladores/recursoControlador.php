@@ -21,6 +21,10 @@ class RecursoControlador extends Controlador{
 		//$this->modeloTipoRecurso = new TipoRecursoModelo();
 	}
 	
+	function index(){
+		$this->redir("sendero/lista");
+	}
+	
 	function renderizar($vista = "recurso/editor"){
 		$this->vista->mostrar($vista);
 	}
@@ -58,8 +62,8 @@ class RecursoControlador extends Controlador{
 			!isset($_POST['creditos']) ||
 			!isset($_POST['id_tipo_recurso']) 		
 			){
-			//Hace falta implementar un mejor manejo de los errores
-			//Port ahora queda esto
+			//Manejo de los errores
+			//En caso de que algun valor no exista
 			$this->redir('error');
 		}
 		

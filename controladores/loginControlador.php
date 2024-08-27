@@ -15,6 +15,10 @@ class LoginControlador extends Controlador{
 		
 	}
 	
+	function index(){
+		$this->renderizar();
+	}
+	
 	function renderizar($vista = "login/index"){
 		$this->vista->mostrar($vista);
 	}
@@ -31,8 +35,9 @@ class LoginControlador extends Controlador{
 			
 			if ($id_usuario) {
 				$usuario = $this->modeloUsuario->select($id_usuario);
+
 				
-				if ($contrasena === $usuario->get_contrasena()) {
+				if (password_verify($contrasena, $usuario->get_contrasena())) {
 					echo "sesion iniciada exitosamente";
 					
 					//Necesitamos estas datos en sesion

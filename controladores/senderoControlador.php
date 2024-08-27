@@ -22,6 +22,10 @@ class SenderoControlador extends Controlador{
 		$this->modeloEstacion = new EstacionModelo();
 	}
 	
+	function index(){
+		$this->lista();
+	}
+	
 	function renderizar($vista = "sendero/index"){
 		$this->vista->mostrar($vista);
 	}
@@ -66,8 +70,8 @@ class SenderoControlador extends Controlador{
 			!isset($_POST['url_portada']) ||	
 			!isset($_POST['status'])
 			){
-			//Hace falta implementar un mejor manejo de los errores
-			//Port ahora queda esto
+			//Manejo de los errores
+			//En caso de que algun valor no exista
 			$this->redir('error');
 		}
 		
